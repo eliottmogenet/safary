@@ -1,2 +1,10 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<% @users.each do |user| %>
+  <p><%= user.email %> : <%= user.created_at %></p>
+<% end  %>
+
+<%= line_chart User.group_by_day(:created_at).count %>
+
+
