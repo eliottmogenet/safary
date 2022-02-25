@@ -5,6 +5,14 @@
   <p><%= user.email %> : <%= user.created_at %></p>
 <% end  %>
 
+<% @guilds.each do |guild| %>
+  <p><%= guild.name %></p>
+<% end  %>
+
+<% @discord_users.each do |duser| %>
+  <p><%= duser.username %></p>
+<% end  %>
+
 <%= line_chart User.group_by_day(:created_at).count %>
 
 
