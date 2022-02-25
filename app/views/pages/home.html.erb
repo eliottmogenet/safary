@@ -17,6 +17,6 @@
   <p>Guild-user : <%= guser.join_at %></p>
 <% end%>
 
-<%= line_chart User.group_by_day(:created_at).count %>
+<%= line_chart @guild.guild_users.group_by_week(:join_at).count %>
 
 

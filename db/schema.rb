@@ -10,21 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_25_001843) do
+ActiveRecord::Schema.define(version: 2022_02_25_192820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "discord_users", id: false, force: :cascade do |t|
-    t.bigint "id"
+  create_table "discord_users", primary_key: "uid", id: :bigint, default: nil, force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
     t.string "discriminator"
   end
 
-  create_table "guild_users", id: false, force: :cascade do |t|
-    t.bigint "id"
+  create_table "guild_users", primary_key: "uid", id: :bigint, default: nil, force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "join_at"
@@ -34,8 +32,7 @@ ActiveRecord::Schema.define(version: 2022_02_25_001843) do
     t.index ["guild_id"], name: "index_guild_users_on_guild_id"
   end
 
-  create_table "guilds", id: false, force: :cascade do |t|
-    t.bigint "id"
+  create_table "guilds", primary_key: "uid", id: :bigint, default: nil, force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"

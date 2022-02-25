@@ -25,23 +25,23 @@ user3.save!
 
 p "creating guilds"
 
-guild1 = user1.guilds.create(id: 1, name: "guild1")
+guild1 = user1.guilds.create(uid: 1, name: "guild1")
 guild1.save!
 
 
 p "creating discord_users"
 
-discord_users1 = DiscordUser.create(id: 1, username: "discord_user1")
+discord_users1 = DiscordUser.create(uid: 1, username: "discord_user1")
 discord_users1.save!
 
 
-discord_users2 = DiscordUser.create(id: 2, username: "discord_user2")
+discord_users2 = DiscordUser.create(uid: 2, username: "discord_user2")
 discord_users2.save!
 
-#p "creating guild_users"
+p "creating guild_users"
 
-#guilduser1 = guild1.guild_users.create(id: 1, join_at: "09/14/2009 00:00", discord_user_id: discord_users1.id)
-#guilduser1.save!
+guilduser1 = guild1.guild_users.create(uid: 1, join_at: DateTime.new(2015, 6, 22), discord_user_id: discord_users1.uid)
+guilduser1.save!
 
-#guilduser2 = guild1.guild_users.create(id: 2, join_at: "09/15/2009 00:00", discord_user_id: discord_users2.id)
-#guilduser2.save!
+guilduser2 = guild1.guild_users.create(uid: 2, join_at: DateTime.new(2015, 7, 22), discord_user_id: discord_users2.uid)
+guilduser2.save!
