@@ -3,5 +3,6 @@ class PagesController < ApplicationController
     @users = User.all
     @guilds = Guild.all
     @discord_users = DiscordUser.all
+    @guild_users = GuildUser.all
   end
 end

@@ -11,7 +11,11 @@
 
 <% @discord_users.each do |duser| %>
   <p><%= duser.username %></p>
-<% end  %>
+<% end%>
+
+<% @guild_users.each do |guser| %>
+  <p>Guild-user : <%= guser.join_at %></p>
+<% end%>
 
 <%= line_chart User.group_by_day(:created_at).count %>
 
