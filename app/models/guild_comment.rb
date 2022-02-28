@@ -1,0 +1,2 @@
+class GuildComment < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class GuildTactic < ApplicationRecord
+end
