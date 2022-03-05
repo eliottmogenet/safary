@@ -88,9 +88,11 @@
     <div class="col-lg-2" id="performers">
      <p>List of Graphs</p>
 
-      <%= link_to guild_path(current_user.guilds.first) do %>
-        <p>My graph </p>
-      <% end %>
+     <% if current_user.guilds.present? %>
+       <%= link_to guild_path(current_user.guilds.first) do %>
+          <p>My graph </p>
+        <% end %>
+     <% end %>
 
       <% @guilds.each do |guild| %>
         <% if guild.user.present? %>

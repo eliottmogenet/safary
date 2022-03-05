@@ -22,4 +22,8 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= link_to "/users/auth/discord", method: :post, class: "button-type" do %>
+    Sign-up with Discord <i class="fab fa-discord"></i>
+  <% end %>
+
+

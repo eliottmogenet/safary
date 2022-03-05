@@ -1,7 +1,22 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :guilds
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable,
+         :omniauth_providers => [:discord, :developer]
+
+  has_many :guilds
+  has_one_attached :photo
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.provider = auth.provider
+      user.photo.attach(io: URI.open(auth.info.image), filename: "#{auth.info.name}.png")
+      user.uid = auth.uid
+      user.password = Devise.friendly_token[0,20]
+      user.pseudo = auth.info.name
+    end
+  end
 end
+
