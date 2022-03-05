@@ -1,0 +1,126 @@
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+<body>
+
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "Templates", templates_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My dashboard", dashboards_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Build with us", "#", class: "nav-link" %>
+          </li>
+        <%# else %>
+          <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <!--/li-->
+        <%# end %>
+      </ul>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <li class="nav-item dropdown">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Action", "#", class: "dropdown-item" %>
+              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%#= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+      </li>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="templates-container">
+
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-contact-tab1" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="false">All</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " id="pills-contact-tab1" data-toggle="pill" href="#pills-acquisition" role="tab" aria-controls="pills-acquisition" aria-selected="false">Acquisition</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " id="pills-contact-tab1" data-toggle="pill" href="#pills-activation" role="tab" aria-controls="pills-activation" aria-selected="false">Engagement</a>
+              </li>
+              <li>
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-custom" role="tab" aria-controls="pills-custom" aria-selected="false">NFT</a>
+              </li>
+              <li>
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-gaming" role="tab" aria-controls="pills-gaming" aria-selected="false">Gaming</a>
+              </li>
+              <li>
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-gaming" role="tab" aria-controls="pills-tokens" aria-selected="false">Tokens</a>
+              </li>
+              <li>
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-defi" role="tab" aria-controls="pills-defi" aria-selected="false">DEFI</a>
+              </li>
+            </ul>
+<hr style="height: 0px;">
+
+
+<div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-home-tab">
+              <p style="color: #687086; margin-bottom: 40px">Welcome to the Savana. Pick a template to start your adventure. </p>
+                <%= link_to guild_path(Guild.first) do %>
+                  <div class="template-cards">
+                    <div class="template">
+                      <div class="title-template">
+                        <h5>Discord user <br> acquisition</h5><p class="available">Available</p>
+                      </div>
+                        <p>Learn how to grow your Discord members.</p>
+                        <%= image_tag("discord-acquisition.png", :width => 200, style: "margin-top: 5px; margin-left: 15px") %>
+
+                    </div>
+                   <% end %>
+                    <div class="template">
+                      <div class="title-template">
+                        <h5>Audiences <br> comparison </h5><p class="available">Available</p>
+                      </div>
+                      <p>Compare your audiences to know where you need to improve</p>
+                    </div>
+                    <div class="template">
+                      <div class="title-template">
+                        <h5>Content <br> strategy</h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
+                      </div>
+                      <p>Understand how to grow your community with content</p>
+                    </div>
+                  </div>
+
+
+              </div>
+              <div class="tab-pane fade" id="pills-acquisition" role="tabpanel" aria-labelledby="pills-home-tab">
+                <p>yo-hello</p>
+              </div>
+              <div class="tab-pane fade" id="pills-activation" role="tabpanel" aria-labelledby="pills-home-tab">
+                <p>ya-hello</p>
+              </div>
+              <div class="tab-pane fade" id="pills-custom" role="tabpanel" aria-labelledby="pills-home-tab">
+                <p>no-hello</p>
+              </div>
+              <div class="tab-pane fade" id="pills-gaming" role="tabpanel" aria-labelledby="pills-home-tab">
+                <p>no-no-hello</p>
+              </div>
+              <div class="tab-pane fade" id="pills-defi" role="tabpanel" aria-labelledby="pills-home-tab">
+                <p>defi-hello</p>
+              </div>
+
+
+</div>
+</div>
+
+</body>

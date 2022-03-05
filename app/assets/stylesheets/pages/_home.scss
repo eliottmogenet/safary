@@ -1,1 +1,151 @@
 // Specific CSS for your home-page
+body {
+  background-color: #FCFAED !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+
+.navbar-lewagon {
+  display: flex;
+  justify-content: flex-start;
+  background: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
+.nav-link {
+  color: #C4C4C4;
+}
+
+.nav-link:hover {
+  color: black;
+}
+
+.active {
+  color: black;
+
+}
+
+.nav-link:focus {
+  color: black;
+  font-weight: bold;
+}
+
+#templates-container {
+ margin-top: 60px;
+}
+
+#pills-contact-tab1 {
+  padding-left: 0px;
+}
+
+.template-cards  {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 2rem;
+}
+
+.template {
+  padding: 30px;
+  width: 310px;
+  height: 290px;
+  background-color: white;
+  border-radius : 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.template:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all .2s ease-in-out;
+}
+
+.template h5 {
+  font-weight: 800;
+  line-height: 27px;
+  color: black;
+}
+
+.template p {
+  color: #9F9F9F;
+  font-size: 12px;
+
+}
+
+#performers {
+  background-color: white;
+  height: 100vh;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#container-show {
+  max-width: 100%;
+}
+
+#graph {
+  padding-left: 150px;
+}
+
+.chart {
+  width: 950px;
+  height: 360px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
+#back {
+  color: #C4C4C4;
+}
+
+.template-title {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 70px;
+}
+
+.button-type {
+  font-family: "Poppins";
+  background-color: #D25C5C;
+  border-radius: 50px;
+  margin-top: 30px;
+  height: 45px;
+  width: 200px;
+  color: white;
+  border: none;
+}
+
+.button-type:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.available {
+  background-color: #3BA38D;
+  padding: 7px;
+  border-radius: 10px;
+  color: white !important;
+  opacity: 80%;
+  width: 68px;
+  height: 32px;
+}
+
+.title-template {
+  display: flex;
+  justify-content: space-between;
+}

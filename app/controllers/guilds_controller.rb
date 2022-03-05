@@ -3,6 +3,14 @@ class GuildsController < ApplicationController
   def show
     @guilds = Guild.all
     @guild = Guild.find(params[:id])
+
+    @data = @guild.guild_users.group_by_week(:join_at).count
+    accumulator = 0
+    @data.transform_values! do |val|
+    val += accumulator
+    accumulator = val
+    end
+
   end
 
   def refresh

@@ -1,0 +1,110 @@
+<body>
+
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "Templates", templates_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My Dashboard", dashboards_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Build with us", "#", class: "nav-link" %>
+          </li>
+        <%# else %>
+          <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <!--/li-->
+        <%# end %>
+      </ul>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <li class="nav-item dropdown">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%#= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+      </li>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="templates-container" style="margin-left: 150px;">
+
+<h5 style="color:black;">My Dashboard</h5>
+<hr style="height: 1px; color:#687086; width: 1000px;">
+<p style="color:#687086">Welcome Home 🏕. Centralize and customize all your metrics here. Follow the health your community.</p>
+
+<div>
+
+  <% if current_user.guilds.empty? %>
+    <p>hello</p>
+
+  <% else %>
+    <div class="chart">
+      <%= area_chart @data, colors: ["#D25C5C"], points: false %>
+    </div>
+
+    <div class="chart">
+      <%= area_chart @data_month, colors: ["#D25C5C"], points: false %>
+    </div>
+  <% end %>
+
+
+
+</div>
+
+
+</div>
+
+</body>
+
+<style>
+
+
+.navbar-lewagon {
+  display: flex;
+  justify-content: flex-start;
+  background: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
+.nav-link {
+  color: #C4C4C4;
+}
+
+.nav-link:hover {
+  color: black;
+}
+
+.active {
+  color: black;
+
+}
+
+.nav-link:focus {
+  color: black;
+  font-weight: bold;
+}
+
+#templates-container {
+ margin-top: 60px;
+}
+</style>

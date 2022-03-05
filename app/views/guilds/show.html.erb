@@ -1,61 +1,113 @@
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-
-<p>List of Graphs</p>
-
-<%= link_to guild_path(current_user.guilds.first) do %>
-  <p>My graph </p>
-<% end %>
-
-
-<% @guilds.each do |guild| %>
-  <% if guild.user.present? %>
-   <%= link_to guild_path(guild) do %>
-    <p><%= guild.name %><%= guild.user.email %></p>
-   <% end %>
-  <% end %>
-<% end %>
+<head>
+  <script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
 
 
 
-  <a href="https://discord.com/api/oauth2/authorize?client_id=946557380886417478&permissions=8&scope=bot" target="_blank">
-    Plug your Discord
-  </a>
+<body>
 
-<%= link_to 'Update my dashboard', refresh_path, method: :post %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
 
-<p><%= @guild.user.email %></p>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<%= line_chart @guild.guild_users.group_by_week(:join_at).count %>
+    <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "Templates", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My Dashboard", dashboards_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Build with us", "#", class: "nav-link" %>
+          </li>
+        <%# else %>
+          <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <!--/li-->
+        <%# end %>
+      </ul>
 
-<p>List Discord members</p>
-
-<% @guild.guild_users.each do |guser| %>
-  <p> User : <%= guser.discord_user.username %> - <%= guser.join_at %></p>
-<% end%>
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <li class="nav-item dropdown">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Action", "#", class: "dropdown-item" %>
+              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%#= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+      </li>
     </div>
   </div>
 </div>
+
+<div class="container" id="container-show">
+  <div class="row">
+    <div class="col-lg-10" id="graph">
+
+    <div class="template-title">
+      <div>
+        <%= link_to templates_path do %>
+          <p id="back"><i class="fa-solid fa-arrow-left-long"></i> Back to the Savanna</p>
+        <% end %>
+        <h2 style="font-weight: 900;">Discord user acquisition</h2>
+        <p>How fast do you grow your discord community ?</p>
+      </div>
+      <div>
+        <button class="button-type">Use this template</button>
+      </div>
+    </div>
+
+    <div class="chart">
+      <%= area_chart @data, colors: ["#D25C5C"], points: false %>
+    </div>
+
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link active" id="pills-contact-tab1" data-toggle="pill" href="#pills-templates" role="tab" aria-controls="pills-templates" aria-selected="false">Start</a>
+      </li>
+      <li>
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-custom" role="tab" aria-controls="pills-custom" aria-selected="false">Learn</a>
+      </li>
+      <li>
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-custom" role="tab" aria-controls="pills-custom" aria-selected="false">Comments</a>
+      </li>
+    </ul>
+    <hr>
+
+
+    </div>
+    <div class="col-lg-2" id="performers">
+     <p>List of Graphs</p>
+
+      <%= link_to guild_path(current_user.guilds.first) do %>
+        <p>My graph </p>
+      <% end %>
+
+      <% @guilds.each do |guild| %>
+        <% if guild.user.present? %>
+         <%= link_to guild_path(guild) do %>
+          <p><%= guild.name %><%= guild.user.email %></p>
+         <% end %>
+        <% end %>
+      <% end %>
+      </div>
+  </div>
+
+
+
+
+</div>
+
+
+</body>
+
+
