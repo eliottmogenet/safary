@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   end
 
 
-  resources :guilds
+  resources :guilds do
+    resources :guild_comments
+  end
   resources :templates
   resources :dashboards
   post 'refresh', to: "guilds#refresh"

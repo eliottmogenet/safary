@@ -149,3 +149,47 @@ a {
   display: flex;
   justify-content: space-between;
 }
+
+.comment-div {
+  background-color: white;
+  width: 950px;
+  padding: 40px;
+  padding-left: 40px;
+  border-radius: 5px;
+  height: 100vh;
+}
+
+span {
+  color: #5E5E5E;
+  white-space: pre-wrap;
+}
+
+#time_ago {
+  color: #9F9F9F;
+  font-size: 12px;
+}
+
+#guild_comment_content {
+  background-color: #E3E3E4;
+  border: none;
+  font-size: 13px;
+  height: 120px;
+  white-space: pre-wrap;
+}
+
+.text-comment {
+  font-size: 13px;
+}
+
+.button-type2 {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  width: 150px;
+}
+
+#new_guild_comment {
+  padding-bottom: 50px;
+}

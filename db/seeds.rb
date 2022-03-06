@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
+GuildComment.destroy_all
+GuildTactic.destroy_all
 GuildUser.destroy_all
 Guild.destroy_all
 DiscordUser.destroy_all
@@ -14,13 +16,16 @@ User.destroy_all
 
 p "creating users"
 
-user1 =  User.create(email: "test1@gmail.com", password: "test1@gmail.com")
+user1 =  User.create(email: "test1@gmail.com", password: "test1@gmail.com", pseudo: "elium")
+user1.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
 user1.save!
 
-user2 =  User.create(email: "test2@gmail.com", password: "test2@gmail.com")
+user2 =  User.create(email: "test2@gmail.com", password: "test2@gmail.com", pseudo: "cocococo")
+user2.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
 user2.save!
 
-user3 =  User.create(email: "test3@gmail.com", password: "test3@gmail.com")
+user3 =  User.create(email: "test3@gmail.com", password: "test3@gmail.com", pseudo: "salimon")
+user3.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/simon.png')), filename: 'simon.png')
 user3.save!
 
 p "creating guilds"
@@ -34,6 +39,22 @@ guild2.save!
 guild3 = user3.guilds.create(uid: 3, name: "guild3")
 guild3.save!
 
+
+p "creating comments"
+
+comment1 = user1.guild_comments.create(content: "Hello : first comment!", guild_id: guild1.id)
+comment1.save!
+
+comment2 = user2.guild_comments.create(content: "Hello : second comment!", guild_id: guild1.id)
+comment2.save!
+
+p "creating tactics"
+
+tactic1 = user1.guild_tactics.create(title: "tactic1", guild_id: guild1.id)
+tactic1.save!
+
+tactic2 = user2.guild_tactics.create(title: "Tactic2", guild_id: guild1.id)
+tactic2.save!
 
 p "creating discord_users"
 

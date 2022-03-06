@@ -3,6 +3,7 @@ class GuildsController < ApplicationController
   def show
     @guilds = Guild.all
     @guild = Guild.find(params[:id])
+    @comment = GuildComment.new
 
     @data = @guild.guild_users.group_by_week(:join_at).count
     accumulator = 0

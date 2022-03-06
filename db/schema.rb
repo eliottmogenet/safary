@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_195959) do
+ActiveRecord::Schema.define(version: 2022_03_05_211834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,11 +46,23 @@ ActiveRecord::Schema.define(version: 2022_03_05_195959) do
   create_table "guild_comments", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.text "content"
+    t.datetime "date"
+    t.bigint "guild_id"
+    t.index ["guild_id"], name: "index_guild_comments_on_guild_id"
+    t.index ["user_id"], name: "index_guild_comments_on_user_id"
   end
 
   create_table "guild_tactics", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.datetime "date"
+    t.string "title"
+    t.bigint "guild_id"
+    t.index ["guild_id"], name: "index_guild_tactics_on_guild_id"
+    t.index ["user_id"], name: "index_guild_tactics_on_user_id"
   end
 
   create_table "guild_users", primary_key: "uid", id: :bigint, default: nil, force: :cascade do |t|

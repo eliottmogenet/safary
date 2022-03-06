@@ -39,7 +39,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
-             <%= cl_image_tag current_user.photo.key, width: 20, style: "border-radius: 100%" %>
+             <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
           <% end %>
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -84,7 +84,29 @@
         <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-custom" role="tab" aria-controls="pills-custom" aria-selected="false">Comments</a>
       </li>
     </ul>
-    <hr>
+    <hr style="width: 950px">
+
+    <div class="comment-div">
+    <h6 style="margin-bottom: 20px;"><b><%= pluralize(@guild.guild_comments.count, 'comment')%> </b></h6>
+    <% @guild.guild_comments.each do |comment| %>
+     <p class="text-comment">
+    <% if comment.user.photo.attached? %>
+             <%= cl_image_tag comment.user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %>
+    <% end %>
+      <b><%= comment.user.pseudo %> </b> <span><%= comment.content %></span></p>
+     <p id="time_ago"><%= time_ago_in_words(comment.created_at) %></p>
+     <hr style="height: 0px; color: #9F9F9F">
+    <% end %>
+
+    <div class="project-card-create">
+    <%= simple_form_for([ @guild, @comment ]) do |f| %>
+      <%= f.input :content, as: :text, label: false %>
+      <%= f.submit 'Add comment', class: "button-type2" %>
+    <% end %>
+    </div>
+
+
+    </div>
 
 
     </div>
