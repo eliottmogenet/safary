@@ -15,6 +15,13 @@ a {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.navbar {
+  z-index: 1;
+  width: 100% !important;
+  overflow: hidden !important;
+  position: fixed !important;
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
@@ -42,7 +49,7 @@ a {
 }
 
 #templates-container {
- margin-top: 60px;
+ padding-top: 90px;
 }
 
 #pills-contact-tab1 {
@@ -84,9 +91,12 @@ a {
 }
 
 #performers {
-  background-color: white;
+  display: flex;
+  justify-content: start;
+  overflow: hidden;
+  position: fixed;
   height: 100vh;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  top: 0;
 }
 
 #container-show {
@@ -113,7 +123,7 @@ a {
 }
 
 .template-title {
-  margin-top: 50px;
+  margin-top: 85px;
   margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
@@ -156,12 +166,13 @@ a {
   padding: 40px;
   padding-left: 40px;
   border-radius: 5px;
-  height: 100vh;
+  min-height: calc(100vh);
 }
 
 span {
   color: #5E5E5E;
   white-space: pre-wrap;
+  font-size: 13px;
 }
 
 #time_ago {
@@ -192,4 +203,40 @@ span {
 
 #new_guild_comment {
   padding-bottom: 50px;
+}
+
+.user-div p {
+  text-decoration: none;
+  color: black;
+  padding-left: 20px;
+  line-height: 40px;
+}
+
+.user-div:hover {
+  background-color: #E3E3E4;
+}
+
+.user-div {
+  height: 50px;
+  border-radius: 10px;
+  line-height: 50px;
+}
+
+.card-header {
+  background-color: white !important;
+  height: 80px !important;
+}
+
+#accordion {
+  width: 950px;
+  margin-bottom: 100px;
+}
+
+.btn-header {
+  color: black;
+  background-color: white;
+  border: none;
+  font-size: 14px;
+  font-weight: 900;
+
 }
