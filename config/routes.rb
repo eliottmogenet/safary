@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   end
   resources :templates
   resources :dashboards
+  resources :projects
+  resources :onboardings
   post 'refresh', to: "guilds#refresh"
 end

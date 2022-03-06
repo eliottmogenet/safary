@@ -15,6 +15,10 @@ a {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+#navbarSupportedContent {
+    z-index: 1;
+}
+
 .navbar {
   z-index: 1;
   width: 100% !important;
@@ -24,6 +28,7 @@ a {
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+  z-index: 1;
 }
 
 .navbar-lewagon .navbar-brand img {
@@ -51,6 +56,11 @@ a {
 #templates-container {
  padding-top: 90px;
 }
+
+#templates-container2 {
+  padding-top: 90px;
+}
+
 
 #pills-contact-tab1 {
   padding-left: 0px;
@@ -225,6 +235,7 @@ span {
 .card-header {
   background-color: white !important;
   height: 80px !important;
+  overflow: hidden;
 }
 
 #accordion {
@@ -238,5 +249,72 @@ span {
   border: none;
   font-size: 14px;
   font-weight: 900;
+
+}
+
+.card-product {
+  border-radius: 20px;
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+
+.card-product:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all .2s ease-in-out;
+}
+
+#container-onboarding {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.adventurers-div {
+  display: flex;
+  justify-content: center;
+}
+
+.adventurers-div p {
+  font-size: 13px;
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.btn-link:hover {
+  transform: scale(1.1);
+  transition: all .2s ease-in-out;
+}
+
+#templates-container {
 
 }
