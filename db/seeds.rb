@@ -23,51 +23,51 @@ onboarding.save!
 p "creating users"
 
 user1 =  User.create(email: "test1@gmail.com", password: "test1@gmail.com", pseudo: "elium", accepted: true)
-user1.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
+#user1.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
 user1.save!
 
 user2 =  User.create(email: "test2@gmail.com", password: "test2@gmail.com", pseudo: "cocococo")
-user2.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
+#user2.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
 user2.save!
 
 user3 =  User.create(email: "test3@gmail.com", password: "test3@gmail.com", pseudo: "salimon")
-user3.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/simon.png')), filename: 'simon.png')
+#user3.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/simon.png')), filename: 'simon.png')
 user3.save!
 
 user4 =  User.create(email: "test4@gmail.com", password: "test4@gmail.com", pseudo: "elium")
-user4.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
+#user4.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
 user4.save!
 
 user5 =  User.create(email: "test5@gmail.com", password: "test5@gmail.com", pseudo: "cocococo")
-user5.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
+#user5.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
 user5.save!
 
 user6 =  User.create(email: "test6@gmail.com", password: "test6@gmail.com", pseudo: "salimon")
-user6.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/simon.png')), filename: 'simon.png')
+#user6.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/simon.png')), filename: 'simon.png')
 user6.save!
 
 user7 =  User.create(email: "test7@gmail.com", password: "test7@gmail.com", pseudo: "elium")
-user7.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
+#user7.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
 user7.save!
 
 user8 =  User.create(email: "test8@gmail.com", password: "test8@gmail.com", pseudo: "cocococo")
-user8.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
+#user8.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
 user8.save!
 
 user9 =  User.create(email: "test9@gmail.com", password: "test9@gmail.com", pseudo: "salimon")
-user9.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/simon.png')), filename: 'simon.png')
+#user9.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/simon.png')), filename: 'simon.png')
 user9.save!
 
 user10 =  User.create(email: "test10@gmail.com", password: "test10@gmail.com", pseudo: "elium")
-user10.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
+#user10.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
 user10.save!
 
 user11 =  User.create(email: "test11@gmail.com", password: "test11@gmail.com", pseudo: "cocococo")
-user11.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
+#user11.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
 user11.save!
 
 user12 =  User.create(email: "test12@gmail.com", password: "test12@gmail.com", pseudo: "salimon")
-user12.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/simon.png')), filename: 'simon.png')
+#user12.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/simon.png')), filename: 'simon.png')
 user12.save!
 
 p "creating guilds"
