@@ -7,10 +7,6 @@ class Guild < ApplicationRecord
   after_create :reload_page
 
   def reload_page
-    @guild = Guild.last
-    @user = current_user
-    @guild.save
-
     redirect_to guild_path(@guild)
   end
 end

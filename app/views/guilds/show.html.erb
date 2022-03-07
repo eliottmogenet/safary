@@ -70,6 +70,10 @@
         Plug your Discord
       </a>
 
+      <% if Guild.last.user.nil? %>
+        <%= link_to 'Update my dashboard', refresh_path, method: :post %>
+      <% end %>
+
       </div>
     </div>
 
