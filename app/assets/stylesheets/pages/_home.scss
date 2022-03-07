@@ -68,8 +68,10 @@ a {
 
 .template-cards  {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 950px;
   grid-gap: 2rem;
+  margin-bottom: 60px;
 }
 
 .template {

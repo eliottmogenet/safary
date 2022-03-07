@@ -21,13 +21,13 @@
     <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Templates", "#", class: "nav-link" %>
+            <%= link_to "Templates", templates_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "My Dashboard", dashboards_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Build with us", "#", class: "nav-link" %>
+            <%= link_to "Build with us", projects_path, class: "nav-link" %>
           </li>
         <%# else %>
           <!--li class="nav-item"-->
@@ -61,8 +61,8 @@
         <%= link_to templates_path do %>
           <p id="back"><i class="fa-solid fa-arrow-left-long"></i> Back to the Savanna</p>
         <% end %>
-        <h2 style="font-weight: 900;">Discord user acquisition</h2>
-        <p>How fast do you grow your discord community ?</p>
+        <h2 style="font-weight: 900;">Discord user acquisition <% if @guild.user != User.first %><span><%= @guild.name %></span><% end %></h2>
+        <p>How fast do you grow your discord community ? <% if @guild.user != User.first %><span>by <% if @guild.user.photo.attached? %><%= cl_image_tag @guild.user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %><% end %><%= @guild.user.pseudo %></span><% end %></p>
       </div>
       <div>
         <button class="button-type" data-toggle="modal" data-target="#exampleModal" >Use this template</button>
@@ -147,16 +147,29 @@
      <p style="margin-top: 70px"><b> Explore the wild 🦒</b></p>
      <hr style="color: #E3E3E4;">
 
+      <%= link_to guild_path(User.first.guilds.first) do %>
+          <div class="user-div">
+            <p>
+              Template</p>
+            </div>
+              <hr style="font-weight: 0px; color: #E3E3E4;">
+      <% end %>
+
+
      <% if current_user.guilds.present? %>
-        <% if current_user.photo.attached? %>
-             <%= cl_image_tag current_user.photo.key, width: 20, style: "border-radius: 100%" %>
-        <% end %>
-       <%= link_to guild_path(current_user.guilds.first) do %>
-          <p>My graph </p>
-        <% end %>
+      <%= link_to guild_path(current_user.guilds.first) do %>
+            <div class="user-div">
+            <p>
+              <% if current_user.photo.attached? %>
+               <%= cl_image_tag current_user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %>
+              <% end %>
+              My graph </p>
+            </div>
+              <hr style="font-weight: 0px; color: #E3E3E4;">
+      <% end %>
      <% end %>
 
-      <% @guilds.each do |guild| %>
+      <% @guilds.drop(1).each do |guild| %>
         <% if guild.user.present? %>
 
            <%= link_to guild_path(guild) do %>
@@ -176,8 +189,6 @@
 
     </div>
   </div>
-
-
 
 
 </div>
