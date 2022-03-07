@@ -7,6 +7,6 @@ class Guild < ApplicationRecord
   after_create :reload_page
 
   def reload_page
-    redirect_to guild_path(@guild)
+    redirect_to dashboards_path
   end
 end
