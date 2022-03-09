@@ -8,7 +8,10 @@
 require 'open-uri'
 require 'csv'
 
+
 Onboarding.destroy_all
+Audience.destroy_all
+Template.destroy_all
 GuildComment.destroy_all
 GuildTactic.destroy_all
 GuildUser.destroy_all
