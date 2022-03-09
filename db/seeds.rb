@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
+require 'csv'
 
 Onboarding.destroy_all
 GuildComment.destroy_all
@@ -82,6 +83,58 @@ guild3 = user3.guilds.create(uid: 3, name: "guild3")
 guild3.save!
 
 
+p "creating templates"
+
+template1 = user1.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve")
+template1.save!
+
+template2 = user2.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve")
+template2.save!
+
+template3 = user3.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve")
+template3.save!
+
+template4 = user1.templates.create(title: "Token holders segmentation", description: "Learn how to grow a tokenised community over time.")
+template4.save!
+
+template5 = user1.templates.create(title: "NFT sales over time", description: "Understand how to sell your NFT over time.")
+template5.save!
+
+p "creating audiences template1"
+
+audience1 = template1.audiences.create(name: "Twitter", user_count: 15000)
+audience1.save!
+
+audience2 = template1.audiences.create(name: "Discord", user_count: 3000)
+audience2.save!
+
+audience3 = template1.audiences.create(name: "Contributors", user_count: 200)
+audience3.save!
+
+
+
+p "creating audiences template2"
+
+audience4 = template2.audiences.create(name: "Twitter", user_count: 3000)
+audience4.save!
+
+audience5 = template2.audiences.create(name: "Discord", user_count: 1500)
+audience5.save!
+
+audience6 = template2.audiences.create(name: "Contributors", user_count: 1000)
+audience6.save!
+
+p "creating audiences template3"
+
+audience7 = template3.audiences.create(name: "Twitter", user_count: 8500)
+audience7.save!
+
+audience8 = template3.audiences.create(name: "Discord", user_count: 490)
+audience8.save!
+
+audience9 = template3.audiences.create(name: "Contributors", user_count: 20)
+audience9.save!
+
 p "creating comments"
 
 comment1 = user1.guild_comments.create(content: "Hello : first comment!", guild_id: guild1.id)
@@ -89,6 +142,7 @@ comment1.save!
 
 comment2 = user2.guild_comments.create(content: "Hello : second comment!", guild_id: guild1.id)
 comment2.save!
+
 
 p "creating tactics"
 

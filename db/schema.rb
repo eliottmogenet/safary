@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_06_211800) do
+ActiveRecord::Schema.define(version: 2022_03_09_143722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2022_03_06_211800) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "audiences", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.integer "user_count"
+    t.bigint "template_id"
+    t.index ["template_id"], name: "index_audiences_on_template_id"
   end
 
   create_table "discord_users", primary_key: "uid", id: :bigint, default: nil, force: :cascade do |t|
@@ -83,11 +92,60 @@ ActiveRecord::Schema.define(version: 2022_03_06_211800) do
     t.index ["user_id"], name: "index_guilds_on_user_id"
   end
 
+  create_table "nft_holders", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_count"
+    t.datetime "date"
+    t.bigint "template_id"
+    t.integer "discord_members"
+    t.index ["template_id"], name: "index_nft_holders_on_template_id"
+  end
+
   create_table "onboardings", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "batch_number"
     t.datetime "deadline"
+  end
+
+  create_table "template_comments", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.text "content"
+    t.bigint "template_id"
+    t.index ["template_id"], name: "index_template_comments_on_template_id"
+    t.index ["user_id"], name: "index_template_comments_on_user_id"
+  end
+
+  create_table "template_tactics", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.string "title"
+    t.bigint "template_id"
+    t.index ["template_id"], name: "index_template_tactics_on_template_id"
+    t.index ["user_id"], name: "index_template_tactics_on_user_id"
+  end
+
+  create_table "templates", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+    t.string "description"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_templates_on_user_id"
+  end
+
+  create_table "token_holders", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_count"
+    t.datetime "date"
+    t.bigint "template_id"
+    t.integer "discord_members"
+    t.index ["template_id"], name: "index_token_holders_on_template_id"
   end
 
   create_table "users", force: :cascade do |t|

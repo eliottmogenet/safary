@@ -6,9 +6,12 @@ class User < ApplicationRecord
          :omniauth_providers => [:discord, :developer]
 
   has_many :guilds
+  has_many :templates
   has_one_attached :photo
   has_many :guild_comments
   has_many :guild_tactics
+  has_many :template_tactics
+  has_many :template_comments
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

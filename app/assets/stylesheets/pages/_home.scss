@@ -83,6 +83,15 @@ a {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.template2 {
+  padding: 30px;
+  width: 310px;
+  height: 290px;
+  background-color: white;
+  border-radius : 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 
 .template:hover {
   cursor: pointer;
@@ -96,7 +105,19 @@ a {
   color: black;
 }
 
+.template2 h5 {
+  font-weight: 800;
+  line-height: 27px;
+  color: black;
+}
+
 .template p {
+  color: #9F9F9F;
+  font-size: 12px;
+
+}
+
+.template2 p {
   color: #9F9F9F;
   font-size: 12px;
 
@@ -121,7 +142,7 @@ a {
 
 .chart {
   width: 950px;
-  height: 360px;
+  height: 400px;
   background-color: white;
   border-radius: 20px;
   padding: 30px;
@@ -211,6 +232,17 @@ span {
   border: none;
   padding: 5px;
   width: 150px;
+}
+
+.button-type3 {
+  font-family: "Poppins";
+  background-color: #E3E3E4;
+  border-radius: 50px;
+  margin-top: 30px;
+  height: 45px;
+  width: 200px;
+  color: black;
+  border: none;
 }
 
 #new_guild_comment {

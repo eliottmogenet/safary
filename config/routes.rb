@@ -15,9 +15,16 @@ Rails.application.routes.draw do
   resources :guilds do
     resources :guild_comments
   end
+  resources :templates do
+    resources :template_comments
+  end
   resources :templates
+  get '/audiences/:id', :to => 'templates#audiences', :as => "audiences"
+  get '/tokens/:id', :to => 'templates#tokens', :as => "tokens"
+  get '/nft/:id', :to => 'templates#nft', :as => "nft"
   resources :dashboards
   resources :projects
   resources :onboardings
   post 'refresh', to: "guilds#refresh"
+
 end
