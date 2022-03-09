@@ -22,9 +22,10 @@ a {
 .navbar {
   z-index: 1;
   width: 100% !important;
-  overflow: hidden !important;
   position: fixed !important;
+  display: flex;
 }
+
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
