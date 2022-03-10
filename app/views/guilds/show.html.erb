@@ -73,13 +73,16 @@
 
     <ul class="nav" style="margin-top: 20px;">
       <li>
-        <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#pills-discuss" role="tab" aria-controls="pills-discuss" aria-selected="false">Comments <% if @guild.guild_comments.present? %>(<%= @guild.guild_comments.count %>)<% end %></a>
+        <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#pills-discuss" role="tab" aria-controls="pills-discuss" aria-selected="false">Learn <% if @guild.guild_comments.present? %>(<%= @guild.guild_comments.count %>)<% end %></a>
       </li>
       <li>
-        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-learn" role="tab" aria-controls="pills-learn" aria-selected="false">Learn <% if @guild.guild_tactics.present? %>(<%= @guild.guild_tactics.count %>)<% end %></a>
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-learn" role="tab" aria-controls="pills-learn" aria-selected="false">Track </a>
       </li>
     </ul>
     <hr style="width: 950px; height: 0px;">
+      <div class="alert alert-custom" role="alert" style="width:950px; margin-top: 20px; margin-left: 20px; z-index: 0">
+          <div class="alert-type">Share your tips to grow a Discord community <b> and win XP to become a Lion 🦁</b></div>
+      </div>
 
 
     <div class="tab-content" id="pills-tabContent">

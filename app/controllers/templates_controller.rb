@@ -12,17 +12,20 @@ class TemplatesController < ApplicationController
     @templates = Template.all
     @data_audience = @template.audiences.order(user_count: :desc)
     @comment = TemplateComment.new
+    @tactic = TemplateTactic.new
   end
 
   def tokens
     @template = Template.find(params[:id])
     @templates = Template.all
     @comment = TemplateComment.new
+    @tactic = TemplateTactic.new
   end
 
   def nft
     @template = Template.find(params[:id])
     @templates = Template.all
     @comment = TemplateComment.new
+    @tactic = TemplateTactic.new
   end
 end

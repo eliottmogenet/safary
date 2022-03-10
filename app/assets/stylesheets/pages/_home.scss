@@ -197,7 +197,7 @@ a {
 .comment-div {
   background-color: white;
   width: 950px;
-  padding: 40px;
+  padding: 20px;
   padding-left: 40px;
   border-radius: 5px;
   min-height: calc(100vh);
@@ -352,4 +352,90 @@ span {
 
 #templates-container {
 
+}
+
+.alert-custom {
+  background-color: #D25C5C;
+  color: white;
+  opacity: 80%;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Poppins";
+}
+
+.alert-type:hover {
+  cursor: pointer;
+}
+
+#sign-up-container {
+  text-align: center;
+  width: 500px;
+  margin-top: 60px;
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+#sign-up-container h2 {
+  font-weight: 900;
+}
+
+#button-type4 {
+  width: 100%;
+}
+
+#user_photo {
+  margin-top: 30px;
+  background-color: transparent;
+  border: none;
+}
+
+.user_photo label {
+  color: #E3E3E4;
+  padding-top: -50px;
+}
+
+.button-sub {
+  background-color: black;
+  color: white;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.button-sub2 {
+  background-color: #D25C5C;
+  color: white;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  height: 40px;
+}
+
+.button-sub2:hover {
+  background-color: transparent;
+  color: black;
+  border-style: solid;
+  border-color: black;
+}
+
+
+
+.button-sub:hover {
+  background-color: transparent;
+  color: black;
+  border-style: solid;
+  border-color: black;
+}
+
+
+#input1 {
+  font-size: 50px;
+
+}
+
+#input1:hover {
+  cursor: pointer;
 }

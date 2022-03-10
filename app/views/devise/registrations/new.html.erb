@@ -1,31 +1,47 @@
-<h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<body style="text-align: center; ">
+
+<h3 style="margin-top: 20px; font-weight: 900; color: #D25C5C">Safary</h3>
+<div class="container" id="sign-up-container">
+
+  <h2>Join the Expedition #02</h2>
+  <p>The Expedition is starting soon...</p>
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <div style="display: flex; justify-content: center; margin-top: 30px; padding-top: -50px">
+    </div>
+    <%= f.input :pseudo, label: false, placeholder: "Pseudo*" %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
+                label: false,
+                placeholder: "Email*",
                 input_html: { autocomplete: "email" }%>
     <%= f.input :password,
                 required: true,
+                label: false,
+                placeholder: "password*",
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :pseudo %>
-    <%= f.input :photo, as: :file %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up with email", class: "button-sub" %>
   </div>
 <% end %>
+<hr>
+<%= link_to "/users/auth/discord", method: :post do %>
+  <button class="button-sub2">
+      Connect your Discord <i class="fab fa-discord"></i>
+  </button>
+<% end %>
 
-<%= link_to "/users/auth/discord", method: :post, class: "button-type" do %>
-    Sign-up with Discord <i class="fab fa-discord"></i>
-  <% end %>
+
+</div>
+<%= image_tag("safary.png", :width => 900, style: "margin-top: -120px;position:relative; z-index: -1;") %>
+</body>
 
 

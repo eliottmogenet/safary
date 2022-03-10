@@ -1,25 +1,37 @@
-<h2>Log in</h2>
+<body style="text-align: center; ">
+
+<h3 style="margin-top: 20px; font-weight: 900; color: #D25C5C">Safary</h3>
+<div class="container" id="sign-up-container">
+
+
+<h2>Back to the Savanna</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
+  <div class="form-inputs" style="margin-top: 50px">
     <%= f.input :email,
                 required: false,
                 autofocus: true,
+                label: false,
+                placeholder: "Email*",
                 input_html: { autocomplete: "email" } %>
     <%= f.input :password,
                 required: false,
+                label: false,
+                placeholder: "Password*",
                 input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+    <%= f.button :submit, "Log in", class: "button-sub" %>
   </div>
 <% end %>
+<hr>
+<p>Don't have an account yet?</p>
+<a href="https://d0hwrssohkg.typeform.com/to/sDad7xVB"><b>Apply to the next expedition</b></a>
 
 
-<%= link_to "/users/auth/discord", method: :post, class: "button-type" do %>
-    Sign-in with Discord <i class="fab fa-discord"></i>
-<% end %>
+</div>
+<%= image_tag("safary.png", :width => 900, style: "margin-top: -120px;position:relative; z-index: -1;") %>
+</body>
 
 
