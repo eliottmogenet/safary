@@ -55,11 +55,11 @@ a {
 }
 
 #templates-container {
- padding-top: 90px;
+ padding-top: 120px;
 }
 
 #templates-container2 {
-  padding-top: 90px;
+  padding-top: 120px;
 }
 
 
@@ -474,4 +474,23 @@ span {
   background-color: black;
   transform: scale(1.1);
   transition: all .2s ease-in-out;
+}
+
+.alert-fixed {
+    position:fixed;
+    top: 50px;
+    height: 45px;
+    padding-top: 10px;
+    left: 0px;
+    width: 100%;
+    z-index:9999;
+    border-radius:0px
+}
+
+.button-alert {
+   background-color: #fff3cd;
+   border: none;
+   outline: none;
+   border-radius: 5px;
+   padding: 5px;
 }

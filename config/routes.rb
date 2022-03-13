@@ -27,5 +27,5 @@ Rails.application.routes.draw do
   resources :projects
   resources :onboardings
   post 'refresh', to: "guilds#refresh"
-
+  post 'onboarded', to: "dashboards#onboarded"
 end

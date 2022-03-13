@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 
+
+
 <body>
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
@@ -47,15 +49,19 @@
     </div>
   </div>
 </div>
+<% if current_user.onboarded == true %>
+<% else %>
+<div class="alert-fixed alert-warning alert-dismissible fade show" style="text-align: center;" role="alert">
+  <strong>🚌 Welcome to the Savana !</strong> Here you learn about Web3 Growth, share knowledge and reverse engineer ⚒
+    <%= link_to dashboards_path do %>
+    <button type="button" class="button-alert">
+    <span style="color: black; font-weight: 900; font-size: 15px; margin-bottom: -10px">Next</span>
+  </button>
+  <% end %>
+</div>
+<% end %>
 
 <div class="container" id="templates-container">
-
-<div class="alert alert-warning alert-dismissible fade show" style="text-align: center;" role="alert">
-  <strong>Welcome to the Savana !</strong> Here you learn about Web3 Growth, share knowledge and reverse engineer ⚒ <b> 2/4 Next 👉</b>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
 
             <ul class="nav">
               <li class="nav-item">
@@ -74,7 +80,7 @@
                 <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-gaming" role="tab" aria-controls="pills-gaming" aria-selected="false">Gaming</a>
               </li>
               <li>
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-gaming" role="tab" aria-controls="pills-tokens" aria-selected="false">Tokens</a>
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-tokens" role="tab" aria-controls="pills-tokens" aria-selected="false">Tokens</a>
               </li>
             </ul>
 <hr style="height: 0px;">
@@ -95,12 +101,15 @@
 
                     </div>
                    <% end %>
+                  <%= link_to template_path(@twitter) do %>
                     <div class="template">
                       <div class="title-template">
                         <h5>Twitter <br> followers acquisition <br></h5><p class="available">Available</p>
                       </div>
                       <p>Learn how to grow your Twitter audience.</p>
+                      <%= image_tag("twitter.png", :width => 200, style: "margin-top: 20px; margin-left: 15px") %>
                     </div>
+                  <% end %>
                    <%= link_to template_path(@audience) do %>
                     <div class="template">
                       <div class="title-template">
@@ -182,19 +191,104 @@
 
               </div>
               <div class="tab-pane fade" id="pills-acquisition" role="tabpanel" aria-labelledby="pills-home-tab">
-                <p>yo-hello</p>
+                <div class="template-cards">
+                  <%= link_to guild_path(Guild.first) do %>
+                    <div class="template">
+                      <div class="title-template">
+                        <h5>Discord users <br> acquisition</h5><p class="available">Available</p>
+                        <p class="available" style="margin-left: 5px; color: black; background-color: #12877E">🔌 Live</p>
+                      </div>
+                        <p>Learn how to grow your Discord members.</p>
+                        <%= image_tag("discord-acquisition.png", :width => 200, style: "margin-top: 5px; margin-left: 15px") %>
+                    </div>
+                   <% end %>
+                <%= link_to template_path(@twitter) do %>
+                    <div class="template">
+                      <div class="title-template">
+                        <h5>Twitter <br> followers acquisition <br></h5><p class="available">Available</p>
+                      </div>
+                      <p>Learn how to grow your Twitter audience.</p>
+                      <%= image_tag("twitter.png", :width => 200, style: "margin-top: 20px; margin-left: 15px") %>
+                    </div>
+                  <% end %>
+                </div>
               </div>
               <div class="tab-pane fade" id="pills-activation" role="tabpanel" aria-labelledby="pills-home-tab">
-                <p>ya-hello</p>
+                <div class="template-cards">
+                  <%= link_to template_path(@audience) do %>
+                    <div class="template">
+                      <div class="title-template">
+                        <h5>Audiences <br> comparison </h5><p class="available">Available</p>
+                      </div>
+                      <p>Compare your audiences to know where you need to improve</p>
+                      <%= image_tag("audience-comparison.png", :width => 200, style: "margin-top: 30px; margin-left: 15px") %>
+                    </div>
+                  <% end %>
+                    <div class="template">
+                      <div class="title-template">
+                        <h5>Wallet <br> connexion <br></h5><p class="available">Available</p>
+                      </div>
+                      <p>Learn how to manage succesful wallet onboarding.</p>
+                      <%= image_tag("token-acquisition.png", :width => 160, style: "margin-top: -30px; margin-left: 35px") %>
+                    </div>
+                  <%= link_to template_path(@token) do %>
+                    <div class="template">
+                      <div class="title-template">
+                        <h5>Token holders segmentation </h5><p class="available">Available</p>
+                      </div>
+                      <p>Learn how to identify the most active token holders in your community.</p>
+                      <%= image_tag("coins.png", :width => 150, style: "margin-top: 5px; margin-left: 40px") %>
+                    </div>
+                  <% end %>
+                </div>
               </div>
               <div class="tab-pane fade" id="pills-custom" role="tabpanel" aria-labelledby="pills-home-tab">
-                <p>no-hello</p>
+                 <div class="template-cards">
+                  <%= link_to template_path(@nft) do %>
+                    <div class="template">
+                      <div class="title-template">
+                        <h5>NFT sales </h5><p class="available">Available</p>
+                      </div>
+                      <p>Learn how to sell your NFT over time with the best OpenSea NFT Collections </p>
+                      <%= image_tag("NFT.png", :width => 200, style: "margin-top: 15px; margin-left: 20px") %>
+                    </div>
+                  <% end %>
+                </div>
               </div>
               <div class="tab-pane fade" id="pills-gaming" role="tabpanel" aria-labelledby="pills-home-tab">
-                <p>no-no-hello</p>
+              <div class="template-cards">
+                  <%= link_to template_path(@nft) do %>
+                    <div class="template">
+                      <div class="title-template">
+                        <h5>NFT sales </h5><p class="available">Available</p>
+                      </div>
+                      <p>Learn how to sell your NFT over time with the best OpenSea NFT Collections </p>
+                      <%= image_tag("NFT.png", :width => 200, style: "margin-top: 15px; margin-left: 20px") %>
+                    </div>
+                  <% end %>
+                   <div class="template2">
+                      <div class="title-template">
+                        <h5>Players <br> to buyers <br></h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
+                      </div>
+                      <p>Learn how to convert players in your games.</p>
+                      <%= image_tag("players.png", :width => 160, style: "margin-top: -25px; margin-left: 30px") %>
+                    </div>
+                </div>
               </div>
-              <div class="tab-pane fade" id="pills-defi" role="tabpanel" aria-labelledby="pills-home-tab">
-                <p>defi-hello</p>
+              <div class="tab-pane fade" id="pills-tokens" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="template-cards">
+                  <%= link_to template_path(@token) do %>
+                    <div class="template">
+                      <div class="title-template">
+                        <h5>Token holders segmentation </h5><p class="available">Available</p>
+                      </div>
+                      <p>Learn how to identify the most active token holders in your community.</p>
+                      <%= image_tag("coins.png", :width => 150, style: "margin-top: 5px; margin-left: 40px") %>
+                    </div>
+                  <% end %>
+
+
+                </div>
               </div>
 
 

@@ -8,7 +8,6 @@
 </head>
 
 
-
 <body>
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
@@ -41,25 +40,30 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <li class="nav-item dropdown">
+
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
           <% end %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete  %>
-      </li>
+            <%= link_to destroy_user_session_path, method: :delete do  %>
+              <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
+            <% end %>
     </div>
   </div>
 </div>
 
 <div class="container" id="templates-container2" style="margin-left: 150px;">
 
-<div class="alert alert-warning alert-dismissible fade show" style="text-align: center" role="alert">
-  <strong>Welcome in your Dashboard !</strong> Here, you will be able to follow your growth metrics of your community <b> 3/4 Join Discord to finish tour 👉</b>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+<% if current_user.onboarded == true %>
+<% else %>
+<div class="alert-fixed alert-warning alert-dismissible fade show" style="text-align: center;" role="alert">
+  <strong>🚌 Welcome in your Dashboard !</strong> Here, you will be able to follow your growth metrics of your community
+   <%= link_to onboarded_path, method: :post, target: "_blank" do %>
+      <button type="button" class="button-alert">
+      <span style="color: black; font-weight: 900; font-size: 15px; margin-bottom: -10px">Join Discord to finish tour </span>
+    </button>
+  <% end %>
 </div>
-
+<% end %>
 
 <h5 style="color:black;">My Dashboard</h5>
 <hr style="height: 1px; color:#687086; width: 1000px;">
@@ -68,7 +72,8 @@
 <div>
 
   <% if current_user.guilds.empty? %>
-    <p>Import your metrics</p>
+    <button class="button-type" data-toggle="modal" data-target="#exampleModal" style="position: absolute; margin-left: 350px" >Plug your data 🔌</button>
+    <%= image_tag("dashboard.png", :width => 850, style: "margin-top: 20px;") %>
 
   <% else %>
     <div class="chart">
@@ -81,8 +86,8 @@
 
 </div>
 
-
 </div>
-
 </body>
+
+
 

@@ -67,6 +67,35 @@
 
     <%= image_tag("bus-safary.png", :width => 700, style: "margin-top: 5px; margin-left: 15px") %>
 
+   <p style="color: #687086; font-size: 13px">Meet all the adventurers travelling with you</p>
+
+    <div class="adventurers-div">
+      <% User.where(accepted: false).first(20).each do |user| %>
+        <p>
+          <% if user.photo.attached? %>
+           <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
+          <% end %><br>
+        @<%= user.pseudo %></p>
+      <% end %>
+        <% if User.where(accepted: false).count > 20  %>
+     <p style="color: #687086; font-size: 13px">
+        <a data-toggle="collapse" href="#collapseExample" style="color: #687086;" role="button" aria-expanded="false" aria-controls="collapseExample">
+          See all
+        </a>
+      </p>
+  <% end %>
+    </div>
+<div class="collapse" id="collapseExample">
+    <div class="adventurers-div">
+      <% User.where(accepted: false).drop(20).each do |user| %>
+        <p>
+          <% if user.photo.attached? %>
+           <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
+          <% end %><br>
+        @<%= user.pseudo %></p>
+      <% end %>
+    </div>
+</div>
 
       <% if current_user.accepted? %>
 
@@ -138,18 +167,6 @@
     </div>
 
     <% end %>
-
-    <p style="color: #687086; font-size: 13px">Meet all the adventurers travelling with you</p>
-
-    <div class="adventurers-div">
-      <% User.where(accepted: false).each do |user| %>
-        <p>
-          <% if user.photo.attached? %>
-           <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
-          <% end %><br>
-        @<%= user.pseudo %></p>
-      <% end %>
-    </div>
 
 
 

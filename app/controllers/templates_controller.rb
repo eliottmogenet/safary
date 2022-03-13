@@ -4,6 +4,7 @@ class TemplatesController < ApplicationController
     @audience = Template.where(title: "Audiences comparison").first
     @token = Template.where(title: "Token holders segmentation").first
     @nft = Template.where(title: "NFT sales over time").first
+    @twitter = Template.first
   end
 
 

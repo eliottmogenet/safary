@@ -19,4 +19,12 @@ class DashboardsController < ApplicationController
           end
     end
   end
+
+  def onboarded
+    @user = current_user
+    @user.onboarded = true
+    @user.save!
+
+    redirect_to "https://getbootstrap.com/docs/4.0/components/collapse/"
+  end
 end

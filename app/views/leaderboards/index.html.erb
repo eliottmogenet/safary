@@ -40,24 +40,30 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <li class="nav-item dropdown">
+
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
           <% end %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete  %>
-      </li>
+            <%= link_to destroy_user_session_path, method: :delete do  %>
+              <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
+            <% end %>
     </div>
   </div>
 </div>
 
 <div class="container" id="templates-container" style="text-align: center;">
 
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Welcome in Safary Community !</strong> Here you can meet other adventurers and climb the ladder to become a Lion 🦁 <b> 1/4 Next 👉</b>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+<% if current_user.onboarded == true %>
+<% else %>
+    <div class="alert-fixed alert-warning alert-dismissible fade show" role="alert">
+    <strong>🚌 Welcome in Safary Community !</strong> Here you can meet other adventurers and climb the ladder to become a Lion 🦁</b>
+    <%= link_to templates_path do %>
+    <button type="button" class="button-alert">
+      <span style="color: black; font-weight: 900; font-size: 15px; margin-bottom: -10px">Next</span>
+    </button>
+    <% end %>
+  </div>
+<% end %>
 
 
 
@@ -66,8 +72,8 @@
   <h2 style="font-weight: 900;">The Lions 🦁</h2>
   <p>Meet the Web3 growth leaders of tomorrow</p>
   <hr style="height: 0px;">
-  <div style="background-color: white; text-align: center; display: flex; justify-content: space-around; flex-wrap: wrap;">
-    <% User.where(lion: true).each do |user| %>
+  <div style="background-color: white; text-align: center; display: flex; justify-content: space-around; flex-wrap: wrap; border-top-right-radius: 10px; border-top-left-radius: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+    <% User.where(lion: true).first(4).each do |user| %>
     <div style="padding: 3rem">
     <p><% if user.photo.attached? %>
         <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
@@ -76,15 +82,32 @@
     <span>Head of Growth @Ledger</span></p>
     </div>
   <% end %>
-
-
+  </div>
+  <div style="background-color: white; padding-bottom: 5px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+    <p style="color: #687086; font-size: 13px">
+        <a data-toggle="collapse" href="#collapseExample" style="color: #687086;" role="button" aria-expanded="false" aria-controls="collapseExample">
+          See all
+        </a>
+      </p>
+  </div>
+    <div class="collapse" id="collapseExample" style="background-color: white; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+      <% User.where(lion: true).drop(4).each do |user| %>
+          <div style="padding: 3rem">
+          <p><% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
+          <% end %><br>
+          @<%= user.pseudo %><br>
+          <span>Head of Growth @Ledger</span></p>
+          </div>
+      <% end %>
   </div>
   <div style="margin-bottom: 100px">
   <h3 style="margin-top: 20px;">Adventurers</h3>
   <p>Upcoming Web3 Growth leaders</p>
   <hr>
    <% @adventurers_sort.reverse.each do |user| %>
-    <div style="text-align: start; height: 50px; margin-left: 10px; display: flex; justify-content: space-between;">
+   <% if user == current_user %>
+       <div style="text-align: start; height: 65px; padding-left: 10px; display: flex; justify-content: space-between; background-color: white !important; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); padding-right: 10px; padding-top: 5px; padding-bottom: 20px; border-radius: 10px ">
     <p><% if user.photo.attached? %>
         <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
     <% end %>@<%= user.pseudo %><br>
@@ -93,6 +116,19 @@
     <p style="color: #D25C5C"><%= (user.template_comments + user.guild_comments).count %> <i class="fa-solid fa-comments"></i></p>
     </div>
   <hr style="height: 0px;">
+
+   <% elsif user != current_user && user.pseudo != "Template"  %>
+        <div style="text-align: start; height: 50px; margin-left: 10px; display: flex; justify-content: space-between;">
+    <p><% if user.photo.attached? %>
+        <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
+    <% end %>@<%= user.pseudo %><br>
+    <span>Head of Growth @Ledger</span></p>
+    </p>
+    <p style="color: #D25C5C"><%= (user.template_comments + user.guild_comments).count %> <i class="fa-solid fa-comments"></i></p>
+    </div>
+  <hr style="height: 0px;">
+
+   <% end %>
   <% end %>
   </div>
 </div>
