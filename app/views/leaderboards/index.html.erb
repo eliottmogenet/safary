@@ -1,0 +1,100 @@
+
+
+
+<script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+<body>
+
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
+          <li class="nav-item">
+            <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Community", leaderboards_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Learn", templates_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My dashboard", dashboards_path, class: "nav-link" %>
+          </li>
+        <%# else %>
+          <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <!--/li-->
+        <%# end %>
+      </ul>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <li class="nav-item dropdown">
+          <% if current_user.photo.attached? %>
+             <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
+          <% end %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete  %>
+      </li>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="templates-container" style="text-align: center;">
+
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Welcome in Safary Community !</strong> Here you can meet other adventurers and climb the ladder to become a Lion 🦁 <b> 1/4 Next 👉</b>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+
+
+
+  <h2 style="font-weight: 900;">The Lions 🦁</h2>
+  <p>Meet the Web3 growth leaders of tomorrow</p>
+  <hr style="height: 0px;">
+  <div style="background-color: white; text-align: center; display: flex; justify-content: space-around; flex-wrap: wrap;">
+    <% User.where(lion: true).each do |user| %>
+    <div style="padding: 3rem">
+    <p><% if user.photo.attached? %>
+        <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
+    <% end %><br>
+    @<%= user.pseudo %><br>
+    <span>Head of Growth @Ledger</span></p>
+    </div>
+  <% end %>
+
+
+  </div>
+  <div style="margin-bottom: 100px">
+  <h3 style="margin-top: 20px;">Adventurers</h3>
+  <p>Upcoming Web3 Growth leaders</p>
+  <hr>
+   <% @adventurers_sort.reverse.each do |user| %>
+    <div style="text-align: start; height: 50px; margin-left: 10px; display: flex; justify-content: space-between;">
+    <p><% if user.photo.attached? %>
+        <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
+    <% end %>@<%= user.pseudo %><br>
+    <span>Head of Growth @Ledger</span></p>
+    </p>
+    <p style="color: #D25C5C"><%= (user.template_comments + user.guild_comments).count %> <i class="fa-solid fa-comments"></i></p>
+    </div>
+  <hr style="height: 0px;">
+  <% end %>
+  </div>
+</div>
+
+</body>

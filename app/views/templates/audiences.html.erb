@@ -20,13 +20,13 @@
     <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Templates", templates_path, class: "nav-link" %>
+            <%= link_to "Learn", templates_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "My Dashboard", dashboards_path, class: "nav-link" %>
+            <%= link_to "Community", leaderboards_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Build with us", projects_path, class: "nav-link" %>
+            <%= link_to "My dashboard", dashboards_path, class: "nav-link" %>
           </li>
         <%# else %>
           <!--li class="nav-item"-->
@@ -36,12 +36,12 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
           <% end %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete  %>
-      </li>
+            <%= link_to destroy_user_session_path, method: :delete do  %>
+              <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
+            <% end %>
     </div>
   </div>
 </div>
@@ -66,9 +66,13 @@
     </div>
 
     <div class="chart">
-      <h6>Audiences by users <i class="fab fa-twitter"></i> + <i class="fab fa-discord"></i> + Custom on chain audience </h6>
-      <br>
-      <%= column_chart @template.audiences.group(:name).sum(:user_count).reverse_each, colors: ["#883939","#D25C5C", "#FD8989"] %>
+      <% if @template.category == "audience" %>
+        <h6>Audiences by users <i class="fab fa-twitter"></i> + <i class="fab fa-discord"></i> + Custom on chain audience </h6>
+        <br>
+        <%= column_chart @template.audiences.group(:name).sum(:user_count).reverse_each, colors: ["#883939","#D25C5C", "#FD8989"] %>
+      <% elsif @template.category == "token" %>
+        <p>token</p>
+      <% end %>
     </div>
 
     <ul class="nav" style="margin-top: 20px;">
@@ -114,7 +118,7 @@
           <h6 style="margin-bottom: 20px;"><b><%= pluralize(@template.template_comments.count, 'comment')%> </b></h6>
           <hr style="font-weight: 0px; color: #E3E3E4;">
           <% @template.template_comments.each do |comment| %>
-           <p class="text-comment">
+           <p class="text-comment" id="comment-<%= comment.id %>">
           <% if comment.user.photo.attached? %>
                    <%= cl_image_tag comment.user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %>
           <% end %>
@@ -124,7 +128,7 @@
           <% end %>
 
           <div class="project-card-create">
-          <%= simple_form_for([ @template, @comment ]) do |f| %>
+          <%= simple_form_for([ @template, @comment ], remote: true) do |f| %>
             <%= f.input :content, as: :text, label: false %>
             <%= f.submit 'Add comment', class: "button-type2" %>
           <% end %>
@@ -167,11 +171,12 @@
       </div>
       <div>
      <p style="margin-top: 70px"><b> Explore the wild 🦒</b></p>
+     <p style="margin-top: -20px"><span>Browse Web3 projects</span></p>
      <hr style="color: #E3E3E4;">
 
 
       <% @templates.drop(1).each do |template| %>
-          <% if template.user.present? && template.title == "Audiences comparison" %>
+          <% if template.user.present? && template.category == @template.category %>
 
            <%= link_to audiences_path(template) do %>
             <div class="user-div">

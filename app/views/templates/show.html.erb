@@ -23,7 +23,7 @@
             <%= link_to "Learn", templates_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Community", dashboards_path, class: "nav-link" %>
+            <%= link_to "Community", leaderboards_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "My dashboard", dashboards_path, class: "nav-link" %>
@@ -36,12 +36,12 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
           <% end %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete  %>
-      </li>
+            <%= link_to destroy_user_session_path, method: :delete do  %>
+              <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
+            <% end %>
     </div>
   </div>
 </div>
@@ -56,7 +56,7 @@
           <p id="back"><i class="fa-solid fa-arrow-left-long"></i> Back to the Savanna</p>
         <% end %>
         <h2 style="font-weight: 900;"><%= @template.title %></h2>
-        <p><%= @template.description %> <span><%= @template.user.pseudo %></span></p>
+        <p><%= @template.description %></p>
       </div>
       <div>
 
@@ -64,31 +64,80 @@
       </div>
     </div>
 
-    <div class="chart" style="height: 500px; width: 1000px; cursor: pointer;">
+      <% if @template.category == "audience" %>
+       <div class="chart">
+        <h6>Audiences by users <i class="fab fa-twitter"></i> + <i class="fab fa-discord"></i> + Custom on chain audience </h6>
+        <br>
+        <%= column_chart @template.audiences.group(:name).sum(:user_count).reverse_each, colors: ["#883939","#D25C5C", "#FD8989"] %>
+       </div>
+      <% elsif @template.category == "token" %>
+        <div class="chart">
+          <p>token</p>
+        </div>
+      <% elsif @template.category == "nft" %>
+        <div class="chart" style="height: 500px; width: 1000px; cursor: pointer;">
       <h6></h6>
       <div style="overflow: hidden; max-width: 950px;">
-        <iframe scrolling="no" src="https://opensea.io/collection/doodles-official?tab=activity&embed=true" style="border: 0px none; margin-left: 0px; height: 1250px; margin-top: -800px; width: 950px; cursor: pointer;">
+        <iframe scrolling="no" src="<%= @template.url %>" style="border: 0px none; margin-left: 0px; height: 1250px; margin-top: -800px; width: 950px; cursor: pointer;">
         </iframe>
     </div>
     </div>
+      <% end %>
 
     <ul class="nav" style="margin-top: 20px;">
       <li>
-        <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#pills-discuss" role="tab" aria-controls="pills-discuss" aria-selected="false">Learn </a>
+        <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#pills-discuss" role="tab" aria-controls="pills-discuss" aria-selected="false">Learn</a>
       </li>
     </ul>
     <hr style="width: 950px; height: 0px;">
-      <div class="alert alert-custom" role="alert" style="width:950px; margin-top: 20px; margin-left: 20px; z-index: 0">
-        <div class="alert-type">Share your tips to sale NFT  <b> and win XP to become a Lion 🦁</b></div>
-     </div>
+    <% if @template.category == "audience" %>
+        <div class="alert alert-custom" role="alert" style="width:950px; margin-top: 20px; margin-left: 20px; z-index: 0">
+          <div class="alert-type">Share your tips to activate your audiences <b> and win XP to become a Lion 🦁</b></div>
+        </div>
+      <% elsif @template.category == "token" %>
+        <div class="alert alert-custom" role="alert" style="width:950px; margin-top: 20px; margin-left: 20px; z-index: 0">
+          <div class="alert-type">Share your tips to grow a tokenised community  <b> and win XP to become a Lion 🦁</b></div>
+        </div>
+      <% elsif @template.category == "nft" %>
+        <div class="alert alert-custom" role="alert" style="width:950px; margin-top: 20px; margin-left: 20px; z-index: 0">
+          <div class="alert-type">Share your tips to sale NFT  <b> and win XP to become a Lion 🦁</b></div>
+        </div>
+      <% end %>
 
-       <div class="tab-content" id="pills-tabContent">
+
+    <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-discuss" role="tabpanel" aria-labelledby="pills-home-tab">
         <div class="comment-div">
+          <% if @template.template_tactics.present?  %>
+            <div id="accordion">
+              <% @template.template_tactics.reverse.each do |tactic| %>
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h3 class="mb-0" style="margin-left: 0px;">
+                    <button class="btn-header" data-toggle="collapse" data-target="#tactic-<%= tactic.id %>" aria-expanded="true" aria-controls="tactic-<%= tactic.id %>">
+                      <%= tactic.title %><i class="fa-solid fa-chevron-down" style="margin-left: 10px; font-weight: 900"></i>
+                    </button>
+                  </h3>
+                  <span>by @<%= tactic.user.pseudo %></span>
+                </div>
+
+                <div id="tactic-<%= tactic.id %>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    <p><span>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </span></p>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+        </div>
+
+          <% else %>
+
+          <% end %>
           <h6 style="margin-bottom: 20px;"><b><%= pluralize(@template.template_comments.count, 'comment')%> </b></h6>
           <hr style="font-weight: 0px; color: #E3E3E4;">
           <% @template.template_comments.each do |comment| %>
-           <p class="text-comment">
+           <p class="text-comment" id="comment-<%= comment.id %>">
           <% if comment.user.photo.attached? %>
                    <%= cl_image_tag comment.user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %>
           <% end %>
@@ -98,7 +147,7 @@
           <% end %>
 
           <div class="project-card-create">
-          <%= simple_form_for([ @template, @comment ]) do |f| %>
+          <%= simple_form_for([ @template, @comment ], remote: true) do |f| %>
             <%= f.input :content, as: :text, label: false %>
             <%= f.submit 'Add comment', class: "button-type2" %>
           <% end %>
@@ -141,14 +190,14 @@
       </div>
       <div>
      <p style="margin-top: 70px"><b> Explore the wild 🦒</b></p>
+     <p style="margin-top: -20px"><span>Browse Web3 projects</span></p>
      <hr style="color: #E3E3E4;">
 
 
-      <% @templates.drop(1).each do |template| %>
+      <% @templates.each do |template| %>
+          <% if template.user.present? && template.category == @template.category %>
 
-        <% if template.user.present? && template.title == "NFT Sales over time" %>
-
-           <%= link_to nft_path(template) do %>
+           <%= link_to template_path(template) do %>
             <div class="user-div">
             <p>
               <% if template.user.photo.attached? %>
@@ -169,6 +218,3 @@
 
 </div>
 </body>
-
-
-

@@ -1,3 +1,4 @@
+<script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -16,14 +17,17 @@
 
     <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
+          <li class="nav-item">
+            <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Community", leaderboards_path, class: "nav-link" %>
+          </li>
           <li class="nav-item active">
-            <%= link_to "Templates", templates_path, class: "nav-link" %>
+            <%= link_to "Learn", templates_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "My dashboard", dashboards_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Build with us", "#", class: "nav-link" %>
           </li>
         <%# else %>
           <!--li class="nav-item"-->
@@ -33,17 +37,25 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <li class="nav-item dropdown">
+
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
           <% end %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete  %>
-      </li>
+            <%= link_to destroy_user_session_path, method: :delete do  %>
+              <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
+            <% end %>
     </div>
   </div>
 </div>
 
 <div class="container" id="templates-container">
+
+<div class="alert alert-warning alert-dismissible fade show" style="text-align: center;" role="alert">
+  <strong>Welcome to the Savana !</strong> Here you learn about Web3 Growth, share knowledge and reverse engineer ⚒ <b> 2/4 Next 👉</b>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 
             <ul class="nav">
               <li class="nav-item">
@@ -83,7 +95,13 @@
 
                     </div>
                    <% end %>
-                   <%= link_to audiences_path(@audience) do %>
+                    <div class="template">
+                      <div class="title-template">
+                        <h5>Twitter <br> followers acquisition <br></h5><p class="available">Available</p>
+                      </div>
+                      <p>Learn how to grow your Twitter audience.</p>
+                    </div>
+                   <%= link_to template_path(@audience) do %>
                     <div class="template">
                       <div class="title-template">
                         <h5>Audiences <br> comparison </h5><p class="available">Available</p>
@@ -94,18 +112,12 @@
                   <% end %>
                     <div class="template">
                       <div class="title-template">
-                        <h5>Twitter <br> followers acquisition <br></h5><p class="available">Available</p>
-                      </div>
-                      <p>Learn how to grow your Twitter audience.</p>
-                    </div>
-                    <div class="template">
-                      <div class="title-template">
                         <h5>Wallet <br> connexion <br></h5><p class="available">Available</p>
                       </div>
                       <p>Learn how to manage succesful wallet onboarding.</p>
                       <%= image_tag("token-acquisition.png", :width => 160, style: "margin-top: -30px; margin-left: 35px") %>
                     </div>
-                  <%= link_to tokens_path(@token) do %>
+                  <%= link_to template_path(@token) do %>
                     <div class="template">
                       <div class="title-template">
                         <h5>Token holders segmentation </h5><p class="available">Available</p>
@@ -114,7 +126,7 @@
                       <%= image_tag("coins.png", :width => 150, style: "margin-top: 5px; margin-left: 40px") %>
                     </div>
                   <% end %>
-                   <%= link_to nft_path(@nft) do %>
+                   <%= link_to template_path(@nft) do %>
                     <div class="template">
                       <div class="title-template">
                         <h5>NFT sales </h5><p class="available">Available</p>

@@ -6,6 +6,8 @@ class TemplateCommentsController < ApplicationController
     @comment.template = @template
     @comment.user = current_user
     @comment.save
+
+    redirect_to template_path(@template, anchor: "comment-#{@comment.id}")
   end
 
   private

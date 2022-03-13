@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :templates do
     resources :template_comments
   end
+  resources :leaderboards
   resources :templates
   get '/audiences/:id', :to => 'templates#audiences', :as => "audiences"
   get '/tokens/:id', :to => 'templates#tokens', :as => "tokens"

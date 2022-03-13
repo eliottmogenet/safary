@@ -60,7 +60,7 @@
         <p>How fast do you grow your discord community ? <% if @guild.user != User.first %><span> <% if @guild.user.photo.attached? %><%= cl_image_tag @guild.user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %><% end %><%= @guild.user.pseudo %></span><% end %></p>
       </div>
       <div>
-        <button class="button-type" data-toggle="modal" data-target="#exampleModal" >Use this template 🔌</button>
+        <button class="button-type" data-toggle="modal" data-target="#exampleModal" >Plug your data 🔌</button>
 
 
       </div>
@@ -91,7 +91,7 @@
           <h6 style="margin-bottom: 20px;"><b><%= pluralize(@guild.guild_comments.count, 'comment')%> </b></h6>
           <hr style="font-weight: 0px; color: #E3E3E4;">
           <% @guild.guild_comments.each do |comment| %>
-           <p class="text-comment">
+           <p class="text-comment" id="comment-<%= comment.id %>">
           <% if comment.user.photo.attached? %>
                    <%= cl_image_tag comment.user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %>
           <% end %>
@@ -101,7 +101,7 @@
           <% end %>
 
           <div class="project-card-create">
-          <%= simple_form_for([ @guild, @comment ]) do |f| %>
+          <%= simple_form_for([ @guild, @comment ], remote: true) do |f| %>
             <%= f.input :content, as: :text, label: false %>
             <%= f.submit 'Add comment', class: "button-type2" %>
           <% end %>

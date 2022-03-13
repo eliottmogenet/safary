@@ -6,7 +6,7 @@ class GuildCommentsController < ApplicationController
     @comment.guild = @guild
     @comment.user = current_user
     if @comment.save
-      redirect_to guild_path(@guild)
+      redirect_to guild_path(@guild, anchor: "comment-#{@comment.id}")
     end
   end
 

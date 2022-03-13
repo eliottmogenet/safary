@@ -7,46 +7,113 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
-
 <body>
 
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
+          <li class="nav-item">
+            <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
+          </li>
+        <%# else %>
+          <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <!--/li-->
+        <%# end %>
+      </ul>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <% if current_user.photo.attached? %>
+             <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
+          <% end %>
+            <%= link_to destroy_user_session_path, method: :delete do  %>
+              <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
+          <% end %>
+    </div>
+  </div>
+</div>
+
 <div class="container" id="container-onboarding">
+  <% if current_user.accepted? %>
+
+  <div>
+
+  <h1 style="font-weight: 900">The Expedition #0<%= Onboarding.first.batch_number %> is starting 🎉</h1>
+    <h4>The safary is open </h4>
+
+    <p>Start the tour and join the Web3 growth adventure</p>
+
+  <%= link_to leaderboards_path do %>
+    <button class="button-sub3">Start the tour 🚌</button>
+  <% end %>
+
+  </div>
+
+  <% else %>
 
   <h1 style="font-weight: 900">Welcome to the Expedition #0<%= Onboarding.first.batch_number %></h1>
-    <h4>The safary will start in XXX </h4>
+    <h4>The safary will start in <h4 id="demo" style="font-weight: bolder;"></h4></h4>
 
     <p>Complete the checklist to get ready before departure</p>
 
+  <% end %>
+
     <%= image_tag("bus-safary.png", :width => 700, style: "margin-top: 5px; margin-left: 15px") %>
 
-    <p style="color: #687086; font-size: 13px">Meet all the adventurers travelling with you</p>
 
-    <div class="adventurers-div">
-      <% User.where(accepted: false).each do |user| %>
-        <p>
-          <% if user.photo.attached? %>
-           <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
-          <% end %><br>
-        @<%= user.pseudo %></p>
-      <% end %>
-    </div>
+      <% if current_user.accepted? %>
 
-    <div style="display: flex; justify-content: center;  text-align: start; margin-bottom: 50px">
+     <div style="display: flex; justify-content: center;  text-align: start; margin-bottom: 50px">
       <div>
-       <div style="margin-top: 40px;">
+      <div style="margin-top: 40px">
         <h5>
-         <input type="checkbox" id="input1" name="scales" checked disabled>
-         <label for="scales" style="text-decoration: line-through; color: #687086">Watch the Welcome video 🎬</label>
+         <input type="checkbox" id="input2" name="scales">
+         <label for="scales">Join Safary Web3 growth learning platform (Opened 🎉)</label>
         </h5>
       </div>
       <hr>
       <div style="margin-top: 20px">
         <h5>
-         <input type="checkbox" id="input1" name="scales">
-         <label for="scales">Add Safary calendar to follow events 📅</label>
+         <input type="checkbox" id="input2" name="scales">
+         <label for="scales">Join Safary Discord server <i class="fab fa-discord"></i> (Opened 🎉)</label>
         </h5>
       </div>
       <hr>
+      <div style="margin-top: 20px">
+        <h5>
+         <input type="checkbox" id="input2" name="scales">
+         <label for="scales">Share your first comment about Web3 Growth (Opened 🎉)</label>
+        </h5>
+      </div>
+      </div>
+    </div>
+
+      <% else %>
+
+    <div style="display: flex; justify-content: center;  text-align: start; margin-bottom: 50px">
+      <div>
+       <div style="margin-top: 40px;">
+        <h5>
+         <input type="checkbox" id="input1" name="scales">
+         <label for="scales" id="label1">Watch the Welcome video 🎬</label>
+        </h5>
+      </div>
+      <hr>
+      <div style="margin-top: 20px">
+        <h5>
+         <input type="checkbox" id="input3" name="scales">
+         <label for="scales" id="label3">Add Safary calendar to follow events 📅</label>
+        </h5>
+      </div>
+      <hr>
+
       <div style="margin-top: 20px">
         <h5>
          <input type="checkbox" id="input2" name="scales" disabled>
@@ -60,16 +127,79 @@
          <label for="scales" style="color: #C9CACB">Join Safary Discord server <i class="fab fa-discord"></i> (Day of departure)</label>
         </h5>
       </div>
+      <hr>
+      <div style="margin-top: 20px">
+        <h5>
+         <input type="checkbox" id="input2" name="scales" disabled>
+         <label for="scales" style="color: #C9CACB">Share your first comment about Web3 Growth (Day of departure)</label>
+        </h5>
       </div>
+      </div>
+    </div>
+
+    <% end %>
+
+    <p style="color: #687086; font-size: 13px">Meet all the adventurers travelling with you</p>
+
+    <div class="adventurers-div">
+      <% User.where(accepted: false).each do |user| %>
+        <p>
+          <% if user.photo.attached? %>
+           <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
+          <% end %><br>
+        @<%= user.pseudo %></p>
+      <% end %>
     </div>
 
 
 
 </div>
 
-
-
-
-
-
 </body>
+
+<script>
+  const input1 = document.getElementById("input1");
+  const label1 = document.getElementById("label1");
+    input1.addEventListener("click", (event) => {
+  console.log(event);
+  label1.classList.toggle("raye");
+  input1.classList.toggle("disabled");
+});
+
+  const input3 = document.getElementById("input3");
+  const label3 = document.getElementById("label3");
+    input3.addEventListener("click", (event) => {
+  console.log(event);
+  label3.classList.toggle("raye");
+});
+
+// Set the date we're counting down to
+var countDownDate = new Date("Mar 20, 2022 00:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("demo").innerHTML = days + " days " + hours + " hours "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+
+</script>
