@@ -79,7 +79,7 @@
         <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
     <% end %><br>
     @<%= user.pseudo %><br>
-    <span>Head of Growth @Ledger</span></p>
+    <span><%= user.job_title %></span></p>
     </div>
   <% end %>
   </div>
@@ -97,7 +97,7 @@
               <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
           <% end %><br>
           @<%= user.pseudo %><br>
-          <span>Head of Growth @Ledger</span></p>
+          <span><%= user.job_title %></span></p>
           </div>
       <% end %>
   </div>
@@ -111,7 +111,7 @@
     <p><% if user.photo.attached? %>
         <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
     <% end %>@<%= user.pseudo %><br>
-    <span>Head of Growth @Ledger</span></p>
+    <span><%= user.job_title %></span></p>
     </p>
     <p style="color: #D25C5C"><%= (user.template_comments + user.guild_comments).count %> <i class="fa-solid fa-comments"></i></p>
     </div>
@@ -122,7 +122,7 @@
     <p><% if user.photo.attached? %>
         <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
     <% end %>@<%= user.pseudo %><br>
-    <span>Head of Growth @Ledger</span></p>
+    <span><%= user.job_title %></span></p>
     </p>
     <p style="color: #D25C5C"><%= (user.template_comments + user.guild_comments).count %> <i class="fa-solid fa-comments"></i></p>
     </div>
