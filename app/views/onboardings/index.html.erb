@@ -65,7 +65,7 @@
 
   <% end %>
 
-    <%= image_tag("bus-safary.png", :width => 700, style: "margin-top: 5px; margin-left: 15px") %>
+    <%= image_tag("bus-safary.png", :width => 700, style: "margin-top: 5px; margin-left: 15px", class: "bus-safary") %>
 
    <p style="color: #687086; font-size: 13px">Meet all the adventurers travelling with you</p>
 
@@ -99,7 +99,7 @@
 
       <% if current_user.accepted? %>
 
-     <div style="display: flex; justify-content: center;  text-align: start; margin-bottom: 50px">
+     <div class="checklist1" style="display: flex; justify-content: center;  text-align: start; margin-bottom: 50px">
       <div>
       <div style="margin-top: 40px">
         <h5>
@@ -126,7 +126,7 @@
 
       <% else %>
 
-    <div style="display: flex; justify-content: center;  text-align: start; margin-bottom: 50px">
+    <div class="checklist1" style="display: flex; justify-content: center;  text-align: start; margin-bottom: 50px">
       <div>
        <div style="margin-top: 40px;">
         <h5>
@@ -173,6 +173,28 @@
 </div>
 
 </body>
+
+<style>
+
+
+    @media (max-width: 600px) {
+    .bus-safary {
+
+    height: 20vh;
+    width: 100%;
+    object-fit: contain;
+}
+  .adventurers-div {
+    width: 100%;
+    margin-left: -10px;
+  }
+
+  .checklist1 {
+    margin-left: 5px;
+  }
+}
+</style>
+
 
 <script>
   const input1 = document.getElementById("input1");

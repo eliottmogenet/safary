@@ -1,4 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  require 'open-uri'
   skip_before_action :verify_authenticity_token
 
   def sign_in_with(provider_name)
