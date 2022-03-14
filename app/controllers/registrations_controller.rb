@@ -9,6 +9,6 @@ class RegistrationsController < Devise::RegistrationsController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :pseudo, :photo,
-                                   :password_confirmation)
+                                   :password_confirmation, :accepted, :onboarded, :job_title, :xp, :lion)
   end
 end

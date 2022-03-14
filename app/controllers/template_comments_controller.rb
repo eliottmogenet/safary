@@ -13,7 +13,7 @@ class TemplateCommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:template_comment).permit(:content, :user_id, :template_id, :date)
+    params.require(:template_comment).permit(:content, :user_id, :template_id, :date, :url)
   end
 
 end
