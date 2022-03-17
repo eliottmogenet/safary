@@ -218,3 +218,4 @@ guilduser5.save!
 
 guilduser6 = guild3.guild_users.create(uid: 6, join_at: DateTime.new(2020, 8, 5), discord_user_id: discord_users6.uid)
 guilduser6.save!
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
