@@ -77,7 +77,11 @@
        </div>
       <% elsif @template.category == "token" %>
         <div class="chart">
-          <p>token</p>
+
+        </div>
+     <% elsif @template.category == "twitter" %>
+        <div class="chart">
+          <%= line_chart @data_twitter_daily, colors: ["#D25C5C"], points: false, min: 600, max: 800 %>
         </div>
       <% elsif @template.category == "nft" %>
         <div class="chart" style="height: 500px; width: 1000px; cursor: pointer;">

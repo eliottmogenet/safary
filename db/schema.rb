@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_13_205209) do
+ActiveRecord::Schema.define(version: 2022_03_17_134113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,9 @@ ActiveRecord::Schema.define(version: 2022_03_13_205209) do
     t.bigint "user_id"
     t.string "category"
     t.text "url"
+    t.string "twitter_link"
+    t.string "discord_link"
+    t.string "website_link"
     t.index ["user_id"], name: "index_templates_on_user_id"
   end
 
@@ -148,6 +151,15 @@ ActiveRecord::Schema.define(version: 2022_03_13_205209) do
     t.bigint "template_id"
     t.integer "discord_members"
     t.index ["template_id"], name: "index_token_holders_on_template_id"
+  end
+
+  create_table "twitter_followers", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_count"
+    t.datetime "date"
+    t.bigint "template_id"
+    t.index ["template_id"], name: "index_twitter_followers_on_template_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -168,6 +180,7 @@ ActiveRecord::Schema.define(version: 2022_03_13_205209) do
     t.integer "xp"
     t.string "job_title"
     t.boolean "onboarded", default: false
+    t.boolean "demo", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

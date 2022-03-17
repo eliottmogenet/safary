@@ -52,7 +52,7 @@
 <% if current_user.onboarded == true %>
 <% else %>
 <div class="alert-fixed alert-warning alert-dismissible fade show" style="text-align: center;" role="alert">
-  <strong>🚌 Welcome to the Savana !</strong> Here you learn about Web3 Growth, share knowledge and reverse engineer ⚒
+  <strong>🚌 Welcome to the Savana !</strong> Here you can learn the Web3 growth process: analyze data, comment on metrics, and propose tactics. ⚒
     <%= link_to dashboards_path do %>
     <button type="button" class="button-alert">
     <span style="color: black; font-weight: 900; font-size: 15px; margin-bottom: -10px">Next</span>
@@ -93,12 +93,11 @@
                   <%= link_to guild_path(Guild.first) do %>
                     <div class="template">
                       <div class="title-template">
-                        <h5>Discord users <br> acquisition</h5><p class="available">Available</p>
+                        <h5>Discord user <br> acquisition</h5><p class="available">Available</p>
                         <p class="available" style="margin-left: 5px; color: black; background-color: #12877E">🔌 Live</p>
                       </div>
                         <p>Learn how to grow your Discord members.</p>
                         <%= image_tag("discord-acquisition.png", :width => 200, style: "margin-top: 5px; margin-left: 15px") %>
-
                     </div>
                    <% end %>
                   <%= link_to template_path(@twitter) do %>
@@ -113,26 +112,18 @@
                    <%= link_to template_path(@audience) do %>
                     <div class="template">
                       <div class="title-template">
-                        <h5>Audiences <br> comparison </h5><p class="available">Available</p>
+                        <h5>Audience <br> comparison </h5><p class="available">Available</p>
                       </div>
-                      <p>Compare your audiences to know where you need to improve</p>
+                      <p>Compare your audience across Twitter, Discord, and on-chain.</p>
                       <%= image_tag("audience-comparison.png", :width => 200, style: "margin-top: 30px; margin-left: 15px") %>
                     </div>
                   <% end %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>Wallet <br> connexion <br></h5><p class="available">Available</p>
-                      </div>
-                      <p>Learn how to manage succesful wallet onboarding.</p>
-                      <%= image_tag("token-acquisition.png", :width => 160, style: "margin-top: -30px; margin-left: 35px") %>
-                    </div>
                   <%= link_to template_path(@token) do %>
                     <div class="template">
                       <div class="title-template">
-                        <h5>Token holders segmentation </h5><p class="available">Available</p>
+                        <h5>Token holder acquisition </h5><p class="available">Available</p>
                       </div>
-                      <p>Learn how to identify the most active token holders in your community.</p>
-                      <%= image_tag("coins.png", :width => 150, style: "margin-top: 5px; margin-left: 40px") %>
+                      <p>Learn how to successfully manage Airdrops and grow your tokenised community.</p>
                     </div>
                   <% end %>
                    <%= link_to template_path(@nft) do %>
@@ -140,10 +131,12 @@
                       <div class="title-template">
                         <h5>NFT sales </h5><p class="available">Available</p>
                       </div>
-                      <p>Learn how to sell your NFT over time with the best OpenSea NFT Collections </p>
+                      <p>Learn how to grow NFT sales with the best OpenSea NFT Collections </p>
                       <%= image_tag("NFT.png", :width => 200, style: "margin-top: 15px; margin-left: 20px") %>
                     </div>
                   <% end %>
+                  <div class="template3">
+                  </div>
                    <div class="template2">
                       <div class="title-template">
                         <h5>Content <br> strategy</h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
@@ -167,6 +160,13 @@
                     </div>
                     <div class="template2">
                       <div class="title-template">
+                        <h5>Wallet <br> connection <br></h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
+                      </div>
+                      <p>See how your audience connects to web3.</p>
+                      <%= image_tag("token-acquisition.png", :width => 160, style: "margin-top: -30px; margin-left: 35px") %>
+                    </div>
+                    <div class="template2">
+                      <div class="title-template">
                         <h5>Onboarding <br> funnel <br>(On + off chain)</h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
                       </div>
                       <p>Understand where you lose users at each step</p>
@@ -174,7 +174,7 @@
                     </div>
                     <div class="template2">
                       <div class="title-template">
-                        <h5>On chain <br> retention <br></h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
+                        <h5>Daily active <br> wallets <br></h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
                       </div>
                       <p>Track retention of wallets in your app over time.</p>
                       <%= image_tag("retention.png", :width => 220, style: "margin-left: 20px") %>
@@ -186,6 +186,13 @@
                       <p>Learn how to convert players in your games.</p>
                       <%= image_tag("players.png", :width => 160, style: "margin-top: -25px; margin-left: 30px") %>
                     </div>
+                    <div class="template2">
+                      <div class="title-template">
+                        <h5>Token holder segmentation </h5><p class="available" style="background-color: #C4C4C4; padding-left: 10px">Soon</p>
+                      </div>
+                      <p>Learn how to identify the most active token holders in your community.</p>
+                      <%= image_tag("coins.png", :width => 150, style: "margin-top: 5px; margin-left: 40px") %>
+                    </div>
                   </div>
 
 
@@ -195,7 +202,7 @@
                   <%= link_to guild_path(Guild.first) do %>
                     <div class="template">
                       <div class="title-template">
-                        <h5>Discord users <br> acquisition</h5><p class="available">Available</p>
+                        <h5>Discord user <br> acquisition</h5><p class="available">Available</p>
                         <p class="available" style="margin-left: 5px; color: black; background-color: #12877E">🔌 Live</p>
                       </div>
                         <p>Learn how to grow your Discord members.</p>
@@ -211,6 +218,14 @@
                       <%= image_tag("twitter.png", :width => 200, style: "margin-top: 20px; margin-left: 15px") %>
                     </div>
                   <% end %>
+                <%= link_to template_path(@token) do %>
+                    <div class="template">
+                      <div class="title-template">
+                        <h5>Token holder acquisition </h5><p class="available">Available</p>
+                      </div>
+                      <p>Learn how to successfully manage Airdrops and grow your tokenised community.</p>
+                    </div>
+                  <% end %>
                 </div>
               </div>
               <div class="tab-pane fade" id="pills-activation" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -218,26 +233,10 @@
                   <%= link_to template_path(@audience) do %>
                     <div class="template">
                       <div class="title-template">
-                        <h5>Audiences <br> comparison </h5><p class="available">Available</p>
+                        <h5>Audience <br> comparison </h5><p class="available">Available</p>
                       </div>
                       <p>Compare your audiences to know where you need to improve</p>
                       <%= image_tag("audience-comparison.png", :width => 200, style: "margin-top: 30px; margin-left: 15px") %>
-                    </div>
-                  <% end %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>Wallet <br> connexion <br></h5><p class="available">Available</p>
-                      </div>
-                      <p>Learn how to manage succesful wallet onboarding.</p>
-                      <%= image_tag("token-acquisition.png", :width => 160, style: "margin-top: -30px; margin-left: 35px") %>
-                    </div>
-                  <%= link_to template_path(@token) do %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>Token holders segmentation </h5><p class="available">Available</p>
-                      </div>
-                      <p>Learn how to identify the most active token holders in your community.</p>
-                      <%= image_tag("coins.png", :width => 150, style: "margin-top: 5px; margin-left: 40px") %>
                     </div>
                   <% end %>
                 </div>
@@ -280,14 +279,11 @@
                   <%= link_to template_path(@token) do %>
                     <div class="template">
                       <div class="title-template">
-                        <h5>Token holders segmentation </h5><p class="available">Available</p>
+                        <h5>Token holder acquisition </h5><p class="available">Available</p>
                       </div>
-                      <p>Learn how to identify the most active token holders in your community.</p>
-                      <%= image_tag("coins.png", :width => 150, style: "margin-top: 5px; margin-left: 40px") %>
+                      <p>Learn how to successfully manage Airdrops and grow your tokenised community.</p>
                     </div>
                   <% end %>
-
-
                 </div>
               </div>
 

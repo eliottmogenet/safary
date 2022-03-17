@@ -56,7 +56,7 @@
 <% if current_user.onboarded == true %>
 <% else %>
     <div class="alert-fixed alert-warning alert-dismissible fade show" role="alert">
-    <strong>🚌 Welcome in Safary Community !</strong> Here you can meet other adventurers and climb the ladder to become a Lion 🦁</b>
+    <strong>🚌 Welcome to the Safary Community !</strong> Here you can meet other adventurers and climb the ladder to become a Lion 🦁</b>
     <%= link_to templates_path do %>
     <button type="button" class="button-alert">
       <span style="color: black; font-weight: 900; font-size: 15px; margin-bottom: -10px">Next</span>
@@ -70,7 +70,7 @@
 
 
   <h2 style="font-weight: 900;">The Lions 🦁</h2>
-  <p>Meet the Web3 growth leaders of tomorrow</p>
+  <p>Meet Web3’s top growth leaders</p>
   <hr style="height: 0px;">
   <div style="background-color: white; text-align: center; display: flex; justify-content: space-around; flex-wrap: wrap; border-top-right-radius: 10px; border-top-left-radius: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
     <% User.where(lion: true).first(4).each do |user| %>
@@ -103,7 +103,7 @@
   </div>
   <div style="margin-bottom: 100px">
   <h3 style="margin-top: 20px;">Adventurers</h3>
-  <p>Upcoming Web3 Growth leaders</p>
+  <p>The web3 growth leaders of tomorrow</p>
   <hr>
    <% @adventurers_sort.reverse.each do |user| %>
    <% if user == current_user %>

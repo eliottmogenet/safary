@@ -11,6 +11,7 @@ require 'csv'
 
 Onboarding.destroy_all
 Audience.destroy_all
+TwitterFollower.destroy_all
 Template.destroy_all
 GuildComment.destroy_all
 GuildTactic.destroy_all
@@ -106,11 +107,14 @@ template2.save!
 template3 = user3.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve", category: "audience")
 template3.save!
 
-template4 = user1.templates.create(title: "Token holders segmentation", description: "Learn how to grow a tokenised community over time.", category: "token")
+template4 = user1.templates.create(title: "Token holder acquisition", description: "Learn how to grow a tokenised community over time.", category: "token")
 template4.save!
 
 template5 = user1.templates.create(title: "NFT sales over time", description: "Understand how to sell your NFT over time.",  category: "nft", url: "https://opensea.io/collection/doodles-official?tab=activity&embed=true")
 template5.save!
+
+template6 = user1.templates.create(title: "Twitter acquisition", description: "Learn how to grow a tokenised community over time.", category: "twitter")
+template6.save!
 
 p "creating audiences template1"
 
@@ -154,6 +158,9 @@ comment1.save!
 
 comment2 = user2.guild_comments.create(content: "Hello : second comment!", guild_id: guild1.id)
 comment2.save!
+
+p "creating twitter_followers"
+
 
 
 p "creating tactics"
