@@ -8,7 +8,7 @@
 require 'open-uri'
 require 'csv'
 
-
+AdminUser.destroy_all
 Onboarding.destroy_all
 Audience.destroy_all
 TwitterFollower.destroy_all
@@ -19,6 +19,11 @@ GuildUser.destroy_all
 Guild.destroy_all
 DiscordUser.destroy_all
 User.destroy_all
+
+p "creating admin user"
+
+admin_user1 = AdminUser.create(email: "eliott.mogenet@gmail.com", password: "eliott.mogenet@gmail.com")
+admin_user1.save!
 
 p "creating onboarding"
 
