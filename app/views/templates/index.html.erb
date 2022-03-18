@@ -42,6 +42,10 @@
 
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
+          <% else %>
+            <a data-toggle="modal" data-target="#photo-modal">
+              <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
+            </a>
           <% end %>
             <%= link_to destroy_user_session_path, method: :delete do  %>
               <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
@@ -292,3 +296,26 @@
 </div>
 
 </body>
+
+
+<div class="modal fade" id="photo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% if current_user.present? %>
+         <div class="modal-body">
+          <%= render template: "devise/registrations/edit" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

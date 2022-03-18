@@ -43,6 +43,8 @@
 
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
+            <% else %>
+            <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
           <% end %>
             <%= link_to destroy_user_session_path, method: :delete do  %>
               <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
@@ -77,6 +79,8 @@
     <div style="padding: 3rem">
     <p><% if user.photo.attached? %>
         <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
+        <% else %>
+        <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
     <% end %><br>
     @<%= user.pseudo %><br>
     <span><%= user.job_title %></span></p>
@@ -95,6 +99,8 @@
           <div style="padding: 3rem">
           <p><% if user.photo.attached? %>
               <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
+              <% else %>
+              <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
           <% end %><br>
           @<%= user.pseudo %><br>
           <span><%= user.job_title %></span></p>
@@ -110,6 +116,8 @@
        <div style="text-align: start; height: 65px; padding-left: 10px; display: flex; justify-content: space-between; background-color: white !important; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); padding-right: 10px; padding-top: 5px; padding-bottom: 20px; border-radius: 10px ">
     <p><% if user.photo.attached? %>
         <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
+         <% else %>
+        <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
     <% end %>@<%= user.pseudo %><br>
     <span><%= user.job_title %></span></p>
     </p>
@@ -117,10 +125,12 @@
     </div>
   <hr style="height: 0px;">
 
-   <% elsif user != current_user && user.pseudo != "Template"  %>
+   <% elsif user != current_user && user.pseudo != "Template" && user.demo? == false %>
         <div style="text-align: start; height: 50px; margin-left: 10px; display: flex; justify-content: space-between;">
     <p><% if user.photo.attached? %>
         <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>
+        <% else %>
+        <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
     <% end %>@<%= user.pseudo %><br>
     <span><%= user.job_title %></span></p>
     </p>

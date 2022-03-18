@@ -15,6 +15,10 @@ class User < ApplicationRecord
   has_many :template_tactics
   has_many :template_comments
 
+  def name
+    "#{pseudo}"
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
