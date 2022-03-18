@@ -1,9 +1,9 @@
 class TemplatesController < ApplicationController
 
   def index
-    @audience = Template.where(title: "Audiences comparison").first
+    @audience = Template.where(category: "audience").first
     @token = Template.where(category: "token").first
-    @nft = Template.where(title: "NFT sales over time").first
+    @nft = Template.where(category: "nft").first
     @twitter = Template.where(category: "twitter").first
   end
 
