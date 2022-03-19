@@ -32,6 +32,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
+          <% else %>
+              <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
           <% end %>
             <%= link_to destroy_user_session_path, method: :delete do  %>
               <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
@@ -170,13 +172,15 @@
         <h5>
          <input type="checkbox" id="input1" name="scales">
          <label for="scales" id="label1">Watch the Welcome video 🎬</label>
+         <br>
+         <%= video_tag("welcome_video.mp4", width: '700', controls: true, style: "margin-top: 20px;", poster: "screenshot.png", id: "video") %>
         </h5>
       </div>
       <hr>
       <div style="margin-top: 20px">
         <h5>
          <input type="checkbox" id="input3" name="scales">
-         <label for="scales" id="label3">Add Safary calendar to follow events 📅</label> <a href="">+Add Calendar</a>
+         <label for="scales" id="label3">Add Safary calendar to follow events 📅</label> <a href="https://calendar.google.com/calendar/u/0?cid=Y18ydGFhY250OGRpdjk5NDZ0dGFkb2pvaHBmMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">+Add Calendar</a>
         </h5>
       </div>
       <hr>
@@ -215,8 +219,6 @@
 
     <% end %>
 
-
-
 </div>
 
 </body>
@@ -225,6 +227,9 @@
 
 
     @media (max-width: 600px) {
+    #video {
+      width: 90%;
+    }
     .bus-safary {
 
     height: 20vh;
@@ -267,7 +272,7 @@
 });
 
 // Set the date we're counting down to
-var countDownDate = new Date("Mar 20, 2022 00:00:00").getTime();
+var countDownDate = new Date("Mar 22, 2022 15:00:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
