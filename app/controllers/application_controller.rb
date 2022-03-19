@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
 
-    if current_user.accepted?
+   if current_user.job_title.nil?
+      edit_user_registration_path(current_user)
+    elsif current_user.accepted? && current_user.job_title.nil? == false
       templates_path
     else
       onboardings_path

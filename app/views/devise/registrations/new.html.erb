@@ -15,7 +15,7 @@
     </div>
     <%= f.input :photo, label: "Complete your profile photo and info", as: :file %>
     <%= f.input :pseudo, label: false, placeholder: "Pseudo*" %>
-    <%= f.input :job_title, label: false, placeholder: "Job title*" %>
+    <%= f.input :job_title, label: false, placeholder: "Job title @company*" %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -37,7 +37,7 @@
 <hr>
 <%= link_to "/users/auth/discord", method: :post do %>
   <button class="button-sub2">
-      Connect your Discord <i class="fab fa-discord"></i>
+      Sign up with Discord <i class="fab fa-discord"></i>
   </button>
 <% end %>
 

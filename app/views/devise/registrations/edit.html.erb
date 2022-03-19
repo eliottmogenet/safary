@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+<% if user_signed_in? && current_user.job_title.nil? == false %>
     <%= simple_form_for(current_user, url: user_registration_path(current_user)) do |f| %>
     <%= f.error_notification %>
 
@@ -10,4 +10,67 @@
       <%= f.button :submit, "+ Add a photo", id: "share2" %>
     </div>
   <% end %>
+
+<% else %>
+
+
+<body style="text-align: center; ">
+
+<h3 style="margin-top: 20px; font-weight: 900; color: #D25C5C">Safary</h3>
+<div class="container" id="sign-up-container">
+
+  <p>Enter your job title <br>
+  to introduce yourself 2/2</p>
+
+  <%= simple_form_for(current_user, url: user_registration_path(current_user)) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :job_title, label: false, placeholder: "Job title @company*" %>
+
+  <div class="form-inputs">
+    <div style="display: flex; justify-content: center; margin-top: 30px; padding-top: -50px">
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Continue", class: "button-sub" %>
+  </div>
 <% end %>
+
+</div>
+<%= image_tag("safary.png", :width => 900, class: "safary-img") %>
+</body>
+
+
+<% end %>
+
+<style>
+
+  .safary-img {
+    margin-top: -120px;
+    position:relative;
+    z-index: -1;
+  }
+
+    @media (max-width: 600px) {
+    .safary-img {
+    height: 42vh;
+    width: 100%;
+    object-fit: contain;
+
+    }
+
+    #sign-up-container {
+      width: 95%;
+
+    }
+
+    .button-sub {
+      width: 90%;
+    }
+
+    .button-sub2 {
+      width: 90%;
+    }
+
+}
+</style>
