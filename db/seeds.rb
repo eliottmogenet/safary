@@ -25,6 +25,9 @@ p "creating admin user"
 admin_user1 = AdminUser.create(email: "eliott.mogenet@gmail.com", password: "eliott.mogenet@gmail.com")
 admin_user1.save!
 
+admin_user2 = AdminUser.create(email: "justin.vogel52@gmail.com", password: "justin.vogel52@gmail.com")
+admin_user2.save!
+
 p "creating onboarding"
 
 onboarding = Onboarding.create(batch_number: 02, deadline: Time.strptime('03/20/2022 00:00', '%m/%d/%Y %H:%M'))
