@@ -22,7 +22,9 @@
     <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
           <li class="nav-item">
-            <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
+            <%= link_to leaderboards_path do %>
+              <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
+            <% end %>
           </li>
           <li class="nav-item">
             <%= link_to "Community", leaderboards_path, class: "nav-link" %>
@@ -41,9 +43,14 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <i class="fab fa-discord" id="icon" style="margin-right: 20px; margin-top: 5px;"></i>
 
           <% if current_user.photo.attached? %>
-             <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
+             <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
+          <% else %>
+            <a data-toggle="modal" data-target="#photo-modal">
+              <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
+            </a>
           <% end %>
             <%= link_to destroy_user_session_path, method: :delete do  %>
               <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>

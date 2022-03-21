@@ -207,11 +207,22 @@ span {
   color: #5E5E5E;
   white-space: pre-wrap;
   font-size: 13px;
+  text-decoration: none;
 }
 
 #time_ago {
-  color: #9F9F9F;
+  color: #9F9F9F !important;
   font-size: 12px;
+  text-decoration: none;
+}
+
+#time_ago a {
+  text-decoration: none;
+  color: #9F9F9F;
+}
+
+#time_ago a:hover {
+  color: black;
 }
 
 #guild_comment_content {
@@ -254,7 +265,14 @@ span {
   text-decoration: none;
   color: black;
   padding-left: 20px;
-  line-height: 40px;
+  line-height: 45px;
+}
+
+.user-div2 p {
+  text-decoration: none;
+  color: black;
+  padding-left: 20px;
+  line-height: 45px;
 }
 
 .user-div:hover {
@@ -262,9 +280,11 @@ span {
 }
 
 .user-div {
-  height: 50px;
-  border-radius: 10px;
-  line-height: 50px;
+  border-radius: 5px;
+}
+
+.user-div2 {
+  border-radius: 5px;
 }
 
 .card-header {
@@ -498,5 +518,38 @@ span {
    outline: none;
    border-radius: 5px;
    padding: 5px;
+}
+
+#icon {
+  color: #687086;
+  margin-left: 10px;
+}
+
+#icon:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.tag {
+  text-align: center;
+  padding: 5px;
+  background-color: #D25C5C;
+  opacity: 95%;
+  width: 120px;
+  color: white;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.user-div2 {
+  background-color: #E3E3E4;
+}
+
+#template_comment_content {
+    background-color: #E3E3E4;
+    border: none;
+    font-size: 13px;
+    height: 120px;
+    white-space: pre-wrap;
 }
 

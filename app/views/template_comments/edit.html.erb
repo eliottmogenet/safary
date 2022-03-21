@@ -7,6 +7,7 @@
 </head>
 
 
+<% if current_user.accepted? %>
 
 <body>
 
@@ -21,7 +22,9 @@
     <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
           <li class="nav-item">
-            <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
+            <%= link_to leaderboards_path do %>
+             <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
+            <% end %>
           </li>
           <li class="nav-item">
             <%= link_to "Community", leaderboards_path, class: "nav-link" %>
@@ -40,9 +43,9 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
+          <i class="fab fa-discord" id="icon" style="margin-right: 20px; margin-top: 5px;"></i>
           <% if current_user.photo.attached? %>
-             <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
+             <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
           <% else %>
             <a data-toggle="modal" data-target="#photo-modal">
               <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
@@ -64,25 +67,58 @@
         <%= link_to templates_path do %>
           <p id="back"><i class="fa-solid fa-arrow-left-long"></i> Back to the Savanna</p>
         <% end %>
-        <h2 style="font-weight: 900;"><%= @template.title %></h2>
-        <p><%= @template.description %></p>
+        <div style="display: flex; justify-content: start;">
+        <h2 style="font-weight: 900;"><%= @template.title %></h2><h6 style="margin-left: 10px; margin-top: 10px"><% if @template.user.photo.attached? %><%= cl_image_tag @template.user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %><%= @template.user.pseudo %><% end %></h6>
+        </div>
+        <p><%= @template.description %> <% if @template.industry.present? %><span class="tag"><%= @template.industry %></span><% end %></p>
       </div>
       <div>
-        <button class="button-type3" data-toggle="modal" data-target="#exampleModal" >🔌 Usable soon</button>
 
 
       </div>
     </div>
 
-    <div class="chart">
       <% if @template.category == "audience" %>
-        <h6>Audiences by users <i class="fab fa-twitter"></i> + <i class="fab fa-discord"></i> + Custom on chain audience </h6>
+       <div class="chart">
+        <h6> Audiences by users <i class="fab fa-twitter"></i> + <i class="fab fa-discord"></i> + Custom on chain audience </h6>
         <br>
         <%= column_chart @template.audiences.group(:name).sum(:user_count).reverse_each, colors: ["#883939","#D25C5C", "#FD8989"] %>
+       </div>
       <% elsif @template.category == "token" %>
-        <p>token</p>
-      <% end %>
+        <div class="chart">
+
+        </div>
+     <% elsif @template.category == "twitter" %>
+        <div class="chart">
+          <%= line_chart @data_twitter_daily, colors: ["#D25C5C"], points: false %>
+        </div>
+      <% elsif @template.category == "nft" %>
+        <div class="chart" style="height: 500px; width: 1000px; cursor: pointer;">
+      <h6></h6>
+      <div style="overflow: hidden; max-width: 950px;">
+        <iframe scrolling="no" src="<%= @template.url %>" style="border: 0px none; margin-left: 0px; height: 1250px; margin-top: -800px; width: 950px; cursor: pointer;">
+        </iframe>
     </div>
+    </div>
+      <% end %>
+      <p style="margin-top: 20px; color: #687086; font-size: 12px; width: 950px"><%= @template.paragraph %></p>
+      <div style="margin-left: 850px;">
+      <% if @template.twitter_link.present? %>
+        <%= link_to @template.twitter_link, target: "_blank" do %>
+          <i class="fab fa-twitter" id="icon"></i>
+        <% end %>
+      <% end %>
+       <% if @template.discord_link.present? %>
+        <%= link_to @template.discord_link, target: "_blank" do %>
+          <i class="fab fa-discord" id="icon"></i>
+        <% end %>
+      <% end %>
+      <% if @template.website_link.present? %>
+        <%= link_to @template.website_link, target: "_blank" do %>
+          <i class="fas fa-link" id="icon"></i>
+        <% end %>
+      <% end %>
+      </div>
 
     <ul class="nav" style="margin-top: 20px;">
       <li>
@@ -90,9 +126,19 @@
       </li>
     </ul>
     <hr style="width: 950px; height: 0px;">
-      <div class="alert alert-custom" role="alert" style="width:950px; margin-top: 20px; margin-left: 20px; z-index: 0">
+    <% if @template.category == "audience" %>
+        <div class="alert alert-custom" role="alert" style="width:950px; margin-top: 20px; margin-left: 20px; z-index: 0">
           <div class="alert-type">Share your tips to activate your audiences <b> and win XP to become a Lion 🦁</b></div>
         </div>
+      <% elsif @template.category == "token" %>
+        <div class="alert alert-custom" role="alert" style="width:950px; margin-top: 20px; margin-left: 20px; z-index: 0">
+          <div class="alert-type">Share your tips to grow a tokenised community  <b> and win XP to become a Lion 🦁</b></div>
+        </div>
+      <% elsif @template.category == "nft" %>
+        <div class="alert alert-custom" role="alert" style="width:950px; margin-top: 20px; margin-left: 20px; z-index: 0">
+          <div class="alert-type">Share your tips to sale NFT  <b> and win XP to become a Lion 🦁</b></div>
+        </div>
+      <% end %>
 
 
     <div class="tab-content" id="pills-tabContent">
@@ -127,17 +173,28 @@
           <h6 style="margin-bottom: 20px;"><b><%= pluralize(@template.template_comments.count, 'comment')%> </b></h6>
           <hr style="font-weight: 0px; color: #E3E3E4;">
           <% @template.template_comments.each do |comment| %>
-           <p class="text-comment" id="comment-<%= comment.id %>">
-          <% if comment.user.photo.attached? %>
-                   <%= cl_image_tag comment.user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %>
-          <% end %>
-            <b><%= comment.user.pseudo %> </b> <span><%= comment.content %></span></p>
-           <p id="time_ago"><%= time_ago_in_words(comment.created_at) %></p>
-           <hr style="height: 0px; color: #9F9F9F">
+            <% if comment == @comment %>
+              <%= simple_form_for([ @template, @comment ], remote: true) do |f| %>
+                <%= f.input :content, as: :text, label: false %>
+                <%= f.submit 'Update comment', class: "button-type2" %>
+              <% end %>
+              <hr style="height: 0px; color: #9F9F9F" id="update_comment">
+            <% end %>
+            <% if comment != @comment   %>
+            <p class="text-comment" id="comment-<%= comment.id %>">
+              <% if comment.user.photo.attached? %>
+                       <%= cl_image_tag comment.user.photo.key, width: 20, height: 20, :crop=>"fill", style: "border-radius: 100%; margin-right: 5px;" %>
+              <% end %>
+                <b><%= comment.user.pseudo %> </b> <span><%= comment.content %></span></p>
+               <p id="time_ago"><%= time_ago_in_words(comment.created_at) %> <% if comment.user == current_user %>
+                <%= link_to edit_template_template_comment_path(@template, comment, anchor: "update_comment") do %> Edit <% end %>
+               <% end %></p>
+               <hr style="height: 0px; color: #9F9F9F">
+            <% end %>
           <% end %>
 
           <div class="project-card-create">
-          <%= simple_form_for([ @template, @comment ], remote: true) do |f| %>
+          <%= simple_form_for([ @template, @comment_new ], remote: true) do |f| %>
             <%= f.input :content, as: :text, label: false %>
             <%= f.submit 'Add comment', class: "button-type2" %>
           <% end %>
@@ -184,18 +241,30 @@
      <hr style="color: #E3E3E4;">
 
 
-      <% @templates.drop(1).each do |template| %>
+      <% @templates.each do |template| %>
           <% if template.user.present? && template.category == @template.category %>
 
-           <%= link_to audiences_path(template) do %>
-            <div class="user-div">
-            <p>
-              <% if template.user.photo.attached? %>
-               <%= cl_image_tag template.user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %>
-              <% end %>
-              <%= template.user.pseudo %></p>
-            </div>
+           <%= link_to template_path(template) do %>
+            <% if template == @template %>
+              <div class="user-div2">
+                <p>
+                <% if template.user.photo.attached? %>
+                 <%= cl_image_tag template.user.photo.key, width: 20, height: 20, :crop=>"fill", style: "border-radius: 100%; margin-right: 5px;" %>
+                  <% end %>
+                <%= template.user.pseudo %></p>
+                </div>
               <hr style="font-weight: 0px; color: #E3E3E4;">
+
+            <% else %>
+             <div class="user-div">
+              <p>
+                <% if template.user.photo.attached? %>
+                 <%= cl_image_tag template.user.photo.key, width: 20, height: 20, :crop=>"fill", style: "border-radius: 100%; margin-right: 5px;" %>
+                <% end %>
+                <%= template.user.pseudo %></p>
+              </div>
+              <hr style="font-weight: 0px; color: #E3E3E4;">
+            <% end %>
            <% end %>
         <% end %>
       <% end %>
@@ -208,3 +277,11 @@
 
 </div>
 </body>
+
+<% else %>
+
+<p>You have to wait the start of the expedition 😉</p>
+
+<% end %>
+
+

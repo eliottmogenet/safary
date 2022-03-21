@@ -43,7 +43,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
           <% if current_user.photo.attached? %>
-             <%= cl_image_tag current_user.photo.key, width: 40, style: "border-radius: 100%" %>
+             <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
           <% end %>
             <%= link_to destroy_user_session_path, method: :delete do  %>
               <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
@@ -98,7 +98,7 @@
           <% @guild.guild_comments.each do |comment| %>
            <p class="text-comment" id="comment-<%= comment.id %>">
           <% if comment.user.photo.attached? %>
-                   <%= cl_image_tag comment.user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %>
+                   <%= cl_image_tag comment.user.photo.key, width: 20, height: 20, :crop=>"fill", style: "border-radius: 100%; margin-right: 5px;" %>
           <% end %>
             <b><%= comment.user.pseudo %> </b> <span><%= comment.content %></span></p>
            <p id="time_ago"><%= time_ago_in_words(comment.created_at) %></p>
@@ -114,27 +114,18 @@
     </div>
       </div>
       <div class="tab-pane fade" id="pills-learn" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="comment-div">
 
-    <div id="accordion">
-      <% @guild.guild_tactics.reverse.each do |tactic| %>
-      <div class="card">
-        <div class="card-header" id="headingOne">
-          <h3 class="mb-0" style="margin-left: 0px;">
-            <button class="btn-header" data-toggle="collapse" data-target="#tactic-<%= tactic.id %>" aria-expanded="true" aria-controls="tactic-<%= tactic.id %>">
-              <%= tactic.title %><i class="fa-solid fa-chevron-down" style="margin-left: 10px; font-weight: 900"></i>
-            </button>
-          </h3>
-          <span>by @<%= tactic.user.pseudo %></span>
-        </div>
+      <p><b> How to use Safary Analytics to track your Discord community ? </b></p>
+      <p>With Safary analytics, you will be able to track your acquisition on Discord and get feedback from the community</p>
 
-        <div id="tactic-<%= tactic.id %>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-          <div class="card-body">
-            <p><span>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </span></p>
-          </div>
-        </div>
-      </div>
-      <% end %>
+      <h6>Step 1 : Add "Safary bot to your account" </h6>
+      <a href="https://discord.com/api/oauth2/authorize?client_id=946557380886417478&permissions=8&scope=bot" target="_blank">
+          Plug your Discord
+        </a>
+      <h6>Step 2 : Refresh the page" </h6>
+      <%= link_to 'Update my dashboard', refresh_path, method: :post %>
+      <h6>You are all set! Happy tracking 🤘 </h6>
     </div>
 </div>
 
@@ -165,7 +156,7 @@
             <div class="user-div">
             <p>
               <% if current_user.photo.attached? %>
-               <%= cl_image_tag current_user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %>
+               <%= cl_image_tag current_user.photo.key, width: 20, height: 20, :crop=>"fill", style: "border-radius: 100%; margin-right: 5px;" %>
               <% end %>
               My graph </p>
             </div>
@@ -180,7 +171,7 @@
             <div class="user-div">
             <p>
               <% if guild.user.photo.attached? %>
-               <%= cl_image_tag guild.user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %>
+               <%= cl_image_tag guild.user.photo.key, width: 20, height: 20, :crop=>"fill", style: "border-radius: 100%; margin-right: 5px;" %>
               <% end %>
               <%= guild.user.pseudo %></p>
             </div>

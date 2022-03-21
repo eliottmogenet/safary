@@ -5,7 +5,7 @@ ActiveAdmin.register Template do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :title, :description, :user_id, :category, :url, :twitter_link, :discord_link, :website_link
+   permit_params :title, :description, :user_id, :category, :url, :twitter_link, :discord_link, :website_link, :paragraph, :industry
 
   def name
     "#{user.pseudo} - #{title}"
