@@ -43,7 +43,11 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <i class="fab fa-discord" id="icon" style="margin-right: 20px; margin-top: 5px;"></i>
+      <% if current_user.onboarded? %>
+          <%= link_to "https://discord.com/channels/927742963323379722/927743768143212545", target: '_blank' do  %>
+            <i class="fab fa-discord" id="icon" style="margin-right: 20px; margin-top: 5px;"></i>
+      <% end %>
+      <% end %>
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
           <% else %>
@@ -112,12 +116,12 @@
         <div class="chart" style="height: 500px; width: 1000px; cursor: pointer;">
       <h6>Total NFT Sales over time </h6>
       <div style="overflow: hidden; max-width: 950px;">
-        <iframe scrolling="no" src="<%= @template.url %>" style="border: 0px none; margin-left: 0px; height: 1250px; margin-top: -900px; width: 950px; cursor: pointer;">
+        <iframe scrolling="no" src="<%= @template.url %>" style="border: 0px none; margin-left: 0px; height: 1400px; margin-top: -900px; width: 950px; cursor: pointer;">
         </iframe>
     </div>
     </div>
       <% end %>
-      <p style="margin-top: 20px; color: #687086; font-size: 12px; width: 950px"><%= @template.paragraph %></p>
+      <p style="margin-top: 20px; color: #687086; font-size: 12px; width: 950px; white-space: pre-wrap;"><%= @template.paragraph %></p>
 
 
 

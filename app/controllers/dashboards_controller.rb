@@ -25,6 +25,6 @@ class DashboardsController < ApplicationController
     @user.onboarded = true
     @user.save!
 
-    redirect_to "https://getbootstrap.com/docs/4.0/components/collapse/"
+    redirect_to "https://discord.gg/QswdsDZYsD"
   end
 end

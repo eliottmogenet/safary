@@ -41,8 +41,11 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <i class="fab fa-discord" id="icon" style="margin-right: 20px; margin-top: 5px;"></i>
-
+      <% if current_user.onboarded? %>
+        <%= link_to "https://discord.com/channels/927742963323379722/927743768143212545", target: '_blank' do  %>
+          <i class="fab fa-discord" id="icon" style="margin-right: 20px; margin-top: 5px;"></i>
+      <% end %>
+      <% end %>
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
           <% else %>

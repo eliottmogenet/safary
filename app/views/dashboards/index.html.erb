@@ -43,7 +43,11 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <i class="fab fa-discord" id="icon" style="margin-right: 20px; margin-top: 5px;"></i>
+      <% if current_user.onboarded? %>
+        <%= link_to "https://discord.com/channels/927742963323379722/927743768143212545", target: '_blank' do  %>
+            <i class="fab fa-discord" id="icon" style="margin-right: 20px; margin-top: 5px;"></i>
+      <% end %>
+      <% end %>
 
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
@@ -80,7 +84,7 @@
 <div>
 
   <% if current_user.guilds.empty? %>
-    <button class="button-type" data-toggle="modal" data-target="#exampleModal" style="position: absolute; margin-left: 350px" >Plug your data 🔌</button>
+    <button class="button-type" data-toggle="modal" data-target="#exampleModal"  style="position: absolute; margin-left: 350px" >Plug your data 🔌</button>
     <%= image_tag("dashboard.png", :width => 850, style: "margin-top: 20px;") %>
 
   <% else %>
@@ -103,5 +107,46 @@
 
 <% end %>
 
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Discord Safary analytics </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <p><b> How to use Safary Analytics to track your Discord community ? </b></p>
+      <p><span> With Safary analytics, you will be able to track your acquisition on Discord over time.</span></p>
+
+      <h5>Step 1 : Add "Safary bot to your account" </h5>
+      <p><span> You have to be admin of a server if you want to track it.</span></p>
+      <a href="https://discord.com/api/oauth2/authorize?client_id=946557380886417478&permissions=8&scope=bot" target="_blank">
+        <button class="button-type" style="margin-left: 10px" >
+          Plug your Discord
+        </button>
+        </a>
+
+      <%= image_tag("safary-bot.png", :width => 350, style: "margin-top: 5px; margin-left: 15px") %>
+
+      <br>
+      <br>
+      <h5>Step 2 : Refresh the page" </h5>
+
+      <%= link_to refresh_path, method: :post do %>
+        <button class="button-type" style="margin-left: 10px" >
+          Refresh the page
+        </button>
+      <% end %>
+      <br>
+      <br>
+      <h6>You are all set! Happy tracking 🤘 </h6>
+      <br>
+      </div>
+    </div>
+  </div>
+</div>
 
 
