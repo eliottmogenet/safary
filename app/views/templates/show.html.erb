@@ -68,7 +68,21 @@
           <p id="back"><i class="fa-solid fa-arrow-left-long"></i> Back to the Savanna</p>
         <% end %>
         <div style="display: flex; justify-content: start;">
-        <h2 style="font-weight: 900;"><%= @template.title %></h2><h6 style="margin-left: 10px; margin-top: 10px"><% if @template.user.photo.attached? %><%= cl_image_tag @template.user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %><%= @template.user.pseudo %><% end %></h6>
+        <h2 style="font-weight: 900;"><%= @template.title %></h2><h6 style="margin-left: 10px; margin-top: 10px"><% if @template.user.photo.attached? %><%= cl_image_tag @template.user.photo.key, width: 20, style: "border-radius: 100%; margin-right: 5px;" %><%= @template.user.pseudo %><% end %>      <% if @template.twitter_link.present? %>
+        <%= link_to @template.twitter_link, target: "_blank" do %>
+          <i class="fab fa-twitter" id="icon"></i>
+        <% end %>
+      <% end %>
+       <% if @template.discord_link.present? %>
+        <%= link_to @template.discord_link, target: "_blank" do %>
+          <i class="fab fa-discord" id="icon"></i>
+        <% end %>
+      <% end %>
+      <% if @template.website_link.present? %>
+        <%= link_to @template.website_link, target: "_blank" do %>
+          <i class="fas fa-link" id="icon"></i>
+        <% end %>
+      <% end %></h6>
         </div>
         <p><%= @template.description %> <% if @template.industry.present? %><span class="tag"><%= @template.industry %></span><% end %></p>
       </div>
@@ -86,39 +100,26 @@
        </div>
       <% elsif @template.category == "token" %>
         <div class="chart">
+          <h6>Total token holders over time</h6>
           <%= area_chart @data_token, colors: ["#D25C5C"], points: false %>
         </div>
      <% elsif @template.category == "twitter" %>
         <div class="chart">
+          <h6>Total twitter followers over time <i class="fab fa-twitter"></i></h6>
           <%= line_chart @data_twitter_daily, colors: ["#D25C5C"], points: false %>
         </div>
       <% elsif @template.category == "nft" %>
         <div class="chart" style="height: 500px; width: 1000px; cursor: pointer;">
-      <h6></h6>
+      <h6>Total NFT Sales over time </h6>
       <div style="overflow: hidden; max-width: 950px;">
-        <iframe scrolling="no" src="<%= @template.url %>" style="border: 0px none; margin-left: 0px; height: 1250px; margin-top: -800px; width: 950px; cursor: pointer;">
+        <iframe scrolling="no" src="<%= @template.url %>" style="border: 0px none; margin-left: 0px; height: 1250px; margin-top: -900px; width: 950px; cursor: pointer;">
         </iframe>
     </div>
     </div>
       <% end %>
       <p style="margin-top: 20px; color: #687086; font-size: 12px; width: 950px"><%= @template.paragraph %></p>
-      <div style="margin-left: 850px;">
-      <% if @template.twitter_link.present? %>
-        <%= link_to @template.twitter_link, target: "_blank" do %>
-          <i class="fab fa-twitter" id="icon"></i>
-        <% end %>
-      <% end %>
-       <% if @template.discord_link.present? %>
-        <%= link_to @template.discord_link, target: "_blank" do %>
-          <i class="fab fa-discord" id="icon"></i>
-        <% end %>
-      <% end %>
-      <% if @template.website_link.present? %>
-        <%= link_to @template.website_link, target: "_blank" do %>
-          <i class="fas fa-link" id="icon"></i>
-        <% end %>
-      <% end %>
-      </div>
+
+
 
     <ul class="nav" style="margin-top: 20px;">
       <li>
