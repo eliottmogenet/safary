@@ -497,21 +497,20 @@ span {
 
 .button-sub4 {
   margin-bottom: 40px;
-  background-color: #D25C5C;
-  color: white;
+  background-color: transparent;
+  border-color: #D25C5C;
+  color: #D25C5C;
   width: 200px;
   border-radius: 5px;
-  border: none;
+  border: solid;
   outline: none;
   height: 50px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .button-sub4:hover {
-  background-color: white;
-  color: #D25C5C;
+  background-color: #D25C5C;
+  color: white;
   border-style: solid;
-  border-color: #D25C5C;
 }
 
 
