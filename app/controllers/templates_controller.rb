@@ -16,5 +16,6 @@ class TemplatesController < ApplicationController
     @tactic = TemplateTactic.new
     #@data_twitter_daily = @template.twitter_followers.group_by_day(:date).count
     @data_twitter_daily = @template.twitter_followers.group(:date).sum(:user_count)
+    @data_token = @template.token_holders.group(:date).sum(:user_count)
   end
 end

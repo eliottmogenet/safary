@@ -7,6 +7,7 @@ ActiveAdmin.register Template do
   #
    permit_params :title, :description, :user_id, :category, :url, :twitter_link, :discord_link, :website_link, :paragraph, :industry
 
+
   def name
     "#{user.pseudo} - #{title}"
   end
