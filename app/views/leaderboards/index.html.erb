@@ -7,6 +7,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+<% if browser.device.mobile? %>
+  <div class="container" id="mobile-container">
+    <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
+    <p>The Savanna will be soon available on mobile.</p>
+    <p>Start your tour on Dekstop for now 🚌</p>
+  </div>
+<% else %>
 
 <% if current_user.accepted? %>
 
@@ -44,10 +51,8 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <% if current_user.onboarded? %>
           <%= link_to "https://discord.com/channels/927742963323379722/927743768143212545", target: '_blank' do  %>
             <i class="fab fa-discord" id="icon" style="margin-right: 20px; margin-top: 5px;"></i>
-      <% end %>
       <% end %>
 
 
@@ -92,7 +97,7 @@
         <% else %>
         <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
     <% end %><br id="user-#{@user.id}">
-    @<%= user.pseudo %><br>
+    @<%= user.pseudo %>🦁<br>
     <span><%= user.job_title %></span></p>
     </div>
   <% end %>
@@ -162,4 +167,5 @@
 
 <p>You have to wait the start of the expedition 😉</p>
 
+<% end %>
 <% end %>

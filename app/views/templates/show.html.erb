@@ -43,10 +43,8 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <% if current_user.onboarded? %>
           <%= link_to "https://discord.com/channels/927742963323379722/927743768143212545", target: '_blank' do  %>
             <i class="fab fa-discord" id="icon" style="margin-right: 20px; margin-top: 5px;"></i>
-      <% end %>
       <% end %>
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
@@ -113,7 +111,7 @@
           <%= line_chart @data_twitter_daily, colors: ["#D25C5C"], points: false %>
         </div>
       <% elsif @template.category == "nft" %>
-        <div class="chart" style="height: 500px; width: 1000px; cursor: pointer;">
+        <div class="chart" style="height: 570px; width: 1000px; cursor: pointer;">
       <h6>Total NFT Sales over time </h6>
       <div style="overflow: hidden; max-width: 950px;">
         <iframe scrolling="no" src="<%= @template.url %>" style="border: 0px none; margin-left: 0px; height: 1400px; margin-top: -900px; width: 950px; cursor: pointer;">
@@ -184,7 +182,9 @@
                    <%= cl_image_tag comment.user.photo.key, width: 20, height: 20, :crop=>"fill", style: "border-radius: 100%; margin-right: 5px;" %>
               <% end %>
           <% end %>
-            <b><%= comment.user.pseudo %> </b> <span><%= comment.content %></span></p>
+            <b><%= comment.user.pseudo %> <% if comment.user.lion? %>
+              🦁
+            <% end %></b> <span><%= comment.content %></span></p>
            <p id="time_ago"><%= time_ago_in_words(comment.created_at) %> <% if comment.user == current_user %>
             <%= link_to edit_template_template_comment_path(@template, comment, anchor: "update_comment") do %> Edit <% end %>
            <% end %></p>
@@ -237,7 +237,8 @@
      <p style="margin-top: 70px"><b> Explore the wild 🦒</b></p>
      <p style="margin-top: -20px"><span>Browse Web3 projects</span></p>
      <hr style="color: #E3E3E4;">
-
+     <a href="https://discord.com/channels/927742963323379722/955922265248264312" target="_blank" class="button-sub4" style="padding: 10px;">Suggest a use-case</a>
+     <hr>
 
       <% @templates.each do |template| %>
           <% if template.user.present? && template.category == @template.category %>
