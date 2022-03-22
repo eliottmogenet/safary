@@ -86,7 +86,7 @@
        </div>
       <% elsif @template.category == "token" %>
         <div class="chart">
-          <%= column_chart @data_token, colors: ["#D25C5C"], points: false %>
+          <%= area_chart @data_token, colors: ["#D25C5C"], points: false %>
         </div>
      <% elsif @template.category == "twitter" %>
         <div class="chart">
