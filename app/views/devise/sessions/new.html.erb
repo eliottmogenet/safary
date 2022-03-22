@@ -22,8 +22,14 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Log in", class: "button-sub" %>
+    <%= f.button :submit, "Log in with email", class: "button-sub" %>
   </div>
+<% end %>
+<br>
+<%= link_to "/users/auth/discord", method: :post do %>
+  <button class="button-sub2">
+      Log in with Discord <i class="fab fa-discord"></i>
+  </button>
 <% end %>
 <hr>
 <p>Don't have an account yet?</p>
