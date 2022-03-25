@@ -169,7 +169,7 @@
     </div>
 <div class="collapse" id="collapseExample">
     <div class="adventurers-div">
-      <% User.where(accepted: false).drop(20).each do |user| %>
+      <% User.where(demo: false).drop(20).each do |user| %>
         <p>
           <% if user.photo.attached? %>
            <%= cl_image_tag user.photo.key, width: 30, style: "border-radius: 100%;" %>

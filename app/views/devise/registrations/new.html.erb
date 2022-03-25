@@ -5,7 +5,7 @@
 <div class="container" id="sign-up-container">
 
   <h2>Join the Expedition #02</h2>
-  <p>The Expedition is starting soon...</p>
+  <p>The Expedition is starting...</p>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -13,7 +13,7 @@
   <div class="form-inputs">
     <div style="display: flex; justify-content: center; margin-top: 30px; padding-top: -50px">
     </div>
-    <%= f.input :photo, label: "Complete your profile photo and info", as: :file %>
+    <%= f.input :photo, label: "Complete your profile photo (square) and info", as: :file %>
     <%= f.input :pseudo, label: false, placeholder: "Pseudo*" %>
     <%= f.input :job_title, label: false, placeholder: "Job title @company*" %>
     <%= f.input :email,
