@@ -49,21 +49,36 @@
 
   <h1 style="font-weight: 900">The Expedition #0<%= Onboarding.first.batch_number %> is starting 🎉</h1>
     <h4>The safary is open </h4>
+    <h4>Hurry up! Access to Safary will close soon</h4>
+
 
     <p>Start the tour and join the Web3 growth adventure</p>
 
   <%= link_to leaderboards_path do %>
     <button class="button-sub3">Start the tour 🚌</button>
   <% end %>
+  <br>
+  <span>(Join our Discord at the end of the tour)</span>
 
   </div>
 
   <% else %>
 
+  <div>
   <h1 style="font-weight: 900">Welcome to the Expedition #0<%= Onboarding.first.batch_number %></h1>
-    <h4>The next departure will be in <h4 id="demo" style="font-weight: bolder;"></h4></h4>
+    <h4>Access to Safary will close in <h4 id="demo" style="font-weight: bolder;"></h4></h4>
 
-    <p>Complete the checklist to get ready before departure</p>
+    <p>Complete the checklist below to get access & start the tour 🚌 👇</p>
+
+     <div style="text-align: center;">
+        <%= link_to leaderboards_path do %>
+          <button class="button-sub5" id="start">Start the tour 🚌</button>
+         <% end %>
+         <br>
+         <span>(Join our Discord at the end of the tour)</span>
+      </div>
+
+  </div>
 
   <% end %>
 
@@ -74,7 +89,7 @@
     <p style="color: #687086; font-size: 13px">Meet all the adventurers travelling with you</p>
 
     <div class="adventurers-div">
-      <% User.where.not(accepted: false, demo: true, pseudo: 'Template').first(20).each do |user| %>
+      <% User.where.not(demo: true, pseudo: 'Template').first(20).each do |user| %>
         <p>
           <% if user.photo.attached? %>
            <%= cl_image_tag user.photo.key, width: 30, height: 30, :crop=>"fill", style: "border-radius: 100%;" %>
@@ -83,7 +98,7 @@
           <% end %><br>
         @<%= user.pseudo %></p>
       <% end %>
-        <% if User.where.not(accepted: false, demo: true, pseudo: 'Template').count > 20  %>
+        <% if User.where.not(demo: true, pseudo: 'Template').count > 20  %>
      <p style="color: #687086; font-size: 13px">
         <a data-toggle="collapse" href="#collapseExample" style="color: #687086;" role="button" aria-expanded="false" aria-controls="collapseExample">
           See all
@@ -93,7 +108,7 @@
     </div>
 <div class="collapse" id="collapseExample">
     <div class="adventurers-div">
-      <% User.where(accepted: true, demo: false).drop(20).each do |user| %>
+      <% User.where(demo: false).drop(20).each do |user| %>
         <p>
           <% if user.photo.attached? %>
            <%= cl_image_tag user.photo.key, width: 30, height: 30, :crop=>"fill", style: "border-radius: 100%;" %>
@@ -135,7 +150,7 @@
     <p style="color: #687086; font-size: 13px">Meet all the adventurers travelling with you</p>
 
     <div class="adventurers-div">
-      <% User.where(accepted: false, demo: false).first(20).each do |user| %>
+      <% User.where(demo: false).first(20).each do |user| %>
         <p>
           <% if user.photo.attached? %>
            <%= cl_image_tag user.photo.key, width: 30, height: 30, :crop=>"fill", style: "border-radius: 100%;" %>
@@ -144,7 +159,7 @@
           <% end %><br>
         @<%= user.pseudo %></p>
       <% end %>
-        <% if User.where(accepted: false, demo: false).count > 20  %>
+        <% if User.where(demo: false).count > 20  %>
      <p style="color: #687086; font-size: 13px">
         <a data-toggle="collapse" href="#collapseExample" style="color: #687086;" role="button" aria-expanded="false" aria-controls="collapseExample">
           See all
@@ -171,7 +186,7 @@
        <div style="margin-top: 40px;">
         <h5>
          <input type="checkbox" id="input1" name="scales">
-         <label for="scales" id="label1">Watch the Welcome video 🎬</label>
+         <label for="scales" id="label1">1) Watch the Welcome video 🎬</label>
          <br>
          <%= video_tag("welcome_video.mp4", width: '700', controls: true, style: "margin-top: 20px;", poster: "screenshot.png", id: "video") %>
         </h5>
@@ -180,39 +195,29 @@
       <div style="margin-top: 20px">
         <h5>
          <input type="checkbox" id="input3" name="scales">
-         <label for="scales" id="label3">Add Safary calendar to follow events 📅</label> <a href="https://calendar.google.com/calendar/u/0?cid=Y18ydGFhY250OGRpdjk5NDZ0dGFkb2pvaHBmMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">+Add Calendar</a>
+         <label for="scales" id="label3">2) Add Safary calendar to follow events 📅</label> <a href="https://calendar.google.com/calendar/u/0?cid=Y18ydGFhY250OGRpdjk5NDZ0dGFkb2pvaHBmMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">+Add Calendar</a>
         </h5>
+        <span>- Batch 2 Welcome call will take place on <b> Tuesday March 29th - 9AM PST (Discord) </b></span><br>
+        <span>- "Case studies" are weekly events opened to everyone in the community.
+        We invite a Web3 growth expert to share with us its metrics & tactics. </span><br>
+        <span>- Lions call are private calls only opened to Lions  🦁 </span>
       </div>
       <hr>
       <div style="margin-top: 20px">
         <h5>
          <input type="checkbox" id="input4" name="scales">
-         <label for="scales" id="label4">Update your Twitter account 🐦</label>
+         <label for="scales" id="label4">3) Update your Twitter account 🐦</label>
 
           <%= image_tag("twitter_photo.png", :width => 300) %>
         </h5>
       </div>
       <hr>
-
-      <div style="margin-top: 20px">
-        <h5>
-         <input type="checkbox" id="input2" name="scales" disabled>
-         <label for="scales" style="color: #C9CACB">Join Safary Web3 growth learning platform (Day of departure)</label>
-        </h5>
-      </div>
-      <hr>
-      <div style="margin-top: 20px">
-        <h5>
-         <input type="checkbox" id="input2" name="scales" disabled>
-         <label for="scales" style="color: #C9CACB">Join Safary Discord server <i class="fab fa-discord"></i> (Day of departure)</label>
-        </h5>
-      </div>
-      <hr>
-      <div style="margin-top: 20px">
-        <h5>
-         <input type="checkbox" id="input2" name="scales" disabled>
-         <label for="scales" style="color: #C9CACB">Share your first comment about Web3 Growth (Day of departure)</label>
-        </h5>
+      <div style="text-align: center;">
+        <%= link_to leaderboards_path do %>
+          <button class="button-sub5" id="start2">Start the tour 🚌</button>
+         <% end %>
+         <br>
+         <span>Join our Discord at the end of the tour</span>
       </div>
       </div>
     </div>
@@ -249,12 +254,15 @@
 
 
 <script>
+
+
   const input1 = document.getElementById("input1");
   const label1 = document.getElementById("label1");
+  const button = document.getElementById("start");
+  const button2 = document.getElementById("start2");
     input1.addEventListener("click", (event) => {
   console.log(event);
   label1.classList.toggle("raye");
-  input1.classList.toggle("disabled");
 });
 
   const input3 = document.getElementById("input3");
@@ -269,10 +277,14 @@
     input4.addEventListener("click", (event) => {
   console.log(event);
   label4.classList.toggle("raye");
+  button.classList.remove("button-sub5");
+  button.classList.add("button-sub3");
+  button2.classList.remove("button-sub5");
+  button2.classList.add("button-sub3");
 });
 
 // Set the date we're counting down to
-var countDownDate = new Date("Mar 28, 2022 9:00:00").getTime();
+var countDownDate = new Date("Mar 29, 2022 10:00:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {

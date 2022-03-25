@@ -127,9 +127,11 @@ a {
 #performers {
   display: flex;
   justify-content: start;
-  overflow: hidden;
   position: fixed;
+  overflow: scroll;
+  background-color: white;
   height: 100vh;
+  width: 100%;
   top: 0;
 }
 
@@ -484,16 +486,38 @@ span {
 }
 
 .button-sub3 {
+  margin-top: 40px;
   margin-bottom: 40px;
   background-color: #D25C5C;
   color: white;
-  width: 200px;
+  width: 250px;
   border-radius: 5px;
   border: none;
   outline: none;
-  height: 50px;
+  height: 70px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
 }
+
+
+.button-sub5 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: #E3E3E4;;
+  color: white;
+  width: 250px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  height: 70px;
+}
+
+.button-sub5:hover {
+  cursor: none;
+}
+
+
+
 
 .button-sub4 {
   margin-bottom: 40px;

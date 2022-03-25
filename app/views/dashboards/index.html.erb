@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
-<% if current_user.accepted? %>
 
 <body>
 
@@ -43,17 +42,18 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <%= link_to "https://discord.com/channels/927742963323379722/927743768143212545", target: '_blank' do  %>
+        <% if current_user.onboarded? %>
+          <%= link_to "https://discord.com/channels/927742963323379722/927743768143212545", target: '_blank' do  %>
             <i class="fab fa-discord" id="icon" style="margin-right: 20px; margin-top: 5px;"></i>
+          <% end %>
       <% end %>
-
+        <a data-toggle="modal" data-target="#photo-modal" style="cursor: pointer;">
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
           <% else %>
-            <a data-toggle="modal" data-target="#photo-modal">
               <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
-            </a>
           <% end %>
+         </a>
             <%= link_to destroy_user_session_path, method: :delete do  %>
               <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
             <% end %>
@@ -69,7 +69,7 @@
   <strong>🚌 Welcome in your Dashboard !</strong> Here, you will be able to follow your growth metrics of your community
    <%= link_to onboarded_path, method: :post, target: "_blank" do %>
       <button type="button" class="button-alert">
-      <span style="color: black; font-weight: 900; font-size: 15px; margin-bottom: -10px">Join Discord to finish tour </span>
+      <span style="color: black; font-weight: 900; font-size: 15px; margin-bottom: -10px">Join Discord to finish tour <i class="fab fa-discord" style="margin-right: 20px; margin-top: 5px;"></i></span>
     </button>
   <% end %>
 </div>
@@ -99,12 +99,6 @@
 </div>
 </body>
 
-<% else %>
-
-<p>You have to wait the start of the expedition 😉</p>
-
-<% end %>
-
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -131,7 +125,7 @@
 
       <br>
       <br>
-      <h5>Step 2 : SynchroniZe your data </h5>
+      <h5>Step 2 : Synchronize your data </h5>
       <p><span> Click on the button below to synchronise your data & see your graph 📈.</span></p>
 
       <%= link_to refresh_path, method: :post do %>
@@ -143,6 +137,26 @@
       <br>
       <h6>You are all set! Happy tracking 🤘 </h6>
       <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="photo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change your profile photo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% if current_user.present? %>
+         <div class="modal-body">
+          <%= render template: "devise/registrations/edit" %>
+        </div>
+        <% end %>
       </div>
     </div>
   </div>

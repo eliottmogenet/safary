@@ -39,49 +39,49 @@ user1 =  User.create(email: "template@gmail.com", password: "template@gmail.com"
 #user1.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
 user1.save!
 
-#user2 =  User.create(email: "test2@gmail.com", password: "test2@gmail.com", pseudo: "web3girl", lion: true, job_title: "Head of Growth @Ledger")
-#user2.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
-#user2.save!
+user2 =  User.create(email: "test2@gmail.com", password: "test2@gmail.com", pseudo: "web3girl", lion: true, job_title: "Head of Growth @Ledger")
+user2.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
+user2.save!
 
-#user3 =  User.create(email: "test3@gmail.com", password: "test3@gmail.com", pseudo: "nicolas", lion: true, job_title: "VP Marketing Web3")
-#user3.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/nicolas.png')), filename: 'nicolas.png')
-#user3.save!
+user3 =  User.create(email: "test3@gmail.com", password: "test3@gmail.com", pseudo: "nicolas", lion: true, job_title: "VP Marketing Web3")
+user3.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/nicolas.png')), filename: 'nicolas.png')
+user3.save!
 
-#user4 =  User.create(email: "test4@gmail.com", password: "test4@gmail.com", pseudo: "Jack")
-#user4.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
-#user4.save!
+user4 =  User.create(email: "test4@gmail.com", password: "test4@gmail.com", pseudo: "Jack")
+user4.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
+user4.save!
 
-#user5 =  User.create(email: "test5@gmail.com", password: "test5@gmail.com", pseudo: "coco")
-#user5.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
-#user5.save!
+user5 =  User.create(email: "test5@gmail.com", password: "test5@gmail.com", pseudo: "coco")
+user5.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
+user5.save!
 
-#user6 =  User.create(email: "test6@gmail.com", password: "test6@gmail.com", pseudo: "salimon", lion: true)
-#user6.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/peterpan.png')), filename: 'peterpan.png')
-#user6.save!
+user6 =  User.create(email: "test6@gmail.com", password: "test6@gmail.com", pseudo: "salimon", lion: true)
+user6.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/peterpan.png')), filename: 'peterpan.png')
+user6.save!
 
-#user7 =  User.create(email: "test7@gmail.com", password: "test7@gmail.com", pseudo: "elium", xp: 140)
-#user7.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/elium.png')), filename: 'elium.png')
-#user7.save!
+user7 =  User.create(email: "test7@gmail.com", password: "test7@gmail.com", pseudo: "elium", xp: 140)
+user7.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/elium.png')), filename: 'elium.png')
+user7.save!
 
-#user8 =  User.create(email: "test8@gmail.com", password: "test8@gmail.com", pseudo: "jkey", xp: 35)
-#user8.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jkey.png')), filename: 'jkey.png')
-#user8.save!
+user8 =  User.create(email: "test8@gmail.com", password: "test8@gmail.com", pseudo: "jkey", xp: 35)
+user8.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jkey.png')), filename: 'jkey.png')
+user8.save!
 
-#user9 =  User.create(email: "test9@gmail.com", password: "test9@gmail.com", pseudo: "sonny",  xp: 368)
-#user9.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/sonny.png')), filename: 'sonny.png')
-#user9.save!
+user9 =  User.create(email: "test9@gmail.com", password: "test9@gmail.com", pseudo: "sonny",  xp: 368)
+user9.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/sonny.png')), filename: 'sonny.png')
+user9.save!
 
-#user10 =  User.create(email: "test10@gmail.com", password: "test10@gmail.com", pseudo: "mathis", xp: 45)
-#user10.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
-#user10.save!
+user10 =  User.create(email: "test10@gmail.com", password: "test10@gmail.com", pseudo: "mathis", xp: 45)
+user10.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
+user10.save!
 
-#user13 =  User.create(email: "test13@gmail.com", password: "test13@gmail.com", pseudo: "Mirror", demo: true)
-#user13.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/mirror.png')), filename: 'mirror.png')
-#user13.save!
+user13 =  User.create(email: "test13@gmail.com", password: "test13@gmail.com", pseudo: "Mirror", demo: true)
+user13.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/mirror.png')), filename: 'mirror.png')
+user13.save!
 
-#user14 =  User.create(email: "test14@gmail.com", password: "test14@gmail.com", pseudo: "RabbitHole", demo: true)
-#user14.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/rabbithole.png')), filename: 'rabbithole.png')
-#user14.save!
+user14 =  User.create(email: "test14@gmail.com", password: "test14@gmail.com", pseudo: "RabbitHole", demo: true)
+user14.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/rabbithole.png')), filename: 'rabbithole.png')
+user14.save!
 
 
 p "creating guilds"
@@ -101,6 +101,35 @@ p "creating templates"
 template1 = user1.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve", category: "audience")
 template1.save!
 
+template2 = user2.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve", category: "audience")
+template2.save!
+
+template3 = user3.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve", category: "audience")
+template3.save!
+
+template4 = user4.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve", category: "audience")
+template4.save!
+
+template5 = user5.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve", category: "audience")
+template5.save!
+
+template6 = user6.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve", category: "audience")
+template6.save!
+
+template7 = user7.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve", category: "audience")
+template7.save!
+
+template8 = user8.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve", category: "audience")
+template8.save!
+
+template9 = user9.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve", category: "audience")
+template9.save!
+
+template10 = user10.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve", category: "audience")
+template10.save!
+
+template13 = user13.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve", category: "audience")
+template13.save!
 #template2 = user14.templates.create(title: "Audiences comparison", description: "Compare your audiences to know where you need to improve", category: "audience")
 #template2.save!
 
