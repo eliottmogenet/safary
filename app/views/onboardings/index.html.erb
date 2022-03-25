@@ -71,9 +71,12 @@
     <p>Complete the checklist below to get access & start the tour 🚌 👇</p>
 
      <div style="text-align: center;">
-        <%= link_to leaderboards_path do %>
           <button class="button-sub5" id="start">Start the tour 🚌</button>
+
+        <%= link_to leaderboards_path do %>
+          <button class="button-sub3 disabling" id="start2">Start the tour 🚌</button>
          <% end %>
+
          <br>
          <span>(Join our Discord at the end of the tour)</span>
       </div>
@@ -213,11 +216,15 @@
       </div>
       <hr>
       <div style="text-align: center;">
+        <button class="button-sub5" id="start3">Start the tour 🚌</button>
+
         <%= link_to leaderboards_path do %>
-          <button class="button-sub5" id="start2">Start the tour 🚌</button>
+          <button class="button-sub3 disabling" id="start4">Start the tour 🚌</button>
          <% end %>
+
          <br>
-         <span>Join our Discord at the end of the tour</span>
+          <span>(Join our Discord at the end of the tour)</span>
+
       </div>
       </div>
     </div>
@@ -260,6 +267,8 @@
   const label1 = document.getElementById("label1");
   const button = document.getElementById("start");
   const button2 = document.getElementById("start2");
+  const button3 = document.getElementById("start3");
+  const button4 = document.getElementById("start4");
     input1.addEventListener("click", (event) => {
   console.log(event);
   label1.classList.toggle("raye");
@@ -277,10 +286,10 @@
     input4.addEventListener("click", (event) => {
   console.log(event);
   label4.classList.toggle("raye");
-  button.classList.remove("button-sub5");
-  button.classList.add("button-sub3");
-  button2.classList.remove("button-sub5");
-  button2.classList.add("button-sub3");
+  button.classList.add("disabling");
+  button2.classList.remove("disabling");
+  button3.classList.add("disabling");
+  button4.classList.remove("disabling");
 });
 
 // Set the date we're counting down to

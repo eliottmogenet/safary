@@ -510,10 +510,11 @@ span {
   border: none;
   outline: none;
   height: 70px;
+  cursor: not-allowed;
 }
 
 .button-sub5:hover {
-  cursor: none;
+  cursor: not-allowed;
 }
 
 
@@ -600,4 +601,8 @@ span {
 #mobile-container {
   padding-top: 100px;
   text-align: center;
+}
+
+.disabling {
+  display: none;
 }
