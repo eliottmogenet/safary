@@ -7,13 +7,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-<% if browser.device.mobile? %>
-  <div class="container" id="mobile-container">
-    <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
-    <p>The Savanna will be soon available on mobile.</p>
-    <p>Start your tour on Dekstop for now 🚌</p>
-  </div>
-<% else %>
 
 
 <body>
@@ -123,7 +116,7 @@
           </div>
       <% end %>
   </div>
-  <div class="alert alert-custom" role="alert" style="width: 100%; margin-top: 20px; margin-left: 20px; z-index: 0; padding-left: 170px;">
+  <div class="alert alert-custom" id="alert-red" role="alert" style="width: 100%; margin-top: 20px; margin-left: 20px; z-index: 0; padding-left: 170px;">
       <div class="alert-type"> Want to climb the ladder and become a Lion ? 🦁 Comment the growth templates to win XP.</div>
   </div>
   <div style="margin-bottom: 100px">
@@ -164,7 +157,6 @@
 
 </body>
 
-<% end %>
 
 <div class="modal fade" id="photo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -185,4 +177,33 @@
     </div>
   </div>
 </div>
+
+<style>
+
+
+    @media (max-width: 600px) {
+    .navbar {
+      width: 90%;
+      height: 10%;
+    }
+
+    .alert-warning {
+      height: 15%;
+      padding-bottom: -20%
+    }
+
+    #templates-container {
+    padding-top: 50%;
+    }
+
+    .alert-type {
+      text-align: center;
+    }
+
+    #alert-red {
+      padding-left: 0px !important;
+    }
+    }
+</style>
+
 

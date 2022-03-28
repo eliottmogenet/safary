@@ -66,7 +66,7 @@
 <% if current_user.onboarded == true %>
 <% else %>
 <div class="alert-fixed alert-warning alert-dismissible fade show" style="text-align: center;" role="alert">
-  <strong>🚌 Welcome in your Dashboard !</strong> Here, you will be able to follow your growth metrics of your community
+  <strong>🚌 Welcome in your Dashboard !</strong> Here, you will be able to follow your growth metrics of your community.
    <%= link_to onboarded_path, method: :post, target: "_blank" do %>
       <button type="button" class="button-alert">
       <span style="color: black; font-weight: 900; font-size: 15px; margin-bottom: -10px">Join Discord to finish tour <i class="fab fa-discord" style="margin-right: 20px; margin-top: 5px;"></i></span>
@@ -77,13 +77,13 @@
 
 <h5 style="color:black;">My Dashboard</h5>
 <hr style="height: 1px; color:#687086; width: 1000px;">
-<p style="color:#687086">Welcome Home 🏕. Centralize and customize all your metrics here. Follow the health your community.</p>
+<p style="color:#687086">Welcome Home 🏕. Centralize and customize all your metrics here. Follow the health your community.(available on desktop only)</p>
 
 <div>
 
   <% if current_user.guilds.empty? %>
     <button class="button-type" data-toggle="modal" data-target="#exampleModal"  style="position: absolute; margin-left: 350px" >Plug your data 🔌</button>
-    <%= image_tag("dashboard.png", :width => 850, style: "margin-top: 20px;") %>
+    <%= image_tag("dashboard.png", :width => 850, style: "margin-top: 20px;", class: "dashboard-img") %>
 
   <% else %>
     <div class="chart">
@@ -161,5 +161,50 @@
     </div>
   </div>
 </div>
+
+<style>
+
+
+    @media (max-width: 600px) {
+    .navbar {
+      width: 90%;
+      height: 10%;
+    }
+
+    #templates-container2 {
+      margin-left: 0px !important;
+    }
+
+    .alert-warning {
+      height: 18%;
+    }
+
+    #templates-container {
+    padding-top: 50%;
+    }
+
+    .alert-type {
+      text-align: center;
+    }
+
+    #alert-red {
+      padding-left: 0px !important;
+    }
+
+    .template-cards {
+      width: 100%;
+      grid-template-columns: 1fr;
+      padding-left: 5%;
+    }
+
+    .button-type {
+      display: none;
+    }
+
+    .dashboard-img {
+      width: 100%;
+    }
+    }
+</style>
 
 
