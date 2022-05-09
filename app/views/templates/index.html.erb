@@ -1,11 +1,14 @@
-<script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+<head>
+  <script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
 
 <% if current_user.accepted? %>
+
 
 <body>
 
@@ -17,7 +20,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <ul class="navbar-nav me-auto">
+     <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
           <li class="nav-item">
             <%= link_to leaderboards_path do %>
@@ -25,13 +28,16 @@
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "Community", leaderboards_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Learn", templates_path, class: "nav-link" %>
+            <%= link_to "Expeditions", expeditions_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "My dashboard", dashboards_path, class: "nav-link" %>
+            <%= link_to "Dashboards", dashboards_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Case studies", templates_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Network", leaderboards_path, class: "nav-link" %>
           </li>
         <%# else %>
           <!--li class="nav-item"-->
@@ -41,272 +47,145 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <% if current_user.onboarded? %>
-          <%= link_to "https://discord.com/channels/927742963323379722/927743768143212545", target: '_blank' do  %>
-            <i class="fab fa-discord" id="icon" style="margin-right: 20px; margin-top: 5px;"></i>
-          <% end %>
-      <% end %>
-       <a data-toggle="modal" data-target="#photo-modal" style="cursor: pointer;">
-          <% if current_user.photo.attached? %>
-             <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
-          <% else %>
-              <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
-          <% end %>
-          </a>
             <%= link_to destroy_user_session_path, method: :delete do  %>
               <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
             <% end %>
     </div>
   </div>
 </div>
-<% if current_user.onboarded == true %>
-<% else %>
-<div class="alert-fixed alert-warning alert-dismissible fade show" style="text-align: center;" role="alert">
-  <strong>🚌 Welcome to the Savana !</strong> Here you can learn the Web3 growth process: analyze data, comment on metrics, and propose tactics. ⚒
-    <%= link_to dashboards_path do %>
-    <button type="button" class="button-alert">
-    <span style="color: black; font-weight: 900; font-size: 15px; margin-bottom: -10px">Next</span>
-  </button>
-  <% end %>
-</div>
+
+
+
+<div class="container-fluid" id="templates-container2">
+<%= link_to dashboards_path do  %>
+  <p style="margin-left: 250px; color: #687086; font-size: 14px">< Back to dashboards</p>
 <% end %>
+<h3 style="color:black; font-weight: 700; margin-bottom: 40px; margin-left: 250px">🦓 Templates</h3>
 
-<div class="container" id="templates-container">
-
-            <ul class="nav">
-              <li class="nav-item">
-                <a class="nav-link active" id="pills-contact-tab1" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="false">All</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " id="pills-contact-tab1" data-toggle="pill" href="#pills-acquisition" role="tab" aria-controls="pills-acquisition" aria-selected="false">Acquisition</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " id="pills-contact-tab1" data-toggle="pill" href="#pills-activation" role="tab" aria-controls="pills-activation" aria-selected="false">Engagement</a>
-              </li>
-              <li>
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-custom" role="tab" aria-controls="pills-custom" aria-selected="false">NFT</a>
-              </li>
-              <li>
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-gaming" role="tab" aria-controls="pills-gaming" aria-selected="false">Gaming</a>
-              </li>
-              <li>
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-tokens" role="tab" aria-controls="pills-tokens" aria-selected="false">Tokens</a>
-              </li>
-            </ul>
-<hr style="height: 0px;">
+<ul class="nav nav-tabs">
+</ul>
 
 
-<div class="tab-content" id="pills-tabContent">
-              <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-home-tab">
-              <p style="color: #687086; margin-bottom: 40px">Welcome to the Savana. Pick a template to start your adventure. </p>
-                  <div class="template-cards">
-                  <%= link_to guild_path(Guild.first) do %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>Discord user <br> acquisition</h5><p class="available">Available</p>
-                        <p class="available" style="margin-left: 5px; color: black; background-color: #12877E">🔌 Live</p>
-                      </div>
-                        <p>Learn how to grow your Discord members.</p>
-                        <%= image_tag("discord-acquisition.png", :width => 200, style: "margin-top: 5px; margin-left: 15px") %>
-                    </div>
-                   <% end %>
-                  <%= link_to template_path(@twitter) do %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>Twitter <br> followers acquisition <br></h5><p class="available">Available</p>
-                      </div>
-                      <p>Learn how to grow your Twitter audience.</p>
-                      <%= image_tag("twitter.png", :width => 200, style: "margin-top: 20px; margin-left: 15px") %>
-                    </div>
-                  <% end %>
-                   <%= link_to template_path(@audience) do %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>Audience <br> comparison </h5><p class="available">Available</p>
-                      </div>
-                      <p>Compare your audience across Twitter, Discord, and on-chain.</p>
-                      <%= image_tag("audience-comparison.png", :width => 200, style: "margin-top: 30px; margin-left: 15px") %>
-                    </div>
-                  <% end %>
-                  <%= link_to template_path(@token) do %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>Token holder acquisition </h5><p class="available">Available</p>
-                      </div>
-                      <p>Learn how to successfully manage Airdrops and grow your tokenised community.</p>
-                      <%= image_tag("airdrops.png", :width => 170, style: "margin-top: 5px; margin-left: 20px") %>
-                    </div>
-                  <% end %>
-                   <%= link_to template_path(@nft) do %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>NFT sales </h5><p class="available">Available</p>
-                      </div>
-                      <p>Learn how to grow NFT sales with the best OpenSea NFT Collections </p>
-                      <%= image_tag("NFT.png", :width => 200, style: "margin-top: 15px; margin-left: 20px") %>
-                    </div>
-                  <% end %>
-                  <div class="template3">
-                  </div>
-                   <div class="template2">
-                      <div class="title-template">
-                        <h5>Content <br> strategy</h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
-                      </div>
-                      <p>Learn how to grow your community with content</p>
-                      <%= image_tag("content.png", :width => 150, style: "margin-top: 5px; margin-left: 5px") %>
-                    </div>
-                    <div class="template2">
-                      <div class="title-template">
-                        <h5>Discord <br>power users</h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
-                      </div>
-                      <p>Track engagement over time in your Discord and isolate the most active members</p>
-                      <%= image_tag("power-user.png", :width => 150, style: "margin-top: 5px; margin-left: 40px") %>
-                    </div>
-                    <div class="template2">
-                      <div class="title-template">
-                        <h5>Discord <br>activity times</h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
-                      </div>
-                      <p>Figure out the best times to post in your Discord</p>
-                      <%= image_tag("calendar.png", :width => 210, style: "margin-top: 20px; margin-left: 10px") %>
-                    </div>
-                    <div class="template2">
-                      <div class="title-template">
-                        <h5>Wallet <br> connection <br></h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
-                      </div>
-                      <p>See how your audience connects to web3.</p>
-                      <%= image_tag("token-acquisition.png", :width => 160, style: "margin-top: -30px; margin-left: 35px") %>
-                    </div>
-                    <div class="template2">
-                      <div class="title-template">
-                        <h5>Onboarding <br> funnel <br>(On + off chain)</h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
-                      </div>
-                      <p>Understand where you lose users at each step</p>
-                      <%= image_tag("onboarding.png", :width => 180, style: "margin-top: -10px; margin-left: 35px") %>
-                    </div>
-                    <div class="template2">
-                      <div class="title-template">
-                        <h5>Daily active <br> wallets <br></h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
-                      </div>
-                      <p>Track retention of wallets in your app over time.</p>
-                      <%= image_tag("retention.png", :width => 220, style: "margin-left: 20px") %>
-                    </div>
-                    <div class="template2">
-                      <div class="title-template">
-                        <h5>Players <br> to buyers <br></h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
-                      </div>
-                      <p>Learn how to convert players in your games.</p>
-                      <%= image_tag("players.png", :width => 160, style: "margin-top: -25px; margin-left: 30px") %>
-                    </div>
-                    <div class="template2">
-                      <div class="title-template">
-                        <h5>Token holder segmentation </h5><p class="available" style="background-color: #C4C4C4; padding-left: 10px">Soon</p>
-                      </div>
-                      <p>Learn how to identify the most active token holders in your community.</p>
-                      <%= image_tag("coins.png", :width => 150, style: "margin-top: 5px; margin-left: 40px") %>
-                    </div>
-                  </div>
 
+<div style="margin-left: 250px; margin-top: 40px;">
 
-              </div>
-              <div class="tab-pane fade" id="pills-acquisition" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="template-cards">
-                  <%= link_to guild_path(Guild.first) do %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>Discord user <br> acquisition</h5><p class="available">Available</p>
-                        <p class="available" style="margin-left: 5px; color: black; background-color: #12877E">🔌 Live</p>
-                      </div>
-                        <p>Learn how to grow your Discord members.</p>
-                        <%= image_tag("discord-acquisition.png", :width => 200, style: "margin-top: 5px; margin-left: 15px") %>
-                    </div>
-                   <% end %>
-                <%= link_to template_path(@twitter) do %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>Twitter <br> followers acquisition <br></h5><p class="available">Available</p>
-                      </div>
-                      <p>Learn how to grow your Twitter audience.</p>
-                      <%= image_tag("twitter.png", :width => 200, style: "margin-top: 20px; margin-left: 15px") %>
-                    </div>
-                  <% end %>
-                <%= link_to template_path(@token) do %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>Token holder acquisition </h5><p class="available">Available</p>
-                      </div>
-                      <p>Learn how to successfully manage Airdrops and grow your tokenised community.</p>
-                      <%= image_tag("airdrops.png", :width => 170, style: "margin-top: 5px; margin-left: 20px") %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="pills-activation" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="template-cards">
-                  <%= link_to template_path(@audience) do %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>Audience <br> comparison </h5><p class="available">Available</p>
-                      </div>
-                      <p>Compare your audiences to know where you need to improve</p>
-                      <%= image_tag("audience-comparison.png", :width => 200, style: "margin-top: 30px; margin-left: 15px") %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="pills-custom" role="tabpanel" aria-labelledby="pills-home-tab">
-                 <div class="template-cards">
-                  <%= link_to template_path(@nft) do %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>NFT sales </h5><p class="available">Available</p>
-                      </div>
-                      <p>Learn how to sell your NFT over time with the best OpenSea NFT Collections </p>
-                      <%= image_tag("NFT.png", :width => 200, style: "margin-top: 15px; margin-left: 20px") %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="pills-gaming" role="tabpanel" aria-labelledby="pills-home-tab">
-              <div class="template-cards">
-                  <%= link_to template_path(@nft) do %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>NFT sales </h5><p class="available">Available</p>
-                      </div>
-                      <p>Learn how to sell your NFT over time with the best OpenSea NFT Collections </p>
-                      <%= image_tag("NFT.png", :width => 200, style: "margin-top: 15px; margin-left: 20px") %>
-                    </div>
-                  <% end %>
-                   <div class="template2">
-                      <div class="title-template">
-                        <h5>Players <br> to buyers <br></h5><p class="available" style="background-color: #C4C4C4; padding-left: 20px">Soon</p>
-                      </div>
-                      <p>Learn how to convert players in your games.</p>
-                      <%= image_tag("players.png", :width => 160, style: "margin-top: -25px; margin-left: 30px") %>
-                    </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="pills-tokens" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="template-cards">
-                  <%= link_to template_path(@token) do %>
-                    <div class="template">
-                      <div class="title-template">
-                        <h5>Token holder acquisition </h5><p class="available">Available</p>
-                      </div>
-                      <p>Learn how to successfully manage Airdrops and grow your tokenised community.</p>
-                      <%= image_tag("airdrops.png", :width => 170, style: "margin-top: 5px; margin-left: 20px") %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
+  <h6>Official templates</h6>
+  <div class="templates-list">
+    <div class="template-card">
+      <h6 style="font-weight: 900">Discord members acquisition</h6>
+      <p style="color: #687086; font-size: 12px;">Discord member growth over time</p>
+      <%= image_tag("discord-acquisition.png", :width => 150, style: "margin-left: 10px;") %>
+    </div>
+    <div class="template-card">
+      <h6 style="font-weight: 900">Daily active users (wallets)</h6>
+      <p style="color: #687086; font-size: 12px;">Wallet retention over time</p>
+      <%= image_tag("retention.png", :width => 150, style: "margin-top: 20px; margin-left: 5px") %>
 
+    </div>
+    <div class="template-card">
+      <h6 style="font-weight: 900;">Funnel <br> Discord > Dapp</h6>
+      <p style="color: #687086; font-size: 12px;">Do Discord members convert?</p>
+      <%= image_tag("onboarding.png", :width => 150, style: "margin-left: 10px") %>
+    </div>
+    <div class="template-card">
+       <h6 style="font-weight: 900;">Discord <br> power users</h6>
+       <p style="color: #687086; font-size: 12px;">The most active members in your Discord</p>
+         <%= image_tag("power-user.png", :width => 130, style: "margin-bottom: 5px; margin-left: 10px") %>
+    </div>
+    <div class="template-card">
+       <h6 style="font-weight: 900">Discord <br> activity times</h6>
+        <p style="color: #687086; font-size: 12px;">The best times to post in your Discord</p>
+        <%= image_tag("calendar.png", :width => 150, style: "margin-left: 5px") %>
+    </div>
+  </div>
+  <h6>Created by the community</h6>
+    <div class="templates-list">
+      <%= link_to dashboards4_path do %>
+    <div class="template-card">
+      <h6 style="font-weight: 900; color: black">User segmentation (Token) </h6>
+      <p style="color: #687086; font-size: 12px;">% of users token holders</p>
+      <%= image_tag("token-acquisition.png", :width => 110, style: "margin-top: -25px; margin-left: 20px") %>
+    </div>
+    <% end %>
+    <div class="template-card">
+      <h6 style="font-weight: 900">User segmentation (NFT) </h6>
+      <p style="color: #687086; font-size: 12px;">% of users NFT holders</p>
+      <%= image_tag("token-acquisition.png", :width => 110, style: "margin-top: -25px; margin-left: 20px") %>
+    </div>
+  </div>
 
 </div>
-</div>
-
 </body>
 
 
+<div class="modal fade" id="exampleModal-templates" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Discord Safary analytics </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <p><b> How to use Safary Analytics to track your Discord community ? </b></p>
+      <p><span> With Safary analytics, you will be able to track your acquisition on Discord over time.</span></p>
+
+      <h5>Step 1 : Add "Safary bot to your account" </h5>
+      <p><span> You have to be admin of a server if you want to track it.</span></p>
+      <a href="https://discord.com/api/oauth2/authorize?client_id=946557380886417478&permissions=8&scope=bot" target="_blank">
+        <button class="button-type" style="margin-left: 10px" >
+          Plug your Discord
+        </button>
+        </a>
+
+      <%= image_tag("safary-bot.png", :width => 350, style: "margin-top: 5px; margin-left: 15px") %>
+
+      <br>
+      <br>
+      <h5>Step 2 : Synchronize your data </h5>
+      <p><span> Click on the button below to synchronise your data & see your graph 📈.</span></p>
+
+      <%= link_to refresh_path, method: :post do %>
+        <button class="button-type" style="margin-left: 10px" >
+          Synchronize your data
+        </button>
+      <% end %>
+      <br>
+      <br>
+      <h6>You are all set! Happy tracking 🤘 </h6>
+      <br>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="photo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -336,11 +215,145 @@
 
 <style>
 
+.template-card {
+  padding: 20px;
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.template-card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all .2s ease-in-out;
+}
+
+.templates-list {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 950px;
+  grid-gap: 1rem;
+}
+
+
+#exampleModal-templates {
+  width: 1000px;
+}
+
+.modal-content {
+  width: 100%;
+}
+
+.users-metrics {
+  display: flex;
+  justify-content: start;
+}
+
+.filter {
+
+text-align: center;
+line-height: 32px;
+height: 32px;
+width: 140px;
+background: #FAFAFC;
+border: 1px solid #E1E1E2;
+border-radius: 5px;
+}
+
+.filter2 {
+
+text-align: center;
+line-height: 32px;
+height: 32px;
+width: 210px;
+background: #FAFAFC;
+border: 1px solid #E1E1E2;
+border-radius: 5px;
+}
+
+
+.edit-button {
+  margin-top: -10px;
+  margin-left: 20px;
+  background-color: white;
+  border: 1px solid #E3E3E4;
+  font-size: 14px;
+  color: #E3E3E4;
+  border-radius: 5px;
+  padding: 5px;
+  width: 60px;
+}
+
+
+.graph-title {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.graph-type {
+  padding: 25px;
+  width: 410px;
+  height: 180px;
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+
+.hidden {
+  padding: 25px;
+  width: 410px;
+  height: 400px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.hidden:hover {
+  cursor: pointer;
+  border: 2px dashed #687086;
+}
+
+.graph-type2 {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding: 25px;
+  width: 850px;
+  height: 400px;
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+
+.graph-type2:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.graph-type:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.active {
+  background-color: #FDFAED !important;
+  border-bottom-color: #FDFAED !important;
+}
+
+a {
+  font-size: 14px;
+}
 
     @media (max-width: 600px) {
     .navbar {
       width: 90%;
       height: 10%;
+    }
+
+    #templates-container2 {
+      margin-left: 0px !important;
     }
 
     .alert-warning {
@@ -364,6 +377,15 @@
       grid-template-columns: 1fr;
       padding-left: 5%;
     }
+
+    .button-type {
+      display: none;
+    }
+
+    .dashboard-img {
+      width: 100%;
+    }
     }
 </style>
+
 

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
    get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-
+  resources :expeditions
   resources :guilds do
     resources :guild_comments
   end
@@ -25,7 +25,10 @@ Rails.application.routes.draw do
   resources :leaderboards
   resources :templates
   get '/audiences/:id', :to => 'templates#audiences', :as => "audiences"
-  get '/tokens/:id', :to => 'templates#tokens', :as => "tokens"
+  get '/dashboards1', :to => 'dashboards#dashboards1', :as => "dashboards1"
+  get '/dashboards2', :to => 'dashboards#dashboards2', :as => "dashboards2"
+  get '/dashboards3', :to => 'dashboards#dashboards3', :as => "dashboards3"
+  get '/dashboards4', :to => 'dashboards#dashboards4', :as => "dashboards4"
   get '/nft/:id', :to => 'templates#nft', :as => "nft"
   resources :dashboards
   resources :projects

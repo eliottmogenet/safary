@@ -1,3 +1,4 @@
+
 <head>
   <script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -61,10 +62,11 @@
                           <option value="2"> ⛓ Wallets </option>
                           <option value="3"> 💵 Transactions </option></select></p>
   </div>
+  <%= link_to dashboards3_path do %>
   <div class="button-validate">
     Validate
-
   </div>
+  <% end %>
 </div>
 
 
@@ -169,15 +171,17 @@
       <div class="graph-title">
         <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Discord members over time</h6>
         <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
-        <button class="edit-button">
-          Edit
+        <%= link_to dashboards2_path do %>
+        <button class="edit-button1">
+          Connect 🔌
         </button>
+        <% end %>
       </div>
       <div class="filter2">
         <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Within the last 12 months </p>
       </div>
       <div>
-        <%= area_chart @data, colors: ["#D25C5C"], points: false, width: "800px" %>
+        <%= image_tag("DUOT.png", :width => 800, style: "margin-top: 30px;") %>
       </div>
     </div>
   </div>
@@ -195,28 +199,6 @@
       </div>
       <%= image_tag("MAU.png", :width => 800, style: "margin-top: 30px;") %>
     </div>
-  </div>
-  <div class="users-metrics">
-    <div class="hidden-real" style="margin-left: 25px">
-      <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">User segmentation</h6>
-        <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
-        <button class="edit-button">
-          Edit
-        </button>
-      </div>
-      <div class="filter2">
-        <p style="color: #9F9F9F; font-size: 14px"><i class="fa-solid fa-user"></i> Token holders ERC 20 T/F </p>
-        <div class="pie" style="margin-left: 30px;" data-toggle="modal" data-target="#exampleModal-templates">
-          <%= pie_chart User.group(:demo).count, colors: ["#E3E3E4", "#D25C5C"] %>
-        </div>
-      </div>
-
-    </div>
-    <%= link_to templates_path do %>
-    <div class="hidden" style="margin-left: 25px">
-    </div>
-    <% end %>
   </div>
 </div>
 
@@ -352,16 +334,39 @@
   font-size: 12px;
 }
 
+.edit-button1 {
+  margin-top: -10px;
+  margin-left: 340px;
+  background-color: black;
+  border: none;
+  font-size: 14px;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  width: 90px;
+}
+
+.edit-button1:hover {
+  background-color: #D25C5C;
+}
+
+
+
 .button-validate {
   margin-top: 20px;
   width: 95%;
   height: 50px;
-  background: #D25C5C;
+  background: black;
   color: white;
   border-radius: 5px;
   text-align: center;
   padding: 10px;
   font-weight: 700;
+}
+
+.button-validate:hover {
+  background: #D25C5C;
+
 }
 
 .appeareance-div {

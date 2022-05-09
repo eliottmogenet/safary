@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_20_174818) do
+ActiveRecord::Schema.define(version: 2022_05_07_204718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,13 @@ ActiveRecord::Schema.define(version: 2022_03_20_174818) do
     t.string "discriminator"
   end
 
+  create_table "expeditions", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.text "description"
+  end
+
   create_table "guild_comments", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -133,6 +140,11 @@ ActiveRecord::Schema.define(version: 2022_03_20_174818) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "batch_number"
     t.datetime "deadline"
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "template_comments", force: :cascade do |t|
