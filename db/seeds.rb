@@ -111,21 +111,9 @@ p "creating dashboards"
 p "creating dashboards"
 
 
-dashboard1 = Dashboard.create(name: "Uniswap growth", project_id: project1.id)
-dashboard1.save!
-
-dashboard2 = Dashboard.create(name: "Uniswap community", project_id: project1.id)
-dashboard2.save!
-
 
 p "creating dashboard_users"
 
-dashboards_user1 = DashboardUser.create(dashboard_id: dashboard1.id , user_id: user1.id )
-dashboard1.save!
-
-
-dashboards_user2 = DashboardUser.create(dashboard_id: dashboard2.id , user_id: user2.id)
-dashboard2.save!
 
 
 p "creating guilds"

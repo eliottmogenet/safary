@@ -4,13 +4,14 @@ class OnboardingsController < ApplicationController
     if params[:query].present?
       @projects = Project.where("name ILIKE ?", "%#{params[:query]}%")
     else
-      @projects = Project.all
+      @projects = Project.all.order('name ASC')
     end
   end
 
   def founder
     current_user.user_category = "founder"
     current_user.save
+    current_user.dashboards.create!
 
     redirect_to onboardings_path
   end
@@ -18,6 +19,8 @@ class OnboardingsController < ApplicationController
   def web2
     current_user.user_category = "web2"
     current_user.save
+    current_user.dashboards.create!
+
 
     redirect_to onboarding2_path
   end
@@ -25,6 +28,7 @@ class OnboardingsController < ApplicationController
   def vc
     current_user.user_category = "vc"
     current_user.save
+    current_user.dashboards.create!
 
     redirect_to onboarding2_path
   end

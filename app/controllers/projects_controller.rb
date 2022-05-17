@@ -5,6 +5,11 @@ class ProjectsController < ApplicationController
     @event = Event.last
   end
 
+  def show
+    @project = Project.find(params[:id])
+    @guild = @project.users.first.guilds.first
+  end
+
   def new
     @project = Project.new
   end

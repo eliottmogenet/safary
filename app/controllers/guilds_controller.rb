@@ -15,7 +15,7 @@ class GuildsController < ApplicationController
   end
 
   def refresh
-    @guild = Guild.order("updated_at").last
+    @guild = Guild.order("created_at").last
     @guild.user = current_user
     @guild.save!
 

@@ -21,11 +21,13 @@ class DashboardsController < ApplicationController
   end
 
   def show
-      @guild = current_user.guilds.first
+
+    if current_user.guilds.present?
+
+     @guild = current_user.guilds.first
 
       @count = @guild.guild_users.count
 
-    if current_user.guilds.present?
           @data = @guild.guild_users.group_by_week(:join_at).count
           accumulator = 0
           @data.transform_values! do |val|
