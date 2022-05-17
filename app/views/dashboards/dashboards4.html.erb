@@ -12,8 +12,6 @@
 
 <body>
 
-
-
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
 
@@ -63,7 +61,7 @@
 
 <div class="container-fluid" id="templates-container2">
 
-<h3 style="color:black; font-weight: 700; margin-bottom: 40px; margin-left: 250px">📈 Coinvise growth</h3>
+<h3 style="color:black; font-weight: 700; margin-bottom: 40px; margin-left: 250px">📈 Coinvise dashboards</h3>
 
 <ul class="nav nav-tabs">
   <li class="nav-item" style="margin-left: 250px">
@@ -80,57 +78,33 @@
   <div class="users-metrics">
     <div class="graph-type">
       <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Total Wallets</h6>
+        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Channel of my users</h6>
         <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
-        <button class="edit-button">
-          Edit
-        </button>
       </div>
       <div class="filter">
         <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Since the start</p>
       </div>
       <div>
-        <h6 style="font-weight: 700; font-size: 25px; line-height: 22px; margin-top: 20px; color: #E1E1E2"> 2300</h6>
+        <%= image_tag("users-channels.png", :width => 350, style: "margin-top: 30px;") %>
       </div>
     </div>
 
     <div class="graph-type" style="margin-left: 20px">
       <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Discord members</h6>
-        <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
-        <button class="edit-button" onclick="openNav()">
-          Edit
-        </button>
+        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Transactions/channels</h6>
       </div>
       <div class="filter">
         <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Since the start</p>
       </div>
       <div>
-        <h6 style="font-weight: 700; font-size: 25px; line-height: 22px; margin-top: 20px; color: #E1E1E2"> 12000</h6>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="graph-type2">
-      <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Discord members over time</h6>
-        <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
-        <button class="edit-button">
-          Edit
-        </button>
-      </div>
-      <div class="filter2">
-        <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Within the last 12 months </p>
-      </div>
-      <div>
-        <%= area_chart @data, colors: ["#D25C5C"], points: false, width: "800px" %>
+        <%= image_tag("transactions2.png", :width => 270, style: "margin-top: 30px;") %>
       </div>
     </div>
   </div>
   <div>
     <div class="graph-type2">
        <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Monthly active users (MAU)</h6>
+        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Total growth funnel </h6>
         <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
         <button class="edit-button">
           Edit
@@ -139,7 +113,7 @@
       <div class="filter2">
         <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Within the last 12 months </p>
       </div>
-      <%= image_tag("MAU.png", :width => 800, style: "margin-top: 30px;") %>
+      <%= image_tag("Totalfunnel.png", :width => 800, style: "margin-top: 30px;") %>
     </div>
   </div>
   <div class="users-metrics">
@@ -159,12 +133,12 @@
       </div>
 
     </div>
-    <%= link_to templates_path do %>
     <div class="hidden" style="margin-left: 25px">
     </div>
-    <% end %>
+
   </div>
 </div>
+
 
 </div>
 </body>
@@ -181,6 +155,11 @@
       </div>
       <div class="modal-body">
         <input class="input-audience" type="text" placeholder="Audience name"> </input>
+      <div>
+        <%= image_tag("gmail.jpeg", :width => 100, style: "margin-top: 30px;") %>
+        <%= image_tag("epns.jpeg", :width => 100, style: "margin-top: 30px;") %>
+      </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -399,6 +378,21 @@ border-radius: 5px;
   width: 60px;
 }
 
+.edit-button1 {
+  margin-top: -10px;
+  margin-left: 15px;
+  background-color: black;
+  border: none;
+  font-size: 14px;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  width: 90px;
+}
+
+.edit-button1:hover {
+  background-color: #D25C5C;
+}
 
 .graph-title {
   display: flex;
@@ -408,7 +402,7 @@ border-radius: 5px;
 .graph-type {
   padding: 25px;
   width: 410px;
-  height: 180px;
+  height: 390px;
   background: #FFFFFF;
   border-radius: 5px;
 }
@@ -444,7 +438,7 @@ border-radius: 5px;
   margin-bottom: 40px;
   padding: 25px;
   width: 850px;
-  height: 400px;
+  height: 360px;
   background: #FFFFFF;
   border-radius: 5px;
 }
@@ -517,6 +511,3 @@ a {
 <script>
 
 </script>
-
-
-

@@ -1,0 +1,7 @@
+
+<%= simple_form_for @expedition do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :available, as: :boolean %>
+  <%= f.button :submit %>
+<% end %>

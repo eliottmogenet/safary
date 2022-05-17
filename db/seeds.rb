@@ -9,15 +9,17 @@ require 'open-uri'
 require 'csv'
 
 AdminUser.destroy_all
+ExpeditionUser.destroy_all
 Onboarding.destroy_all
-Audience.destroy_all
+Expedition.destroy_all
 TwitterFollower.destroy_all
 Template.destroy_all
-GuildComment.destroy_all
-GuildTactic.destroy_all
 GuildUser.destroy_all
 Guild.destroy_all
 DiscordUser.destroy_all
+Project.destroy_all
+DashboardUser.destroy_all
+Dashboard.destroy_all
 User.destroy_all
 
 p "creating admin user"
@@ -27,6 +29,20 @@ admin_user1.save!
 
 admin_user2 = AdminUser.create(email: "justin.vogel52@gmail.com", password: "justin.vogel52@gmail.com")
 admin_user2.save!
+
+p "creating expeditions"
+
+expedition1 = Expedition.create(name: "The savana : Part 1 Grow your community", description: "Learn how to grow your community in Discord, Twitter and convert users into your product.", available: true)
+expedition1.save!
+
+
+expedition2 = Expedition.create(name: "The savana : Part 2 Convert your community", description: "Learn how to grow your community in Discord, Twitter and convert users into your product.", available: false)
+expedition2.save!
+
+
+expedition3 = Expedition.create(name: "The savana : Part 3 Engage your community",  description: "Learn how to grow your community in Discord, Twitter and convert users into your product.", available: false)
+expedition3.save!
+
 
 p "creating onboarding"
 
@@ -39,7 +55,7 @@ user1 =  User.create(email: "template@gmail.com", password: "template@gmail.com"
 #user1.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/jack.png')), filename: 'jack.png')
 user1.save!
 
-user2 =  User.create(email: "test2@gmail.com", password: "test2@gmail.com", pseudo: "web3girl", lion: true, job_title: "Head of Growth @Ledger")
+user2 =  User.create(email: "test2@gmail.com", password: "test2@gmail.com", pseudo: "web3girl", lion: true, job_title: "Head of Growth @Ledger", accepted: true, twitter: "https://twitter.com/SafaryDAO", linkedin: "https://www.linkedin.com/in/eliott-mogenet-405984105/")
 user2.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
 user2.save!
 
@@ -60,7 +76,7 @@ user6.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/peterpan.png'
 user6.save!
 
 user7 =  User.create(email: "test7@gmail.com", password: "test7@gmail.com", pseudo: "elium", xp: 140)
-user7.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/elium.png')), filename: 'elium.png')
+user7.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/emily.png')), filename: 'emily.png')
 user7.save!
 
 user8 =  User.create(email: "test8@gmail.com", password: "test8@gmail.com", pseudo: "jkey", xp: 35)
@@ -82,6 +98,34 @@ user13.save!
 user14 =  User.create(email: "test14@gmail.com", password: "test14@gmail.com", pseudo: "RabbitHole", demo: true)
 user14.photo.attach(io: File.open(File.join(Rails.root,'db/fixtures/rabbithole.png')), filename: 'rabbithole.png')
 user14.save!
+
+p "creating projects"
+
+project1 = Project.create(name: "Uniswap", category: "DEFI")
+project1.save!
+
+
+p "creating dashboards"
+
+
+p "creating dashboards"
+
+
+dashboard1 = Dashboard.create(name: "Uniswap growth", project_id: project1.id)
+dashboard1.save!
+
+dashboard2 = Dashboard.create(name: "Uniswap community", project_id: project1.id)
+dashboard2.save!
+
+
+p "creating dashboard_users"
+
+dashboards_user1 = DashboardUser.create(dashboard_id: dashboard1.id , user_id: user1.id )
+dashboard1.save!
+
+
+dashboards_user2 = DashboardUser.create(dashboard_id: dashboard2.id , user_id: user2.id)
+dashboard2.save!
 
 
 p "creating guilds"
@@ -145,16 +189,6 @@ template13.save!
 #template6 = user1.templates.create(title: "Twitter acquisition", description: "Learn how to grow a tokenised community over time.", category: "twitter")
 #template6.save!
 
-p "creating audiences template1"
-
-audience1 = template1.audiences.create(name: "Twitter", user_count: 3000)
-audience1.save!
-
-audience2 = template1.audiences.create(name: "Discord", user_count: 1500)
-audience2.save!
-
-audience3 = template1.audiences.create(name: "Contributors", user_count: 800)
-audience3.save!
 
 
 

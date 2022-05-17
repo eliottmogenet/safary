@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
    if current_user.job_title.nil?
       edit_user_registration_path(current_user)
     elsif current_user.accepted? && current_user.job_title.nil? == false
-      templates_path
+      expeditions_path
     else
-      onboardings_path
+      onboarding1_path
     end
   end
 

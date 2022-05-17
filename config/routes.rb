@@ -25,15 +25,30 @@ Rails.application.routes.draw do
   resources :leaderboards
   resources :templates
   get '/audiences/:id', :to => 'templates#audiences', :as => "audiences"
+  get '/profile', :to => 'leaderboards#profile', :as => "profile"
+  get '/onboarding1', :to => 'onboardings#onboarding1', :as => "onboarding1"
+  get '/onboarding2', :to => 'onboardings#onboarding2', :as => "onboarding2"
   get '/dashboards1', :to => 'dashboards#dashboards1', :as => "dashboards1"
   get '/dashboards2', :to => 'dashboards#dashboards2', :as => "dashboards2"
   get '/dashboards3', :to => 'dashboards#dashboards3', :as => "dashboards3"
   get '/dashboards4', :to => 'dashboards#dashboards4', :as => "dashboards4"
   get '/templates1', :to => 'templates#templates1', :as => "templates1"
+   get '/templates2', :to => 'templates#templates2', :as => "templates2"
   get '/nft/:id', :to => 'templates#nft', :as => "nft"
   resources :dashboards
-  resources :projects
+  resources :events
+  resources :projects do
+    resources :dashboards
+  end
   resources :onboardings
-  post 'refresh', to: "guilds#refresh"
+  post 'validate_section1', to: "expeditions#validate_section1"
+  post 'validate_section2', to: "expeditions#validate_section2"
+  post 'validate_section3', to: "expeditions#validate_section3"
+  post 'join', to: "expeditions#join"
+  post 'refresh', to: "dashboards#refresh"
   post 'onboarded', to: "dashboards#onboarded"
+  post 'founder', to: "onboardings#founder"
+  post 'web2', to: "onboardings#web2"
+  post 'vc', to: "onboardings#vc"
+  post 'add_project', to: "onboardings#add_project"
 end

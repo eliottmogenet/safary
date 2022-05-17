@@ -6,13 +6,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable,
          :omniauth_providers => [:discord, :developer]
 
-
+  has_many :project_users
+  has_many :projects, through: :project_users
+  has_many :dashboard_users
+  has_many :dashboards, through: :dashboard_users
+  has_many :expedition_users
+  has_many :expeditions, through: :expedition_users
   has_many :guilds
   has_many :templates
   has_one_attached :photo
-  has_many :guild_comments
-  has_many :guild_tactics
-  has_many :template_tactics
   has_many :template_comments
 
   def name

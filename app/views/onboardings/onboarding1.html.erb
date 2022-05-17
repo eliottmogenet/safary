@@ -1,0 +1,427 @@
+
+<head>
+  <script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<% if current_user.accepted? %>
+
+
+
+<body>
+
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to leaderboards_path do %>
+            <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
+            <% end %>
+          </li>
+        <%# else %>
+          <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <!--/li-->
+        <%# end %>
+      </ul>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <%= link_to destroy_user_session_path, method: :delete do  %>
+              <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
+            <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid" id="templates-container2">
+
+<div style="display: flex; justify-content: center; margin-bottom: 30px;">
+  <%= image_tag("1-3.png", :width => 40, style: "text-align: center") %>
+</div>
+<h3 style="text-align: center; color:black; font-weight: 700; margin-bottom: 40px;">What type of adventurer are you? 🚌</h3>
+<p style="text-align: center; color: #687086">Select the category you are closer.</p>
+
+
+
+<div style="margin-left: 250px; width: 850px; margin-top: 100px; margin-bottom: 60px; display: flex; justify-content: center">
+
+
+<%= link_to founder_path, method: :post do %>
+  <div class="user-category">
+    <h5 style="font-weight: 700; color: black">🏗 <br><br> Web3 founder <br> or Web3 growth leader</h5>
+    <p style="color: #687086">You want to learn Web3 growth for your project or job.</p>
+  </div>
+<% end %>
+<%= link_to web2_path, method: :post do %>
+  <div class="user-category" style="margin-left: 20px;">
+    <h5 style="font-weight: 700; color: black"> 👀 <br><br> Web2 growth leader</h5>
+    <p style="color: #687086">You want to move to a Web3 job in the future.</p>
+  </div>
+<% end %>
+<%= link_to vc_path, method: :post do %>
+  <div class="user-category" style="margin-left: 20px;">
+    <h5 style="font-weight: 700; color: black">🏦  <br><br>VC/Investor </h5>
+    <p style="color: #687086">You want to best advice your portefolio companies.</p>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% else %>
+
+<p>You have to wait the start of the expedition 😉</p>
+
+<% end %>
+
+<style>
+
+
+.user-category {
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  width: 300px;
+  height: 200px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.user-category:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all .2s ease-in-out;
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+    }
+    to {
+        margin-left: 80%;
+    }
+}
+
+.template-card {
+  padding: 20px;
+  background-color: white;
+  width: 200px;
+  height: 100px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.template-card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all .2s ease-in-out;
+}
+
+.templates-list {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 950px;
+  grid-gap: 1rem;
+}
+
+#number_select {
+  outline: none;
+  border: 0.5px solid #E1E1E2;
+  border-radius: 5px;
+  background-color: #FAFAFC;
+  width: 200px;
+  margin-top: 15px;
+  padding: 5px;
+
+}
+
+.ape {
+  color: #687086;
+  text-align: center;
+  padding-left: 18px;
+  margin-top: 10px;
+}
+
+.ape p {
+  font-size: 12px;
+}
+
+.button-validate {
+  margin-top: 20px;
+  width: 95%;
+  height: 50px;
+  background: #D25C5C;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  font-weight: 700;
+}
+
+.appeareance-div {
+display: flex;
+justify-content: start;
+margin-top: 20px;
+width: 95%;
+height: 60px;
+background: #FFFFFF;
+border: 0.5px solid #E1E1E2;
+border-radius: 5px;
+margin-bottom: 20px;
+}
+
+
+#slidebar {
+    position: fixed;
+    padding-left: 15px;
+    margin-left: 80%;
+    height: 100vh;
+    overflow: scroll;
+    width: 20%;
+    margin:none;
+    background-color: #FAFAFC;
+    float:right;
+    z-index: 1;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+.input-audience {
+  border: none;
+  background-color: #E1E1E2;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 2px;
+  width: 400px;
+}
+
+.pie:hover {
+  cursor: pointer;
+}
+
+
+.modal-content {
+  width: 100%;
+}
+
+.users-metrics {
+  display: flex;
+  justify-content: start;
+}
+
+.filter {
+
+text-align: center;
+line-height: 32px;
+height: 32px;
+width: 140px;
+background: #FAFAFC;
+border: 1px solid #E1E1E2;
+border-radius: 5px;
+}
+
+.filter2 {
+
+text-align: center;
+line-height: 32px;
+height: 32px;
+width: 210px;
+background: #FAFAFC;
+border: 1px solid #E1E1E2;
+border-radius: 5px;
+}
+
+
+.edit-button {
+  margin-top: -10px;
+  margin-left: 20px;
+  background-color: white;
+  border: 1px solid #E3E3E4;
+  font-size: 14px;
+  color: #E3E3E4;
+  border-radius: 5px;
+  padding: 5px;
+  width: 60px;
+}
+
+.edit-button1 {
+  margin-top: -10px;
+  margin-left: 340px;
+  background-color: black;
+  border: none;
+  font-size: 14px;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  width: 90px;
+}
+
+.edit-button1:hover {
+  background-color: #D25C5C;
+}
+
+.graph-title {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.graph-type {
+  padding: 25px;
+  width: 410px;
+  height: 180px;
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+
+.hidden {
+  padding: 25px;
+  width: 410px;
+  height: 400px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.hidden-real {
+  padding: 25px;
+  width: 410px;
+  height: 400px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.hidden-real:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.hidden:hover {
+  cursor: pointer;
+  border: 2px dashed #687086;
+}
+
+.graph-type2 {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding: 25px;
+  width: 850px;
+  height: 400px;
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+
+.graph-type2:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.graph-type:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.active {
+  background-color: #FDFAED !important;
+  border-bottom-color: #FDFAED !important;
+}
+
+a {
+  font-size: 14px;
+}
+
+    @media (max-width: 600px) {
+    .navbar {
+      width: 90%;
+      height: 10%;
+    }
+
+    #templates-container2 {
+      margin-left: 0px !important;
+    }
+
+    .alert-warning {
+      height: 18%;
+    }
+
+    #templates-container {
+    padding-top: 50%;
+    }
+
+    .alert-type {
+      text-align: center;
+    }
+
+    #alert-red {
+      padding-left: 0px !important;
+    }
+
+    .template-cards {
+      width: 100%;
+      grid-template-columns: 1fr;
+      padding-left: 5%;
+    }
+
+    .button-type {
+      display: none;
+    }
+
+    .dashboard-img {
+      width: 100%;
+    }
+    }
+
+
+</style>

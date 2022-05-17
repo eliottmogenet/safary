@@ -1,13 +1,14 @@
-
-
-
-<script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<head>
+  <script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
 
 <% if current_user.accepted? %>
+
+
 
 <body>
 
@@ -19,22 +20,25 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
           <li class="nav-item">
             <%= link_to leaderboards_path do %>
-              <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
+            <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
             <% end %>
           </li>
-          <li class="nav-item active">
-            <%= link_to "Community", leaderboards_path, class: "nav-link" %>
+          <li class="nav-item">
+            <%= link_to "🚌 Expeditions", expeditions_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Learn", templates_path, class: "nav-link" %>
+            <%= link_to "📈 Dashboards", dashboard_path(current_user.dashboards.first), class: "nav-link" %>
+          <li class="nav-item">
+            <%= link_to "🌴 Case studies", projects_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "My dashboard", dashboards_path, class: "nav-link" %>
+            <%= link_to "🐘 Network", leaderboards_path, class: "nav-link", style: "color: black; font-weight: 700" %>
           </li>
+
         <%# else %>
           <!--li class="nav-item"-->
             <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
@@ -43,18 +47,13 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <% if current_user.onboarded? %>
-          <%= link_to "https://discord.com/channels/927742963323379722/927743768143212545", target: '_blank' do  %>
-            <i class="fab fa-discord" id="icon" style="margin-right: 20px; margin-top: 5px;"></i>
-          <% end %>
-      <% end %>
-        <a data-toggle="modal" data-target="#photo-modal" style="cursor: pointer;">
+      <%= link_to profile_path do %>
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
             <% else %>
             <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
           <% end %>
-        </a>
+      <% end %>
             <%= link_to destroy_user_session_path, method: :delete do  %>
               <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
             <% end %>
@@ -62,67 +61,20 @@
   </div>
 </div>
 
-<div class="container" id="templates-container" style="text-align: center;">
 
-<% if current_user.onboarded == true %>
-<% else %>
-    <div class="alert-fixed alert-warning alert-dismissible fade show" role="alert">
-    <strong>🚌 Welcome to the Safary Community !</strong> Here you can meet other adventurers and climb the ladder to become a Lion 🦁</b>
-    <%= link_to templates_path do %>
-    <button type="button" class="button-alert">
-      <span style="color: black; font-weight: 900; font-size: 15px; margin-bottom: -10px">Next</span>
-    </button>
-    <% end %>
-  </div>
-<% end %>
+
+<div class="container-fluid" id="templates-container2">
+
+<h3 style="color:black; font-weight: 700; margin-bottom: 40px; margin-left: 250px">🐘 Network </h3>
+
+<ul class="nav nav-tabs">
+</ul>
 
 
 
+<div style="margin-left: 250px; width: 850px; margin-top: 40px; margin-bottom: 60px;">
 
-
-  <h2 style="font-weight: 900;">The Lions 🦁</h2>
-  <p>Meet Web3’s top growth leaders</p>
-  <hr style="height: 0px;">
-  <div style="background-color: white; text-align: center; display: flex; justify-content: space-around; flex-wrap: wrap; border-top-right-radius: 10px; border-top-left-radius: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
-    <% User.where(lion: true).first(4).each do |user| %>
-    <div style="padding: 3rem">
-    <p><% if user.photo.attached? %>
-        <%= cl_image_tag user.photo.key, width: 30, height: 30, :crop=>"fill", style: "border-radius: 100%;" %>
-        <% else %>
-        <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
-    <% end %><br id="user-#{@user.id}">
-    @<%= user.pseudo %>🦁<br>
-    <span><%= user.job_title %></span></p>
-    </div>
-  <% end %>
-  </div>
-  <div style="background-color: white; padding-bottom: 5px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
-    <p style="color: #687086; font-size: 13px">
-        <a data-toggle="collapse" href="#collapseExample" style="color: #687086;" role="button" aria-expanded="false" aria-controls="collapseExample">
-          See all
-        </a>
-      </p>
-  </div>
-    <div class="collapse" id="collapseExample" style="background-color: white; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
-      <% User.where(lion: true).drop(4).each do |user| %>
-          <div style="padding: 3rem">
-          <p><% if user.photo.attached? %>
-              <%= cl_image_tag user.photo.key, width: 30, height: 30, :crop=>"fill", style: "border-radius: 100%;" %>
-              <% else %>
-              <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
-          <% end %><br>
-          @<%= user.pseudo %><br>
-          <span><%= user.job_title %></span></p>
-          </div>
-      <% end %>
-  </div>
-  <div class="alert alert-custom" id="alert-red" role="alert" style="width: 100%; margin-top: 20px; margin-left: 20px; z-index: 0; padding-left: 170px;">
-      <div class="alert-type"> Want to climb the ladder and become a Lion ? 🦁 Comment the growth templates to win XP.</div>
-  </div>
   <div style="margin-bottom: 100px">
-  <h3 style="margin-top: 20px;">Adventurers</h3>
-  <p>The web3 growth leaders of tomorrow</p>
-  <hr>
    <% @adventurers_sort.reverse.each do |user| %>
    <% if user == current_user %>
        <div style="text-align: start; height: 65px; padding-left: 10px; display: flex; justify-content: space-between; background-color: white !important; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); padding-right: 10px; padding-top: 5px; padding-bottom: 20px; border-radius: 10px ">
@@ -132,21 +84,44 @@
         <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
     <% end %>@<%= user.pseudo %><br>
     <span><%= user.job_title %></span></p>
-    </p>
-    <p style="color: #D25C5C"><%= (user.template_comments + user.guild_comments).count %> <i class="fa-solid fa-comments"></i></p>
+    <p style="margin-left: 65%;"><% if user.projects.empty? %><% else %>
+            <% if user.projects.first.photo.attached? %>
+              <%= cl_image_tag user.projects.first.photo.key, width: 25, height: 25  %>
+            <% end %>
+            <%= user.projects.first.name %>
+            <div class="category-tag" style="margin-left: 10px;"><%= user.projects.first.category %></div>
+            <% end %></p>
     </div>
   <hr style="height: 0px;">
 
    <% elsif user != current_user && user.pseudo != "Template" && user.demo? == false %>
-        <div style="text-align: start; height: 50px; margin-left: 10px; display: flex; justify-content: space-between;">
+        <div style="text-align: start; height: 50px; margin-left: 5px; display: flex; justify-content: space-between;">
     <p><% if user.photo.attached? %>
         <%= cl_image_tag user.photo.key, width: 30, height: 30, :crop=>"fill", style: "border-radius: 100%;" %>
         <% else %>
         <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
-    <% end %>@<%= user.pseudo %><br>
+    <% end %>@<%= user.pseudo %>
+    <% if user.twitter.nil? %>
+    <% else %>
+     <a href="<%= user.twitter %>">
+       <i class="fa-brands fa-twitter" style="color: #687086"></i>
+     </a>
+    <% end %>
+    <% if user.twitter.nil? %>
+    <% else %>
+     <a href="<%= user.linkedin %>">
+       <i class="fa-brands fa-linkedin-in" style="color: #687086"></i>
+     </a>
+    <% end %><br>
     <span><%= user.job_title %></span></p>
     </p>
-    <p style="color: #D25C5C"><%= (user.template_comments + user.guild_comments).count %> <i class="fa-solid fa-comments"></i></p>
+    <p style="margin-left: 65%;"><% if user.projects.empty? %><% else %>
+            <% if user.projects.first.photo.attached? %>
+              <%= cl_image_tag user.projects.first.photo.key, width: 25, height: 25  %>
+            <% end %>
+            <%= user.projects.first.name %>
+            <div class="category-tag" style="margin-left: 10px;"><%= user.projects.first.category %></div>
+            <% end %></p>
     </div>
   <hr style="height: 0px;">
 
@@ -155,28 +130,10 @@
   </div>
 </div>
 
-</body>
 
 
-<div class="modal fade" id="photo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Change your profile photo</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <% if current_user.present? %>
-         <div class="modal-body">
-          <%= render template: "devise/registrations/edit" %>
-        </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
 </div>
+</body>
 
 <% else %>
 
@@ -186,6 +143,299 @@
 
 <style>
 
+  @keyframes slidein {
+    from {
+        margin-left: 100%;
+    }
+    to {
+        margin-left: 80%;
+    }
+}
+
+
+.category-tag {
+  background-color: #D25C5C; opacity: 70px;
+  width: 70px;
+  height: 25px;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.template-card {
+  padding: 20px;
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.template-card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all .2s ease-in-out;
+}
+
+.templates-list {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 950px;
+  grid-gap: 1rem;
+}
+
+#number_select {
+  outline: none;
+  border: 0.5px solid #E1E1E2;
+  border-radius: 5px;
+  background-color: #FAFAFC;
+  width: 200px;
+  margin-top: 15px;
+  padding: 5px;
+
+}
+
+.ape {
+  color: #687086;
+  text-align: center;
+  padding-left: 18px;
+  margin-top: 10px;
+}
+
+.ape p {
+  font-size: 12px;
+}
+
+.button-validate {
+  margin-top: 20px;
+  width: 95%;
+  height: 50px;
+  background: #D25C5C;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  font-weight: 700;
+}
+
+.appeareance-div {
+display: flex;
+justify-content: start;
+margin-top: 20px;
+width: 95%;
+height: 60px;
+background: #FFFFFF;
+border: 0.5px solid #E1E1E2;
+border-radius: 5px;
+margin-bottom: 20px;
+}
+
+
+#slidebar {
+    position: fixed;
+    padding-left: 15px;
+    margin-left: 80%;
+    height: 100vh;
+    overflow: scroll;
+    width: 20%;
+    margin:none;
+    background-color: #FAFAFC;
+    float:right;
+    z-index: 1;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+.input-audience {
+  border: none;
+  background-color: #E1E1E2;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 2px;
+  width: 400px;
+}
+
+.pie:hover {
+  cursor: pointer;
+}
+
+
+.modal-content {
+  width: 100%;
+}
+
+.users-metrics {
+  display: flex;
+  justify-content: start;
+}
+
+.filter {
+
+text-align: center;
+line-height: 32px;
+height: 32px;
+width: 140px;
+background: #FAFAFC;
+border: 1px solid #E1E1E2;
+border-radius: 5px;
+}
+
+.filter2 {
+
+text-align: center;
+line-height: 32px;
+height: 32px;
+width: 210px;
+background: #FAFAFC;
+border: 1px solid #E1E1E2;
+border-radius: 5px;
+}
+
+
+.edit-button {
+  margin-top: -10px;
+  margin-left: 20px;
+  background-color: white;
+  border: 1px solid #E3E3E4;
+  font-size: 14px;
+  color: #E3E3E4;
+  border-radius: 5px;
+  padding: 5px;
+  width: 60px;
+}
+
+.edit-button1 {
+  margin-top: -10px;
+  margin-left: 340px;
+  background-color: black;
+  border: none;
+  font-size: 14px;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  width: 90px;
+}
+
+.edit-button1:hover {
+  background-color: #D25C5C;
+}
+
+.graph-title {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.graph-type {
+  padding: 25px;
+  width: 410px;
+  height: 180px;
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+
+.hidden {
+  padding: 25px;
+  width: 410px;
+  height: 400px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.hidden-real {
+  padding: 25px;
+  width: 410px;
+  height: 400px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.hidden-real:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.hidden:hover {
+  cursor: pointer;
+  border: 2px dashed #687086;
+}
+
+.graph-type2 {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding: 25px;
+  width: 850px;
+  height: 400px;
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+
+.graph-type2:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.graph-type:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.active {
+  background-color: #FDFAED !important;
+  border-bottom-color: #FDFAED !important;
+}
+
+a {
+  font-size: 14px;
+}
+
+    @media (max-width: 600px) {
+    .navbar {
+      width: 90%;
+      height: 10%;
+    }
+
+    #templates-container2 {
+      margin-left: 0px !important;
+    }
+
+    .alert-warning {
+      height: 18%;
+    }
+
+    #templates-container {
+    padding-top: 50%;
+    }
+
+    .alert-type {
+      text-align: center;
+    }
+
+    #alert-red {
+      padding-left: 0px !important;
+    }
+
+    .template-cards {
+      width: 100%;
+      grid-template-columns: 1fr;
+      padding-left: 5%;
+    }
+
+    .button-type {
+      display: none;
+    }
+
+    .dashboard-img {
+      width: 100%;
+    }
+    }
 
     @media (max-width: 600px) {
     .navbar {

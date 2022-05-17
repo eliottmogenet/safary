@@ -28,16 +28,15 @@
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "Expeditions", expeditions_path, class: "nav-link" %>
+            <%= link_to "🚌 Expeditions", expeditions_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Dashboards", dashboards_path, class: "nav-link" %>
+            <%= link_to "📈 Dashboards", dashboard_path(current_user.dashboards.first), class: "nav-link", style: "color: black; font-weight: 700" %>
+          <li class="nav-item">
+            <%= link_to "🌴 Case studies", projects_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Case studies", templates_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Network", leaderboards_path, class: "nav-link" %>
+            <%= link_to "🐘 Network", leaderboards_path, class: "nav-link" %>
           </li>
         <%# else %>
           <!--li class="nav-item"-->
@@ -47,6 +46,13 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <%= link_to profile_path do %>
+          <% if current_user.photo.attached? %>
+             <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
+            <% else %>
+            <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
+          <% end %>
+      <% end %>
             <%= link_to destroy_user_session_path, method: :delete do  %>
               <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
             <% end %>
@@ -57,7 +63,7 @@
 
 
 <div class="container-fluid" id="templates-container2">
-<%= link_to dashboards_path do  %>
+<%= link_to dashboard_path(current_user.dashboards.first) do  %>
   <p style="margin-left: 250px; color: #687086; font-size: 14px">< Back to dashboards</p>
 <% end %>
 <h3 style="color:black; font-weight: 700; margin-bottom: 40px; margin-left: 250px">🦓 Templates</h3>
@@ -69,48 +75,37 @@
 
 <div style="margin-left: 250px; margin-top: 40px;">
 
-  <h6>Official templates</h6>
+  <h6>Available templates </h6>
   <div class="templates-list">
     <div class="template-card">
       <h6 style="font-weight: 900">Discord members acquisition</h6>
       <p style="color: #687086; font-size: 12px;">Discord member growth over time</p>
       <%= image_tag("discord-acquisition.png", :width => 150, style: "margin-left: 10px;") %>
     </div>
-    <div class="template-card">
+   </div>
+
+    <h6>Available soon </h6>
+    <div class="templates-list">
+    <div class="template-card2">
       <h6 style="font-weight: 900">Daily active users (wallets)</h6>
       <p style="color: #687086; font-size: 12px;">Wallet retention over time</p>
       <%= image_tag("retention.png", :width => 150, style: "margin-top: 20px; margin-left: 5px") %>
-
     </div>
-    <div class="template-card">
+    <div class="template-card2">
       <h6 style="font-weight: 900;">Funnel <br> Discord > Dapp</h6>
       <p style="color: #687086; font-size: 12px;">Do Discord members convert?</p>
       <%= image_tag("onboarding.png", :width => 150, style: "margin-left: 10px") %>
     </div>
-    <div class="template-card">
-       <h6 style="font-weight: 900;">Discord <br> power users</h6>
-       <p style="color: #687086; font-size: 12px;">The most active members in your Discord</p>
-         <%= image_tag("power-user.png", :width => 130, style: "margin-bottom: 5px; margin-left: 10px") %>
-    </div>
-    <div class="template-card">
-       <h6 style="font-weight: 900">Discord <br> activity times</h6>
-        <p style="color: #687086; font-size: 12px;">The best times to post in your Discord</p>
-        <%= image_tag("calendar.png", :width => 150, style: "margin-left: 5px") %>
-    </div>
-  </div>
-  <h6>Created by the community</h6>
-    <div class="templates-list">
-      <%= link_to dashboards4_path do %>
-    <div class="template-card">
+    <div class="template-card2">
       <h6 style="font-weight: 900; color: black">User segmentation (Token) </h6>
       <p style="color: #687086; font-size: 12px;">% of users token holders</p>
       <%= image_tag("token-acquisition.png", :width => 110, style: "margin-top: -25px; margin-left: 20px") %>
     </div>
-    <% end %>
-    <div class="template-card">
+    <div class="template-card2">
       <h6 style="font-weight: 900">User segmentation (NFT) </h6>
       <p style="color: #687086; font-size: 12px;">% of users NFT holders</p>
       <%= image_tag("token-acquisition.png", :width => 110, style: "margin-top: -25px; margin-left: 20px") %>
+    </div>
     </div>
   </div>
 
@@ -223,6 +218,16 @@
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+.template-card2 {
+  padding: 20px;
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 
 .template-card:hover {
   cursor: pointer;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_07_204718) do
+ActiveRecord::Schema.define(version: 2022_05_17_000328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,23 @@ ActiveRecord::Schema.define(version: 2022_05_07_204718) do
     t.index ["template_id"], name: "index_audiences_on_template_id"
   end
 
+  create_table "dashboard_users", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "dashboard_id"
+    t.bigint "user_id"
+    t.index ["dashboard_id"], name: "index_dashboard_users_on_dashboard_id"
+    t.index ["user_id"], name: "index_dashboard_users_on_user_id"
+  end
+
+  create_table "dashboards", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_dashboards_on_project_id"
+  end
+
   create_table "discord_users", primary_key: "uid", id: :bigint, default: nil, force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -78,33 +95,32 @@ ActiveRecord::Schema.define(version: 2022_05_07_204718) do
     t.string "discriminator"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "expedition_users", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "expedition_id"
+    t.bigint "user_id"
+    t.boolean "section1", default: false
+    t.boolean "section2", default: false
+    t.boolean "section3", default: false
+    t.boolean "section4", default: false
+    t.boolean "section5", default: false
+    t.boolean "section6", default: false
+    t.index ["expedition_id"], name: "index_expedition_users_on_expedition_id"
+    t.index ["user_id"], name: "index_expedition_users_on_user_id"
+  end
+
   create_table "expeditions", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.text "description"
-  end
-
-  create_table "guild_comments", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.text "content"
-    t.datetime "date"
-    t.bigint "guild_id"
-    t.index ["guild_id"], name: "index_guild_comments_on_guild_id"
-    t.index ["user_id"], name: "index_guild_comments_on_user_id"
-  end
-
-  create_table "guild_tactics", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.datetime "date"
-    t.string "title"
-    t.bigint "guild_id"
-    t.index ["guild_id"], name: "index_guild_tactics_on_guild_id"
-    t.index ["user_id"], name: "index_guild_tactics_on_user_id"
+    t.boolean "available", default: false
   end
 
   create_table "guild_users", primary_key: "uid", id: :bigint, default: nil, force: :cascade do |t|
@@ -142,6 +158,22 @@ ActiveRecord::Schema.define(version: 2022_05_07_204718) do
     t.datetime "deadline"
   end
 
+  create_table "project_users", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "project_id"
+    t.bigint "user_id"
+    t.index ["project_id"], name: "index_project_users_on_project_id"
+    t.index ["user_id"], name: "index_project_users_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "category"
+  end
+
   create_table "sections", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -155,16 +187,6 @@ ActiveRecord::Schema.define(version: 2022_05_07_204718) do
     t.bigint "template_id"
     t.index ["template_id"], name: "index_template_comments_on_template_id"
     t.index ["user_id"], name: "index_template_comments_on_user_id"
-  end
-
-  create_table "template_tactics", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.string "title"
-    t.bigint "template_id"
-    t.index ["template_id"], name: "index_template_tactics_on_template_id"
-    t.index ["user_id"], name: "index_template_tactics_on_user_id"
   end
 
   create_table "templates", force: :cascade do |t|
@@ -181,16 +203,6 @@ ActiveRecord::Schema.define(version: 2022_05_07_204718) do
     t.text "paragraph"
     t.string "industry"
     t.index ["user_id"], name: "index_templates_on_user_id"
-  end
-
-  create_table "token_holders", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_count"
-    t.datetime "date"
-    t.bigint "template_id"
-    t.integer "discord_members"
-    t.index ["template_id"], name: "index_token_holders_on_template_id"
   end
 
   create_table "twitter_followers", force: :cascade do |t|
@@ -221,6 +233,13 @@ ActiveRecord::Schema.define(version: 2022_05_07_204718) do
     t.string "job_title"
     t.boolean "onboarded", default: false
     t.boolean "demo", default: false
+    t.string "user_category"
+    t.string "twitter"
+    t.string "linkedin"
+    t.boolean "call", default: false
+    t.boolean "calendar", default: false
+    t.boolean "club", default: false
+    t.boolean "discord_member", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

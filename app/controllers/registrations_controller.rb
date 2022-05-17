@@ -12,7 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
   def update
     @user = current_user
     @user.update(user_params)
-    redirect_to onboardings_path
+    redirect_to onboarding1_path
   end
 
   private
