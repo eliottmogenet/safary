@@ -120,10 +120,9 @@
     </p>
     <p style="margin-left: 65%;"><% if user.projects.empty? %><% else %>
             <% if user.projects.first.photo.attached? %>
-              <%= cl_image_tag user.projects.first.photo.key, width: 25, height: 25  %>
+              <%= cl_image_tag user.projects.first.photo.key, width: 25, height: 25, style: "border-radius: 100%;"  %>
             <% end %>
             <%= user.projects.first.name %>
-            <div class="category-tag" style="margin-left: 10px;"><%= user.projects.first.category %></div>
             <% end %></p>
     </div>
   <hr style="height: 0px;">

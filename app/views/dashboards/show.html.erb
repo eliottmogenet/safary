@@ -131,8 +131,6 @@
   </li>
 </ul>
 
-<% if @dashboard == current_user.dashboards.first %>
-
 <div style="margin-left: 250px; margin-top: 40px; margin-bottom: 60px;">
   <div class="users-metrics">
     <div class="graph-type">
@@ -231,16 +229,6 @@
   </div>
 </div>
 
-<% else %>
-<div style="margin-left: 250px; margin-top: 40px; margin-bottom: 60px;">
-
-  <%= link_to templates1_path do %>
-    <div class="graph-type3">
-    </div>
-    <% end %>
-</div>
-
-<% end %>
 
 </div>
 </body>

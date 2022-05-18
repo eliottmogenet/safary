@@ -85,7 +85,7 @@
     <div class="templates-list">
     <% @projects.each do |project| %>
     <% if project.users.present? && project.users.first.guilds.present? %>
-      <%= link_to project.users.first.dashboards.first do %>
+      <%= link_to dashboard_path(project.users.first.dashboards.first ) do %>
         <div class="template-card">
           <div style="display: flex; justify-content: start">
             <% if project.photo.attached? %>

@@ -8,6 +8,12 @@
 </head>
 
 
+<% if browser.device.mobile? %>
+
+<p>Safary is not yet available on mobile 🦁</p>
+
+<% else %>
+
 <body>
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
@@ -94,12 +100,12 @@
 
 
 
-
 </div>
 </body>
 
 
 
+<% end %>
 
 
 
