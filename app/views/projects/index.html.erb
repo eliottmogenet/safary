@@ -85,7 +85,6 @@
     <div class="templates-list">
     <% @projects.each do |project| %>
     <% if project.users.present? && project.users.first.guilds.present? %>
-      <%= link_to dashboard_path(project.users.first.dashboards.first ) do %>
         <div class="template-card">
           <div style="display: flex; justify-content: start">
             <% if project.photo.attached? %>
@@ -96,7 +95,6 @@
           <p style="color: #687086; font-size: 12px;">📈 <%= pluralize(project.users.first.dashboards.count, 'dashboard') %> </p>
           <p style="color: #687086; font-size: 12px;">👤 <%= pluralize(project.users.count, 'member') %></p>
         </div>
-    <% end %>
 
     <% end %>
     <% end %>
