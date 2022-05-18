@@ -61,6 +61,13 @@
 
 <div class="container-fluid" id="templates-container2">
 
+<% if current_user.onboarded == true %>
+<% else %>
+<div class="alert-fixed alert-warning alert-dismissible fade show" style="text-align: center;" role="alert">
+  <strong>🚌 Welcome to Expeditions !</strong> Here, you will be able to learn Web3 growth, strategies and tactics. <%= link_to dashboard_path(current_user.dashboards.first) do %><b style="color: black"> Next > </b><% end %>
+</div>
+<% end %>
+
 <h3 style="color:black; font-weight: 700; margin-bottom: 40px; margin-left: 250px;">🚌 Expeditions </h3>
 
 <ul class="nav nav-tabs">

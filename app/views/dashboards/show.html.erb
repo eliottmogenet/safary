@@ -107,6 +107,13 @@
 
 <div class="container-fluid" id="templates-container2">
 
+<% if current_user.onboarded == true %>
+<% else %>
+<div class="alert-fixed alert-warning alert-dismissible fade show" style="text-align: center;" role="alert">
+  <strong>📈 This is your Dashboard !</strong> Here, you will be able to follow your growth metrics of your community. <%= link_to projects_path do %><b style="color: black"> Next > </b><% end %>
+</div>
+<% end %>
+
 <h3 style="color:black; font-weight: 700; margin-bottom: 40px; margin-left: 250px"><% if current_user.projects.empty? %>
   📈 My first Web3 growth dashboard
   <% else %>

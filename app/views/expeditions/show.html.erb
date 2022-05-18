@@ -111,7 +111,7 @@
         <div class="other-users" style="text-align: center;"><p style="font-size: 10px; padding-top: 3px;">+  <%= @expedition.users.count %></p></div>
       <% end %>
       </div>
-      <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/2c41638c3ef649519e61451ea285d61a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/60a950575461400e967a6f1fb4b99894" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
     <div style="text-align: center; margin-top: 30px">
     <% if current_user.expeditions.include?(@expedition) %>
       You are in! Let's move to Section 1 🚌
@@ -135,7 +135,8 @@
 
 
           </div>
-          <h5  style="text-align: left; color: black;">What is web3 growth? 🔍</h5>
+          <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/897cb56d2ab94ea5a505bd924f018cd2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+          <h5  style="text-align: left; color: black; margin-top: 50px;">What is web3 growth? 🔍</h5>
           <hr style="height: 0px;">
           <p>Web3 is already complicated, so we’ll try to keep this simple 😊 </p>
 
@@ -187,7 +188,7 @@
 
           <p>This is also what motivates people to take action generally.</p>
 
-          <p>There are social status communities like Friends with Benefits and communities focused on shared identity and belonging like Boys Club Crypto and We3.</p>
+          <p>There are social status communities like <a href="https://twitter.com/FWBtweets">Friends with Benefits</a> and communities focused on shared identity and belonging like Boys Club Crypto and We3.</p>
 
           <p>Others form around a shared purpose like OdysseyDAO (onboard the next million web3 users) and ScribeDAO (curate and simplify web3 content).</p>
 
@@ -223,48 +224,63 @@
           <hr style="height: 0px;">
 
 
-          Let’s talk about growing your community! 📈
+          <p> Let’s talk about growing your community! 📈 </p>
 
-          Here are FOUR strategies we’ve seen deployed across Safary communities.
+          <p> Here are <b> FOUR strategies </b> we’ve seen deployed across Safary communities.</p>
 
-          1. Token Gating
-          Token gating is when communities require members to hold a token or NFT to access specific member experiences or the community as a whole.
+          <h6 style="margin-top: 30px;"><b> 1. Token Gating </b></h6>
 
-          This strategy is popular with DAOs and NFT communities. Global Coin Research, a research and investment DAO, has an open community, but enables $GCR holders to access extra channels, activities, alpha, and role-specific airdrops.
+          <p> Token gating is when communities require members to hold a token or NFT to access specific member experiences or the community as a whole.</p>
 
-          Pro: It’s much easier to run this type of community. Your members have higher intent and there are fewer of them. You seize the power of “100 true fans.”
-
-          Con: You miss out on those who want to “try before they buy.”
-
-          2. Batching
-          Batching is when you have a closed community that you open periodically. It’s most common with learning communities like Kernel and Safary, but is increasingly used by NFT communities.
-
-          Pro: You can better understand your users before they join, ensuring that they will vibe with your community. This strategy ensures a consistent onboarding experience: new members join at the same time with the same expectations.
-
-          Con: The onboarding process can be very delayed: weeks or months after applying. Users may lose interest by the time they’re accepted.
-
-          3. Referrals
-          Referrals are a familiar strategy from web2. They take on a new, significantly more powerful life of their own when deployed in communities.
-
-          Minima, a fully distributed blockchain network, grew steadily to 10K discord members over the course of a year before deploying their referral program, which spiked their membership up to 60K users in the past couple of months.
+          <p> This strategy is popular with DAOs and NFT communities. Global Coin Research, a research and investment DAO, has an open community, but enables $GCR holders to access extra channels, activities, alpha, and role-specific airdrops.</p>
 
 
-          Pro: Very powerful incentive-driven growth loop when deployed correctly. Growth like Minima’s is not uncommon and can drive powerful acquisition across channels in days.
+           <%= image_tag("section1-4.png", :width => 600, style: "margin-top: 30px; margin-bottom: 30px;") %>
 
-          Con: The quality of users is a bit more variable than you’d expect from web2 referral strategies.
 
-          4. Partnerships / Content
-          This is when you engage other communities to grow your own. This may be through content partnerships or co-hosted Twitter spaces.
+          <p><b> Pro: </b> It’s much easier to run this type of community. Your members have higher intent and there are fewer of them. You seize the power of “100 true fans.”</p>
 
-          Coinvise, a platform to launch your own social token, primarily grows through content and partnerships.
+          <p><b> Con: </b> You miss out on those who want to “try before they buy.”</p>
 
-          Pro: Partnerships enable steady organic growth and build trust among community partners as the leader in a given space. This also increases mentions, which can have compounding effects across channels.
+          <h6 style="margin-top: 30px;"><b> 2. Batching </b></h6>
 
-          Con: It can be difficult to build relationships with other web3 communities and projects, particularly when many leaders are pseudonymous.
+          <p> Batching is when you have a closed community that you open periodically. It’s most common with learning communities like Kernel and Safary, but is increasingly used by NFT communities.</p>
 
-          Discord conclusion
+          <%= image_tag("section1-5.png", :width => 600, style: "margin-top: 30px; margin-bottom: 30px;") %>
 
-          More isn’t necessarily better… The larger the community, the more difficult it is to manage.
+
+          <p><b> Pro: </b> You can better understand your users before they join, ensuring that they will vibe with your community. This strategy ensures a consistent onboarding experience: new members join at the same time with the same expectations.</p>
+
+          <p><b> Con: </b> The onboarding process can be very delayed: weeks or months after applying. Users may lose interest by the time they’re accepted.</p>
+
+          <h6 style="margin-top: 30px;"><b> 3. Referrals </b></h6>
+
+          <p> Referrals are a familiar strategy from web2. They take on a new, significantly more powerful life of their own when deployed in communities.</p>
+
+          <p> Minima, a fully distributed blockchain network, grew steadily to 10K discord members over the course of a year before deploying their referral program, which spiked their membership up to 60K users in the past couple of months.</p>
+
+          <%= image_tag("section1-6.png", :width => 600, style: "margin-top: 30px; margin-bottom: 30px;") %>
+
+          <p><b> Pro: </b> Very powerful incentive-driven growth loop when deployed correctly. Growth like Minima’s is not uncommon and can drive powerful acquisition across channels in days.</p>
+
+          <p><b> Con: </b> The quality of users is a bit more variable than you’d expect from web2 referral strategies.</p>
+
+          <h6 style="margin-top: 30px;"><b> 4. Partnerships / Content </b></h6>
+
+          <p> This is when you engage other communities to grow your own. This may be through content partnerships or co-hosted Twitter spaces.</p>
+
+          <p> Coinvise, a platform to launch your own social token, primarily grows through content and partnerships.</p>
+
+          <%= image_tag("section1-7.png", :width => 600, style: "margin-top: 30px; margin-bottom: 30px;") %>
+
+
+          <p><b> Pro: </b> Partnerships enable steady organic growth and build trust among community partners as the leader in a given space. This also increases mentions, which can have compounding effects across channels.</p>
+
+          <p><b> Con: </b> It can be difficult to build relationships with other web3 communities and projects, particularly when many leaders are pseudonymous.</p>
+
+          <p><b> Discord conclusion </b></p>
+
+          <p> More isn’t necessarily better… The larger the community, the more difficult it is to manage.</p>
 
 
             <%= link_to validate_section1_path(:id => @expedition.id), method: :post do %>

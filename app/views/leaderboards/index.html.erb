@@ -61,6 +61,12 @@
 
 
 <div class="container-fluid" id="templates-container2">
+<% if current_user.onboarded == true %>
+<% else %>
+<div class="alert-fixed alert-warning alert-dismissible fade show" style="text-align: center;" role="alert">
+  <strong>🐘 Members directory </strong> Connect with other growth leaders here. <%= link_to profile_path do %><b style="color: black"> Next > </b><% end %>
+</div>
+<% end %>
 
 <h3 style="color:black; font-weight: 700; margin-bottom: 40px; margin-left: 250px">🐘 Network </h3>
 

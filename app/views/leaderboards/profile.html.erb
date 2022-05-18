@@ -59,6 +59,12 @@
 
 
 <div class="container-fluid" id="templates-container2">
+  <% if current_user.onboarded == true %>
+<% else %>
+<div class="alert-fixed alert-warning alert-dismissible fade show" style="text-align: center;" role="alert">
+  <strong>✏️ Checklist </strong> Complete your onboarding to have the best member experience.
+</div>
+<% end %>
 
 <h3 style="color:black; font-weight: 700; margin-bottom: 40px; margin-left: 250px">🐯 My adventurer checklist</h3>
 

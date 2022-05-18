@@ -61,6 +61,13 @@
 
 <div class="container-fluid" id="templates-container2">
 
+<% if current_user.onboarded == true %>
+<% else %>
+<div class="alert-fixed alert-warning alert-dismissible fade show" style="text-align: center;" role="alert">
+  <strong>🔍 Welcome to the wild </strong> Explore projects here and follow the upcoming events. <%= link_to leaderboards_path do %><b style="color: black"> Next > </b><% end %>
+</div>
+<% end %>
+
 <h3 style="color:black; font-weight: 700; margin-bottom: 40px; margin-left: 250px">🌴 Explore the wild</h3>
 
 <ul class="nav nav-tabs">
@@ -77,7 +84,7 @@
 
     <div class="templates-list">
     <% @projects.each do |project| %>
-    <% if project.users.first.guilds.present? %>
+    <% if project.users.present? && project.users.first.guilds.present? %>
       <%= link_to project.users.first.dashboards.first do %>
         <div class="template-card">
           <div style="display: flex; justify-content: start">
