@@ -50,6 +50,10 @@
 <h3 style="text-align: center; color:black; font-weight: 700; margin-bottom: 40px;">What's your Web3 project?</h3>
 <p style="text-align: center; color: #687086">Select the project you are part of.</p>
 
+<p style="text-align: center"><%= link_to onboarding2_path do %>
+  Skip
+<% end %>if you don't find your project </p>
+
 <div style="width: 500px; margin-left: 490px; margin-bottom: 60px;">
 <%= form_tag onboardings_path, style: "display: flex; justify-content: center; text-align: center;", method: :get do %>
   <%= text_field_tag :query,
