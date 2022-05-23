@@ -35,6 +35,10 @@ admin_user2.save!
 
 p "creating use_case"
 
+use_case0 = UseCase.create(name: "🔍 Identify the best growth channels")
+use_case0.save!
+
+
 use_case1 = UseCase.create(name: "🏦 DEFI growth dashboard")
 use_case1.save!
 

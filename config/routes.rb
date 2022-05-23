@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get '/dashboards3', :to => 'dashboards#dashboards3', :as => "dashboards3"
   get '/dashboards4', :to => 'dashboards#dashboards4', :as => "dashboards4"
   get '/templates1', :to => 'templates#templates1', :as => "templates1"
+  get '/user_list', :to => 'pages#user_list', :as => "user_list"
   get '/templates2', :to => 'templates#templates2', :as => "templates2"
   get '/templates3', :to => 'templates#templates3', :as => "templates3"
   get '/nft/:id', :to => 'templates#nft', :as => "nft"
