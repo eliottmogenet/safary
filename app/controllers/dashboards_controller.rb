@@ -1,6 +1,7 @@
 class DashboardsController < ApplicationController
 
   def index
+    @guilds = Guild.all
     @guild = current_user.guilds.first
 
     if current_user.guilds.present?

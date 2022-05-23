@@ -1,0 +1,258 @@
+
+<head>
+  <script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+
+
+<body>
+
+
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to leaderboards_path do %>
+            <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">🦁 Safary</h5>
+            <% end %>
+          </li>
+
+          <div style="width: 400px; margin-left: 50px;">
+            <%= form_tag onboardings_path, style: "display: flex; justify-content: center; text-align: center;", method: :get do %>
+              <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Search use case, templates, projects..."
+              %>
+              <%= submit_tag "🔍 Search", class: "edit-button1" %>
+            <% end %>
+          </div>
+
+
+          <li class="nav-item">
+            <%= link_to "Use cases", use_cases_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Templates", templates3_path, class: "nav-link"%>
+          <li class="nav-item">
+            <%= link_to "Audiences", projects_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Explore", dashboards_path, class: "nav-link", style: "color: black; font-weight: 700" %>
+          </li>
+        <%# else %>
+          <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <!--/li-->
+        <%# end %>
+      </ul>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <p><%= link_to "My dashboards", dashboards3_path, class: "nav-link"%></p>
+        <%= link_to profile_path do %>
+          <% if current_user.photo.attached? %>
+             <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
+            <% else %>
+            <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
+          <% end %>
+      <% end %>
+            <%= link_to destroy_user_session_path, method: :delete do  %>
+              <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
+            <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" id="templates-container2">
+
+  <div style="display: flex; justify-content: start;">
+      <p style="color: #687086; margin-left: 200px;">Browse +200 templates created by Safary community </p>
+      <div class="use-case"><i class="fa-solid fa-arrow-down-wide-short"></i> Sort: Most popular </div>
+  </div>
+
+<div style="margin-left: 200px;">
+  <div class="templates-list">
+    <% @guilds.each do |guild| %>
+      <%= link_to dashboard_path(guild.user.dashboards.first) do %>
+        <div class="template-card">
+          <div style="display: flex; justify-content: start; margin-bottom: 20px;">
+          <% if guild.user.projects.first.photo.attached? %>
+              <%= cl_image_tag guild.user.projects.first.photo.key, width: 25, height: 25, style: "border-radius: 100%"  %>
+            <% end %>
+          <h6 style="font-weight: 900; color: black;"><%= guild.user.projects.first.name %></h6>
+          </div>
+          <p style="color: #687086; font-size: 12px;">📈 <%= pluralize(guild.user.projects.first.dashboards.count, 'dashboard') %> </p>
+          <p style="color: #687086; font-size: 12px;">👤 <%= pluralize(guild.user.projects.first.users.count, 'member') %></p>
+        </div>
+        <% end %>
+    <% end  %>
+  </div>
+</div>
+</div>
+
+</div>
+
+
+</body>
+
+<style>
+
+
+.use-case {
+font-size: 14px;
+text-align: center;
+padding: 6px;
+width: 185px;
+height: 36px;
+color: #687086;
+
+margin-top: -5px;
+margin-left: 30%;
+border: 0.5px solid #E1E1E2;
+border-radius: 10px;
+}
+
+
+.Defi-box {
+text-align: center;
+padding: 6px;
+color: #687086;
+font-weight: bold;
+margin: 10px;
+width: 60px;
+height: 36px;
+left: 177px;
+top: 209px;
+
+background: #ECF1FF;
+border-radius: 10px;
+}
+
+.acquisition-box {
+text-align: center;
+padding: 6px;
+color: #687086;
+font-weight: bold;
+margin: 10px;
+width: 120px;
+height: 36px;
+left: 177px;
+top: 209px;
+
+background: #F6F3FF;;
+border-radius: 10px;
+}
+
+
+.form-control {
+  background-color: white;
+  font-size: 14px;
+  border-radius: 10px;
+  margin-right: 40px;
+}
+
+.edit-button1 {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: none;
+}
+
+body {
+  background-color: white !important;
+}
+
+.navbar {
+  box-shadow: none;
+  border-bottom: solid;
+  border-color: #E1E1E2;
+  border-width: 0.5px;
+}
+
+li {
+  font-size: 14px;
+}
+
+p {
+   font-size: 14px;
+}
+
+
+.template-card {
+  padding: 20px;
+  background-color: #FAFAFC;
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  border: solid;
+  border-color: #E1E1E2;
+  border-width: 0.5px;
+}
+
+.template-card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all .2s ease-in-out;
+}
+
+
+.templates-list {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 950px;
+  grid-gap: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

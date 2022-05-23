@@ -17,10 +17,13 @@ Template.destroy_all
 GuildUser.destroy_all
 Guild.destroy_all
 DiscordUser.destroy_all
+UseCase.destroy_all
 Project.destroy_all
+ProjectUser.destroy_all
 DashboardUser.destroy_all
 Dashboard.destroy_all
 User.destroy_all
+
 
 p "creating admin user"
 
@@ -29,6 +32,26 @@ admin_user1.save!
 
 admin_user2 = AdminUser.create(email: "justin.vogel52@gmail.com", password: "justin.vogel52@gmail.com")
 admin_user2.save!
+
+p "creating use_case"
+
+use_case1 = UseCase.create(name: "🏦 DEFI growth dashboard")
+use_case1.save!
+
+use_case2 = UseCase.create(name: "🐦 Grow Twitter community")
+use_case2.save!
+
+use_case3 = UseCase.create(name: "🎯 Identify the most active community members")
+use_case3.save!
+
+use_case4 = UseCase.create(name: "💌 Create wallet messaging campaigns")
+use_case4.save!
+
+use_case5 = UseCase.create(name: "🤝 Make Web3 partnerships")
+use_case5.save!
+
+use_case6 = UseCase.create(name: "📰 Build a content strategy")
+use_case6.save!
 
 p "creating expeditions"
 
@@ -104,16 +127,25 @@ p "creating projects"
 project1 = Project.create(name: "Uniswap", category: "DEFI")
 project1.save!
 
+p "creating project users"
+
+project_user1 = ProjectUser.create(user_id: user1.id, project_id: project1.id)
+project_user1.save!
+
 
 p "creating dashboards"
 
 
 p "creating dashboards"
 
-
+dashboard1 = Dashboard.create()
+dashboard1.save!
 
 p "creating dashboard_users"
 
+
+dashboard_user1 = DashboardUser.create(user_id: user1.id, dashboard_id: dashboard1.id)
+dashboard_user1.save!
 
 
 p "creating guilds"

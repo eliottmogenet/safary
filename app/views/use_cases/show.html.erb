@@ -40,7 +40,7 @@
 
 
           <li class="nav-item">
-            <%= link_to "Use cases", use_cases_path, class: "nav-link"%>
+            <%= link_to "Use cases", use_cases_path, class: "nav-link", style: "color: black; font-weight: 700" %>
           </li>
           <li class="nav-item">
             <%= link_to "Templates", dashboards_path, class: "nav-link" %>
@@ -48,7 +48,7 @@
             <%= link_to "Audiences", projects_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Explore", leaderboards_path, class: "nav-link"%>
+            <%= link_to "Explore", templates3_path, class: "nav-link"%>
           </li>
         <%# else %>
           <!--li class="nav-item"-->
@@ -58,7 +58,7 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <p><%= link_to "My dashboards", leaderboards_path, class: "nav-link", style: "color: black; font-weight: 700" %></p>
+      <p><%= link_to "My dashboards", dashboards3_path, class: "nav-link"%></p>
         <%= link_to profile_path do %>
           <% if current_user.photo.attached? %>
              <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
@@ -75,73 +75,83 @@
 
 <div class="container-fluid" id="templates-container2" style="margin-left: 200px;">
 
-<h4 style="font-weight: 700;">Coinvise dashboards</h4>
+<h5 style="font-weight: 700;"><%= @use_case.name %></h5>
         <div style="display: flex; justify-content: start;">
-          <div class="use-case"><p>Dashboard</p></div>
-          <%= link_to dashboards2_path do %>
-            <div class="use-case" id="addtemp" style="background-color: #D25C5C; color: white; width: 150px; margin-left: 30px; padding: 6px; border: none; ">+ Add new graph </div>
-          <% end %>
+          <div class="use-case"><p>Use case</p></div>
+          <div class="Defi-box"><p>DeFi</p></div>
+          <div class="acquisition-box"><p>Acquisition</p></div>
+          <div class="use-case"><%= image_tag("pegasus.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Pegasus</div><div class="use-case" style="margin-left: 10px"><%= image_tag("coinvise.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Coinvise</div><div class="use-case" style="margin-left: 10px"><%= image_tag("kraken.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Kraken</div>
         </div>
 
         <ul class="nav nav-tabs" style="margin-top: 30px; width: 900px;">
           <li class="nav-item">
-              <p class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Full dashboard </p>
+              <p class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Templates </p>
           </li>
           <li class="nav-item">
-              <p class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">+ New dashboard</p>
+              <p class="nav-link">Discussions </p>
           </li>
         </ul>
 
-        <div class="users-metrics">
-    <div class="graph-type">
-      <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Channel of my users</h6>
-        <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
-      </div>
-      <div class="filter">
-        <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Since the start</p>
-      </div>
-      <div>
-        <%= image_tag("users-channels.png", :width => 350, style: "margin-top: 30px;") %>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="graph-type2">
-       <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Total growth funnel </h6>
-        <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
-        <button class="edit-button">
-          Edit
-        </button>
-      </div>
-      <div class="filter2">
-        <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Within the last 12 months </p>
-      </div>
-      <%= image_tag("Totalfunnel.png", :width => 800, style: "margin-top: 30px;") %>
-    </div>
-  </div>
-  <div class="users-metrics">
-    <div class="hidden-real" style="margin-left: 25px">
-      <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">User segmentation</h6>
-        <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
-        <button class="edit-button">
-          Edit
-        </button>
-      </div>
-      <div class="filter2">
-        <p style="color: #9F9F9F; font-size: 14px"><i class="fa-solid fa-user"></i> Token holders ERC 20 T/F </p>
-        <div class="pie" style="margin-left: 30px;" data-toggle="modal" data-target="#exampleModal-templates">
-          <%= pie_chart User.group(:demo).count, colors: ["#E3E3E4", "#D25C5C"] %>
+        <div class="tab-content" id="myTabContent">
+           <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+            <div class="users-metrics">
+              <div class="graph-type">
+                <div class="graph-title">
+                  <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Channel of my users</h6>
+                  <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
+                </div>
+                <div class="filter">
+                  <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Since the start</p>
+                </div>
+                <div>
+                  <%= image_tag("users-channels.png", :width => 350, style: "margin-top: 30px;") %>
+                </div>
+              </div>
+              <div style="margin-left: 30px;">
+                   <p>Created by <div class="use-case"><%= image_tag("pegasus.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Pegasus</div></p>
+
+                <p style="width: 400px;">The most simple dashboard to know to identify the best channels of your users and identify where to put your effort in marketing, sales or growth.</p>
+                <p><b> Recently used by : </b></p>
+                <div style="display: flex; justify-content: start;">
+                  <div class="use-case"><%= image_tag("pegasus.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Pegasus</div><div class="use-case" style="margin-left: 10px"><%= image_tag("coinvise.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Coinvise</div><div class="use-case" style="margin-left: 10px"><%= image_tag("kraken.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Kraken</div>
+                </div>
+              </div>
+            <%= link_to dashboards3_path do %>
+            <div class="use-case" id="addtemp" style="background-color: #D25C5C; color: white; width: 200px; margin-left: 30px; padding: 6px; border: none; ">+ Add to my dashboard</div>
+            <% end %>
+            </div>
+
+            <div class="hr">
+            </div>
+
+            <div class="users-metrics">
+                  <div class="graph-type">
+                    <div class="graph-title">
+                      <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Transactions/channels</h6>
+                    </div>
+                    <div class="filter">
+                      <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Since the start</p>
+                    </div>
+                    <div>
+                      <%= image_tag("transactions2.png", :width => 270, style: "margin-top: 30px;") %>
+                    </div>
+                  </div>
+              <div style="margin-left: 30px;">
+                <p>Created by <div class="use-case" style="margin-left: 10px"> <%= image_tag("coinvise.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Coinvise </div> </p>
+                <p style="width: 400px;">The most simple dashboard to know to identify the best channels of your users and identify where to put your effort.The most simple dashboard to know to identify the best channels of your users and identify where to put your effort.</p>
+                <p><b> Used recently by : </b></p>
+                <div style="display: flex; justify-content: start;">
+                  <div class="use-case"><%= image_tag("pegasus.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Pegasus</div><div class="use-case" style="margin-left: 10px"><%= image_tag("coinvise.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Coinvise</div><div class="use-case" style="margin-left: 10px"><%= image_tag("kraken.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Kraken</div>
+                </div>
+              </div>
+            </div>
+
+
+
+           </div>
+
         </div>
-      </div>
-
-    </div>
-    <div class="hidden" style="margin-left: 25px">
-    </div>
-
-  </div>
 
 </div>
 
@@ -149,13 +159,6 @@
 </body>
 
 <style>
-
-
-
-.use-case:hover {
-  cursor: pointer;
-  background-color: black !important;
-}
 
 .use-case {
 font-size: 14px;
@@ -360,7 +363,6 @@ border-radius: 5px;
   height: 360px;
   background: #FFFFFF;
   border-radius: 5px;
-
 }
 
 
@@ -467,272 +469,18 @@ p {
 
 
 
-@keyframes slidein {
-    from {
-        margin-left: 100%;
-    }
-    to {
-        margin-left: 80%;
-    }
-}
-
-#number_select {
-  outline: none;
-  border: 0.5px solid #E1E1E2;
-  border-radius: 5px;
-  background-color: #FAFAFC;
-  width: 200px;
-  margin-top: 15px;
-  padding: 5px;
-
-}
-
-.ape {
-  color: #687086;
-  text-align: center;
-  padding-left: 18px;
-  margin-top: 10px;
-}
-
-.ape p {
-  font-size: 12px;
-}
-
-.button-validate {
-  margin-top: 20px;
-  width: 95%;
-  height: 50px;
-  background: #D25C5C;
-  color: white;
-  border-radius: 5px;
-  text-align: center;
-  padding: 10px;
-  font-weight: 700;
-}
-
-.appeareance-div {
-display: flex;
-justify-content: start;
-margin-top: 20px;
-width: 95%;
-height: 60px;
-background: #FFFFFF;
-border: 0.5px solid #E1E1E2;
-border-radius: 5px;
-margin-bottom: 20px;
-}
-
-
-#slidebar {
-    position: fixed;
-    padding-left: 15px;
-    margin-left: 80%;
-    height: 100vh;
-    overflow: scroll;
-    width: 20%;
-    margin:none;
-    background-color: #FAFAFC;
-    float:right;
-    z-index: 1;
-    box-shadow: 0px 4px 4px 0px #00000040;
-
-
-    animation-duration: 1s;
-    animation-name: slidein;
-}
-
-.input-audience {
-  border: none;
-  background-color: #E1E1E2;
-  padding: 5px;
-  font-size: 14px;
-  border-radius: 2px;
-  width: 400px;
-}
-
-.pie:hover {
-  cursor: pointer;
-}
-
-
-.modal-content {
-  width: 100%;
-}
-
-.users-metrics {
-  display: flex;
-  justify-content: start;
-}
-
-.filter {
-
-text-align: center;
-line-height: 32px;
-height: 32px;
-width: 140px;
-background: #FAFAFC;
-border: 1px solid #E1E1E2;
-border-radius: 5px;
-}
-
-.filter2 {
-
-text-align: center;
-line-height: 32px;
-height: 32px;
-width: 210px;
-background: #FAFAFC;
-border: 1px solid #E1E1E2;
-border-radius: 5px;
-}
-
-
-.edit-button {
-  margin-top: -10px;
-  margin-left: 20px;
-  background-color: white;
-  border: 1px solid #E3E3E4;
-  font-size: 14px;
-  color: #E3E3E4;
-  border-radius: 5px;
-  padding: 5px;
-  width: 60px;
-}
-
-.edit-button1 {
-  margin-top: -10px;
-  margin-left: 15px;
-  background-color: black;
-  border: none;
-  font-size: 14px;
-  color: white;
-  border-radius: 5px;
-  padding: 5px;
-  width: 90px;
-}
-
-.edit-button1:hover {
-  background-color: #D25C5C;
-}
-
-.graph-title {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.graph-type {
-  padding: 25px;
-  width: 410px;
-  height: 390px;
-  background: #FFFFFF;
-  border-radius: 5px;
-}
-
-.hidden {
-  padding: 25px;
-  width: 410px;
-  height: 400px;
-  border-radius: 5px;
-  margin-bottom: 30px;
-}
-
-.hidden-real {
-  padding: 25px;
-  width: 410px;
-  height: 400px;
-  background: #FFFFFF;
-  border-radius: 5px;
-  margin-bottom: 30px;
-  border: solid;
-  border-color: #E1E1E2;
-  border-width: 0.5px;
-}
-
-.hidden-real:hover {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.hidden:hover {
-  cursor: pointer;
-  border: 2px dashed #687086;
-}
-
-.graph-type2 {
-  margin-top: 30px;
-  margin-bottom: 40px;
-  padding: 25px;
-  width: 850px;
-  height: 360px;
-  background: #FFFFFF;
-  border-radius: 5px;
-  border: solid;
-  border-color: #E1E1E2;
-  border-width: 0.5px;
-
-}
-
-.graph-type2:hover {
-  cursor: pointer;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-}
-
-.graph-type:hover {
-  cursor: pointer;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-}
 
 
 
-a {
-  font-size: 14px;
-}
 
-    @media (max-width: 600px) {
-    .navbar {
-      width: 90%;
-      height: 10%;
-    }
 
-    #templates-container2 {
-      margin-left: 0px !important;
-    }
 
-    .alert-warning {
-      height: 18%;
-    }
 
-    #templates-container {
-    padding-top: 50%;
-    }
 
-    .alert-type {
-      text-align: center;
-    }
 
-    #alert-red {
-      padding-left: 0px !important;
-    }
 
-    .template-cards {
-      width: 100%;
-      grid-template-columns: 1fr;
-      padding-left: 5%;
-    }
 
-    .button-type {
-      display: none;
-    }
 
-    .dashboard-img {
-      width: 100%;
-    }
-    }
 
 
 </style>
-
-<script>
-
-</script>

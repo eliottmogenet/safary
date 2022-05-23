@@ -1,3 +1,4 @@
+
 <head>
   <script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -6,11 +7,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
-<% if current_user.accepted? %>
-
-
 
 <body>
+
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
@@ -20,27 +19,36 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-     <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
           <li class="nav-item">
             <%= link_to leaderboards_path do %>
-            <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
+            <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">🦁 Safary</h5>
             <% end %>
           </li>
+
+          <div style="width: 400px; margin-left: 50px;">
+            <%= form_tag onboardings_path, style: "display: flex; justify-content: center; text-align: center;", method: :get do %>
+              <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Search use case, templates, projects..."
+              %>
+              <%= submit_tag "🔍 Search", class: "edit-button1" %>
+            <% end %>
+          </div>
+
+
           <li class="nav-item">
-            <%= link_to "Expeditions", expeditions_path, class: "nav-link" %>
+            <%= link_to "Use cases", use_cases_path, class: "nav-link"%>
           </li>
           <li class="nav-item">
-            <%= link_to "Dashboards", dashboards_path, class: "nav-link" %>
+            <%= link_to "Templates", dashboards_path, class: "nav-link" %>
+          <li class="nav-item">
+            <%= link_to "Audiences", projects_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Audiences", dashboards_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Case studies", templates_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Network", leaderboards_path, class: "nav-link" %>
+            <%= link_to "Explore", leaderboards_path, class: "nav-link"%>
           </li>
         <%# else %>
           <!--li class="nav-item"-->
@@ -50,6 +58,14 @@
       </ul>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <p><%= link_to "My dashboards", leaderboards_path, class: "nav-link", style: "color: black; font-weight: 700" %></p>
+        <%= link_to profile_path do %>
+          <% if current_user.photo.attached? %>
+             <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
+            <% else %>
+            <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
+          <% end %>
+      <% end %>
             <%= link_to destroy_user_session_path, method: :delete do  %>
               <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
             <% end %>
@@ -57,24 +73,23 @@
   </div>
 </div>
 
+<div class="container-fluid" id="templates-container2" style="margin-left: 200px;">
 
+<h4 style="font-weight: 700;">Coinvise dashboards</h4>
+        <div style="display: flex; justify-content: start;">
+          <div class="use-case"><p>Dashboard</p></div>
+          <div class="use-case" id="addtemp" style="background-color: #D25C5C; color: white; width: 150px; margin-left: 30px; padding: 6px; border: none; ">+ Add new graph </div>
+        </div>
 
-<div class="container-fluid" id="templates-container2">
+        <ul class="nav nav-tabs" style="margin-top: 30px; width: 900px;">
+          <li class="nav-item">
+              <p class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Full dashboard </p>
+          </li>
+          <li class="nav-item">
+              <p class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">+ New dashboard</p>
+          </li>
+        </ul>
 
-<h3 style="color:black; font-weight: 700; margin-bottom: 40px; margin-left: 250px">📈 Coinvise dashboards</h3>
-
-<ul class="nav nav-tabs">
-  <li class="nav-item" style="margin-left: 250px">
-    <a class="nav-link active" href="#">📈 General</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">+ New dashboard </a>
-  </li>
-</ul>
-
-
-
-<div style="margin-left: 250px; margin-top: 40px; margin-bottom: 60px;">
   <div class="users-metrics">
     <div class="graph-type">
       <div class="graph-title">
@@ -88,7 +103,6 @@
         <%= image_tag("users-channels.png", :width => 350, style: "margin-top: 30px;") %>
       </div>
     </div>
-
     <div class="graph-type" style="margin-left: 20px">
       <div class="graph-title">
         <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Transactions/channels</h6>
@@ -137,12 +151,11 @@
     </div>
 
   </div>
+
 </div>
 
 
-</div>
 </body>
-
 
 <div class="modal fade" id="exampleModal-templates" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -169,82 +182,324 @@
   </div>
 </div>
 
-
-
-
-
-
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Discord Safary analytics </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <p><b> How to use Safary Analytics to track your Discord community ? </b></p>
-      <p><span> With Safary analytics, you will be able to track your acquisition on Discord over time.</span></p>
-
-      <h5>Step 1 : Add "Safary bot to your account" </h5>
-      <p><span> You have to be admin of a server if you want to track it.</span></p>
-      <a href="https://discord.com/api/oauth2/authorize?client_id=946557380886417478&permissions=8&scope=bot" target="_blank">
-        <button class="button-type" style="margin-left: 10px" >
-          Plug your Discord
-        </button>
-        </a>
-
-      <%= image_tag("safary-bot.png", :width => 350, style: "margin-top: 5px; margin-left: 15px") %>
-
-      <br>
-      <br>
-      <h5>Step 2 : Synchronize your data </h5>
-      <p><span> Click on the button below to synchronise your data & see your graph 📈.</span></p>
-
-      <%= link_to refresh_path, method: :post do %>
-        <button class="button-type" style="margin-left: 10px" >
-          Synchronize your data
-        </button>
-      <% end %>
-      <br>
-      <br>
-      <h6>You are all set! Happy tracking 🤘 </h6>
-      <br>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="photo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Change your profile photo</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <% if current_user.present? %>
-         <div class="modal-body">
-          <%= render template: "devise/registrations/edit" %>
-        </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<% else %>
-
-<p>You have to wait the start of the expedition 😉</p>
-
-<% end %>
-
 <style>
+
+
+
+.use-case:hover {
+  cursor: pointer;
+  background-color: black !important;
+}
+
+.use-case {
+font-size: 14px;
+text-align: center;
+padding: 5px;
+width: 100px;
+height: 36px;
+
+margin-top: 10px;
+border: 0.5px solid #E1E1E2;
+border-radius: 10px;
+}
+
+
+#number_select {
+  outline: none;
+  border: 0.5px solid #E1E1E2;
+  border-radius: 5px;
+  background-color: #FAFAFC;
+  width: 200px;
+  margin-top: 15px;
+  padding: 5px;
+
+}
+
+.ape {
+  color: #687086;
+  text-align: center;
+  padding-left: 18px;
+  margin-top: 10px;
+}
+
+.ape p {
+  font-size: 12px;
+}
+
+.button-validate {
+  margin-top: 20px;
+  width: 95%;
+  height: 50px;
+  background: #D25C5C;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  font-weight: 700;
+}
+
+.appeareance-div {
+display: flex;
+justify-content: start;
+margin-top: 20px;
+width: 95%;
+height: 60px;
+background: #FFFFFF;
+border: 0.5px solid #E1E1E2;
+border-radius: 5px;
+margin-bottom: 20px;
+}
+
+
+#slidebar {
+    position: fixed;
+    padding-left: 15px;
+    margin-left: 80%;
+    height: 100vh;
+    overflow: scroll;
+    width: 20%;
+    margin:none;
+    background-color: #FAFAFC;
+    float:right;
+    z-index: 1;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+.input-audience {
+  border: none;
+  background-color: #E1E1E2;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 2px;
+  width: 400px;
+}
+
+.pie:hover {
+  cursor: pointer;
+}
+
+
+.modal-content {
+  width: 100%;
+}
+
+.users-metrics {
+  display: flex;
+  justify-content: start;
+  margin-top: 20px;
+}
+
+.filter {
+
+text-align: center;
+line-height: 32px;
+height: 32px;
+width: 140px;
+background: #FAFAFC;
+border: 1px solid #E1E1E2;
+border-radius: 5px;
+}
+
+.filter2 {
+
+text-align: center;
+line-height: 32px;
+height: 32px;
+width: 210px;
+background: #FAFAFC;
+border: 1px solid #E1E1E2;
+border-radius: 5px;
+}
+
+
+.edit-button {
+  margin-top: -10px;
+  margin-left: 20px;
+  background-color: white;
+  border: 1px solid #E3E3E4;
+  font-size: 14px;
+  color: #E3E3E4;
+  border-radius: 5px;
+  padding: 5px;
+  width: 60px;
+}
+
+.edit-button1 {
+  margin-top: -10px;
+  margin-left: 15px;
+  background-color: black;
+  border: none;
+  font-size: 14px;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  width: 90px;
+}
+
+.edit-button1:hover {
+  background-color: #D25C5C;
+}
+
+.graph-title {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.graph-type {
+  padding: 25px;
+  width: 410px;
+  height: 390px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  border: solid;
+  border-color: #E1E1E2;
+  border-width: 0.5px;
+}
+
+.hidden {
+  padding: 25px;
+  width: 410px;
+  height: 400px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.hidden-real {
+  padding: 25px;
+  width: 410px;
+  height: 400px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.hidden-real:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.hidden:hover {
+  cursor: pointer;
+  border: 2px dashed #687086;
+}
+
+.graph-type2 {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding: 25px;
+  width: 850px;
+  height: 360px;
+  background: #FFFFFF;
+  border-radius: 5px;
+
+}
+
+
+.hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 900px;
+  border-bottom: solid;
+  border-color: #E1E1E2;
+  border-width: 0.5px;
+}
+
+
+.Defi-box {
+text-align: center;
+padding: 6px;
+color: #687086;
+font-weight: bold;
+margin: 10px;
+width: 60px;
+height: 36px;
+left: 177px;
+top: 209px;
+
+background: #ECF1FF;
+border-radius: 10px;
+}
+
+.acquisition-box {
+text-align: center;
+padding: 6px;
+color: #687086;
+font-weight: bold;
+margin: 10px;
+width: 120px;
+height: 36px;
+left: 177px;
+top: 209px;
+
+background: #F6F3FF;;
+border-radius: 10px;
+}
+
+
+.form-control {
+  background-color: white;
+  font-size: 14px;
+  border-radius: 10px;
+  margin-right: 40px;
+}
+
+.edit-button1 {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: none;
+}
+
+body {
+  background-color: white !important;
+}
+
+.navbar {
+  box-shadow: none;
+  border-bottom: solid;
+  border-color: #E1E1E2;
+  border-width: 0.5px;
+}
+
+li {
+  font-size: 14px;
+}
+
+p {
+   font-size: 14px;
+}
+
+
+.template-card {
+  padding: 20px;
+  background-color: #FAFAFC;
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  border: solid;
+  border-color: #E1E1E2;
+  border-width: 0.5px;
+}
+
+.template-card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all .2s ease-in-out;
+}
+
+
+.templates-list {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 950px;
+  grid-gap: 1rem;
+}
+
+
 
 @keyframes slidein {
     from {
@@ -422,6 +677,9 @@ border-radius: 5px;
   background: #FFFFFF;
   border-radius: 5px;
   margin-bottom: 30px;
+  border: solid;
+  border-color: #E1E1E2;
+  border-width: 0.5px;
 }
 
 .hidden-real:hover {
@@ -441,6 +699,10 @@ border-radius: 5px;
   height: 360px;
   background: #FFFFFF;
   border-radius: 5px;
+  border: solid;
+  border-color: #E1E1E2;
+  border-width: 0.5px;
+
 }
 
 .graph-type2:hover {
@@ -455,10 +717,7 @@ border-radius: 5px;
 
 }
 
-.active {
-  background-color: #FDFAED !important;
-  border-bottom-color: #FDFAED !important;
-}
+
 
 a {
   font-size: 14px;
