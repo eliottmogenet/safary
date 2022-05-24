@@ -15,7 +15,9 @@
   <%@projects.each do |project| %>
     <% if project.users.present? && project.users.first.guilds.present? %>
       <%= link_to project.users.first.guilds.first do %>
-        <div class="use-case" style="margin-left: 10px; color: black"> <%= project.name %></div>
+        <div class="use-case" style=" width: 90%; margin-left: 10px; color: black"> <% if project.photo.attached? %>
+          <%= cl_image_tag project.photo.key, width: 20, height: 20, :crop=>"fill", style: "border-radius: 100%" %>
+        <% end %> <%= project.name %></div>
       <% end %>
     <% end %>
   <% end %>
@@ -252,6 +254,9 @@ margin-bottom: 20px;
     position: fixed;
     padding-left: 15px;
     height: 100vh;
+    top: 0;
+    bottom: 0;
+    overflow-y: scroll;
     overflow: scroll;
     width: 20%;
     margin:none;
