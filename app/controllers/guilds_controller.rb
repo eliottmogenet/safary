@@ -1,6 +1,8 @@
 class GuildsController < ApplicationController
 
   def show
+
+    @projects =  Project.all
     @guild = Guild.find(params[:id])
     @project = @guild.user.projects.first
     @count = @guild.guild_users.count
