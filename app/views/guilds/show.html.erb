@@ -98,12 +98,16 @@
 
 <div class="container-fluid" id="templates-container2" style="margin-left: 25%">
 
+<%if @project.nil? %>
+<% else %>
 <h4 style="font-weight: 700;"><% if @project.photo.attached? %>
   <%= cl_image_tag @project.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%"  %>
 <% end %><%= @project.name %> dashboards</h4>
         <div style="display: flex; justify-content: start;">
           <div class="use-case"><p>Dashboard</p></div>
         </div>
+<% end %>
+
 
         <ul class="nav nav-tabs" style="margin-top: 30px; width: 900px;">
           <li class="nav-item">
