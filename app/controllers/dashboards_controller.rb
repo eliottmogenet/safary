@@ -81,6 +81,7 @@ class DashboardsController < ApplicationController
 
 
   def dashboards3
+    @guilds = Guild.all
     @guild = current_user.guilds.first
 
     if current_user.guilds.present?
@@ -102,6 +103,7 @@ class DashboardsController < ApplicationController
 
 
   def dashboards4
+    @guilds = Guild.all
     @guild = current_user.guilds.first
 
     if current_user.guilds.present?

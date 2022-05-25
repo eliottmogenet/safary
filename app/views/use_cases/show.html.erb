@@ -43,12 +43,12 @@
             <%= link_to "Use cases", use_cases_path, class: "nav-link", style: "color: black; font-weight: 700" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Templates", dashboards_path, class: "nav-link" %>
+            <%= link_to "Templates", templates3_path, class: "nav-link" %>
           <li class="nav-item">
             <%= link_to "Audiences", projects_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Explore", templates3_path, class: "nav-link"%>
+            <%= link_to "Explore", guild_path(@guilds.first), class: "nav-link"%>
           </li>
         <%# else %>
           <!--li class="nav-item"-->
@@ -80,7 +80,6 @@
           <div class="use-case"><p>Use case</p></div>
           <div class="Defi-box"><p>DeFi</p></div>
           <div class="acquisition-box"><p>Acquisition</p></div>
-          <div class="use-case"><%= image_tag("pegasus.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Pegasus</div><div class="use-case" style="margin-left: 10px"><%= image_tag("coinvise.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Coinvise</div><div class="use-case" style="margin-left: 10px"><%= image_tag("kraken.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Kraken</div>
         </div>
 
         <ul class="nav nav-tabs" style="margin-top: 30px; width: 900px;">
@@ -98,6 +97,90 @@
             <div class="users-metrics">
               <div class="graph-type">
                 <div class="graph-title">
+                  <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Funnel log-in > transaction</h6>
+                  <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
+                </div>
+                <div class="filter">
+                  <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Since the start</p>
+                </div>
+                <div>
+                  <%= image_tag("funnel1.png", :width => 350, style: "margin-top: 30px;") %>
+                </div>
+              </div>
+              <div style="margin-left: 30px;">
+                   <p>Created by <div class="use-case"><%= image_tag("pegasus.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Pegasus</div></p>
+
+                <p style="width: 400px;">The most simple dashboard to know identify the dropoff of your users and calculate the conversion rate in your app and to improve over time.</p>
+                <p><b> Recently used by : </b></p>
+                <div style="display: flex; justify-content: start;">
+                  <div class="use-case"><%= image_tag("pegasus.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Pegasus</div><div class="use-case" style="margin-left: 10px"><%= image_tag("coinvise.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Coinvise</div><div class="use-case" style="margin-left: 10px"><%= image_tag("kraken.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Kraken</div>
+                </div>
+              </div>
+            <%= link_to dashboards2_path do %>
+            <div class="use-case" id="addtemp" style="background-color: #D25C5C; color: white; width: 200px; margin-left: 30px; padding: 6px; border: none; ">+ Add to my dashboard</div>
+            <% end %>
+            </div>
+              <div id="accordion" style="margin-top: 20px; font-size: 12px;">
+                    <h5 class="mb-0">
+                      <button style="color: #687086; font-size: 12px;" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                       See comments (1)
+                      </button>
+                    </h5>
+
+                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                      <div class="comment-div">
+                        <hr style="font-weight: 0px; color: #E3E3E4;">
+                         <p class="text-comment" id="comment">
+                          <b><%= User.last.pseudo %> <%= cl_image_tag User.last.photo.key, width: 20, height: 20, :crop=>"fill", style: "border-radius: 100%" %>
+<%= User.last.pseudo %></b> <span>This template is amazing! I discoverd my conversion rate I stuggled to calculate...</span></p>
+                         <p id="time_ago">2h ago</p>
+                         <hr style="height: 0px; color: #9F9F9F">
+
+                        <div class="project-card-create">
+                        <%= simple_form_for onboardings_path, remote: true do |f| %>
+                          <%= f.input :content, as: :text, label: false %>
+                          <%= f.submit 'Add comment', class: "button-type2" %>
+                        <% end %>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+             <div class="hr">
+            </div>
+
+            <div class="users-metrics">
+              <div class="graph-type">
+                <div class="graph-title">
+                  <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Funnel Discord > App</h6>
+                  <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
+                </div>
+                <div class="filter">
+                  <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Since the start</p>
+                </div>
+                <div>
+                  <%= image_tag("funnel2.png", :width => 350, style: "margin-top: 30px;") %>
+                </div>
+              </div>
+              <div style="margin-left: 30px;">
+                   <p>Created by <div class="use-case" style="margin-left: 10px"><%= image_tag("coinvise.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Coinvise</div></p>
+
+                <p style="width: 400px;">The most simple dashboard to know to identify the best channels of your users and identify where to put your effort in marketing, sales or growth.</p>
+                <p><b> Recently used by : </b></p>
+                <div style="display: flex; justify-content: start;">
+                  <div class="use-case"><%= image_tag("pegasus.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Pegasus</div><div class="use-case" style="margin-left: 10px"><%= image_tag("coinvise.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Coinvise</div><div class="use-case" style="margin-left: 10px"><%= image_tag("kraken.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Kraken</div>
+                </div>
+              </div>
+            <%= link_to dashboards3_path do %>
+            <div class="use-case" id="addtemp" style="background-color: #D25C5C; color: white; width: 200px; margin-left: 30px; padding: 6px; border: none; ">+ Add to my dashboard</div>
+            <% end %>
+            </div>
+             <div class="hr">
+            </div>
+
+            <div class="users-metrics">
+              <div class="graph-type">
+                <div class="graph-title">
                   <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Channel of my users</h6>
                   <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
                 </div>
@@ -111,7 +194,7 @@
               <div style="margin-left: 30px;">
                    <p>Created by <div class="use-case"><%= image_tag("pegasus.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Pegasus</div></p>
 
-                <p style="width: 400px;">The most simple dashboard to know to identify the best channels of your users and identify where to put your effort in marketing, sales or growth.</p>
+                <p style="width: 400px;">The most simple dashboard to know to identify the best channels of your users and calculate the conversion rate in your app and to improve over time.</p>
                 <p><b> Recently used by : </b></p>
                 <div style="display: flex; justify-content: start;">
                   <div class="use-case"><%= image_tag("pegasus.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Pegasus</div><div class="use-case" style="margin-left: 10px"><%= image_tag("coinvise.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Coinvise</div><div class="use-case" style="margin-left: 10px"><%= image_tag("kraken.jpeg", :width => 20, style: "border-radius: 100%;" ) %> Kraken</div>
@@ -159,6 +242,38 @@
 </body>
 
 <style>
+
+.Defi-box {
+text-align: center;
+padding: 7px;
+font-weight: bold;
+font-size: 8px;
+color: #687086;
+margin: 10px;
+width: 80px;
+height: 36px;
+left: 177px;
+top: 209px;
+
+background: #ECF1FF;
+border-radius: 10px;
+}
+
+#slidebar {
+    position: fixed;
+    padding-left: 15px;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    overflow: scroll;
+    width: 20%;
+    margin:none;
+    background-color: #FAFAFC;
+    float:right;
+    z-index: 1;
+}
+
 
 .use-case {
 font-size: 14px;

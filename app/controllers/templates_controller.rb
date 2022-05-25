@@ -18,4 +18,8 @@ class TemplatesController < ApplicationController
     @data_twitter_daily = @template.twitter_followers.group(:date).sum(:user_count)
     @data_token = @template.token_holders.group(:date).sum(:user_count)
   end
+
+  def templates3
+    @guilds = Guild.all
+  end
 end

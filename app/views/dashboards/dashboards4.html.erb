@@ -45,7 +45,7 @@
           <li class="nav-item">
             <%= link_to "Templates", dashboards_path, class: "nav-link" %>
           <li class="nav-item">
-            <%= link_to "Audiences", projects_path, class: "nav-link" %>
+            <%= link_to "Audiences", audiences_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Explore", leaderboards_path, class: "nav-link"%>
@@ -78,7 +78,7 @@
 <h4 style="font-weight: 700;">Coinvise dashboards</h4>
         <div style="display: flex; justify-content: start;">
           <div class="use-case"><p>Dashboard</p></div>
-          <div class="use-case" id="addtemp" style="background-color: #D25C5C; color: white; width: 150px; margin-left: 30px; padding: 6px; border: none; ">+ Add new graph </div>
+          <div class="use-case" id="addtemp" style="background-color: #D25C5C; color: white; width: 150px; margin-left: 30px; padding: 6px; border: none; ">+ Create new graph </div>
         </div>
 
         <ul class="nav nav-tabs" style="margin-top: 30px; width: 900px;">
@@ -91,44 +91,18 @@
         </ul>
 
   <div class="users-metrics">
-    <div class="graph-type">
-      <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Channel of my users</h6>
-        <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
-      </div>
-      <div class="filter">
-        <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Since the start</p>
-      </div>
-      <div>
-        <%= image_tag("users-channels.png", :width => 350, style: "margin-top: 30px;") %>
-      </div>
-    </div>
-    <div class="graph-type" style="margin-left: 20px">
-      <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Transactions/channels</h6>
-      </div>
-      <div class="filter">
-        <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Since the start</p>
-      </div>
-      <div>
-        <%= image_tag("transactions2.png", :width => 270, style: "margin-top: 30px;") %>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="graph-type2">
-       <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Total growth funnel </h6>
-        <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
-        <button class="edit-button">
-          Edit
-        </button>
-      </div>
-      <div class="filter2">
-        <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Within the last 12 months </p>
-      </div>
-      <%= image_tag("Totalfunnel.png", :width => 800, style: "margin-top: 30px;") %>
-    </div>
+          <div class="graph-type">
+                <div class="graph-title">
+                  <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Sign_up > Wallet > transaction</h6>
+                  <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-pen"></i></i> Edit</p>
+                </div>
+                <div class="filter">
+                  <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Since the start</p>
+                </div>
+                <div>
+                  <%= image_tag("funnel3.png", :width => 350, style: "margin-top: 30px;") %>
+                </div>
+        </div>
   </div>
   <div class="users-metrics">
     <div class="hidden-real" style="margin-left: 25px">

@@ -79,7 +79,7 @@
         <div style="display: flex; justify-content: start;">
           <div class="use-case"><p>Dashboard</p></div>
           <%= link_to dashboards2_path do %>
-            <div class="use-case" id="addtemp" style="background-color: #D25C5C; color: white; width: 150px; margin-left: 30px; padding: 6px; border: none; ">+ Add new graph </div>
+            <div class="use-case" id="addtemp" style="background-color: #D25C5C; color: white; width: 150px; margin-left: 30px; padding: 6px; border: none; ">+ Create new graph </div>
           <% end %>
         </div>
 
@@ -91,58 +91,6 @@
               <p class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">+ New dashboard</p>
           </li>
         </ul>
-
-        <div class="users-metrics">
-    <div class="graph-type">
-      <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Channel of my users</h6>
-        <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
-      </div>
-      <div class="filter">
-        <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Since the start</p>
-      </div>
-      <div>
-        <%= image_tag("users-channels.png", :width => 350, style: "margin-top: 30px;") %>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="graph-type2">
-       <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">Total growth funnel </h6>
-        <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
-        <button class="edit-button">
-          Edit
-        </button>
-      </div>
-      <div class="filter2">
-        <p style="color: #9F9F9F; font-size: 14px"><i class="fa-regular fa-calendar"></i></i>  Within the last 12 months </p>
-      </div>
-      <%= image_tag("Totalfunnel.png", :width => 800, style: "margin-top: 30px;") %>
-    </div>
-  </div>
-  <div class="users-metrics">
-    <div class="hidden-real" style="margin-left: 25px">
-      <div class="graph-title">
-        <h6 style="font-weight: 700; font-size: 20px; line-height: 22px">User segmentation</h6>
-        <p style="color: #E3E3E4; font-size: 14px; margin-left: 20px;"><i class="fa-solid fa-share-nodes"></i> Share</p>
-        <button class="edit-button">
-          Edit
-        </button>
-      </div>
-      <div class="filter2">
-        <p style="color: #9F9F9F; font-size: 14px"><i class="fa-solid fa-user"></i> Token holders ERC 20 T/F </p>
-        <div class="pie" style="margin-left: 30px;" data-toggle="modal" data-target="#exampleModal-templates">
-          <%= pie_chart User.group(:demo).count, colors: ["#E3E3E4", "#D25C5C"] %>
-        </div>
-      </div>
-
-    </div>
-    <div class="hidden" style="margin-left: 25px">
-    </div>
-
-  </div>
-
 </div>
 
 
