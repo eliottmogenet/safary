@@ -16,4 +16,19 @@ class UseCasesController < ApplicationController
     @use_cases = UseCase.all
   end
 
+  def new
+    @use_case = UseCase.new
+  end
+
+  def create
+    @use_case = UseCase.new(use_case_params)
+    @use_case.save!
+  end
+
+  private
+
+  def use_case_params
+    params.require(:use_case).permit(:name, :description, :user_numbers)
+  end
+
 end
