@@ -47,6 +47,7 @@ class DashboardsController < ApplicationController
     @dashboards = current_user.dashboards
     @project = current_user.projects.first
     @dashboard = Dashboard.find(params[:id])
+    @guilds = Guild.all
   end
 
   def new

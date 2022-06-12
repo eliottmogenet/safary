@@ -30,7 +30,7 @@
           <li class="nav-item">
             <%= link_to "📈 Dashboards", dashboard_path(current_user.dashboards.first), class: "nav-link" %>
           <li class="nav-item">
-            <%= link_to "🌴 Case studies", projects_path, class: "nav-link" %>
+            <%= link_to "🌴 Case studies", guild_path(@guilds.first), class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "🐘 Network", leaderboards_path, class: "nav-link", style: "color: black; font-weight: 700" %>

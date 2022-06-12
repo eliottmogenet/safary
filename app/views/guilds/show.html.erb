@@ -7,8 +7,71 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
-
 <body>
+
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to leaderboards_path do %>
+            <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">Safary</h5>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "🚌 Expeditions", expeditions_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "📈 Dashboards", dashboard_path(current_user.dashboards.first), class: "nav-link" %>
+          <li class="nav-item">
+            <%= link_to "🌴 Case studies", projects_path, class: "nav-link", style: "color: black; font-weight: 700" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "🐘 Network", leaderboards_path, class: "nav-link"%>
+          </li>
+        <%# else %>
+          <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <!--/li-->
+        <%# end %>
+      </ul>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <%= link_to profile_path do %>
+          <% if current_user.photo.attached? %>
+             <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
+            <% else %>
+            <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
+          <% end %>
+      <% end %>
+            <%= link_to destroy_user_session_path, method: :delete do  %>
+              <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
+            <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid" id="templates-container2">
+
+<% if current_user.onboarded == true %>
+<% else %>
+<div class="alert-fixed alert-warning alert-dismissible fade show" style="text-align: center;" role="alert">
+  <strong>🔍 Welcome to the wild </strong> Explore projects here and follow the upcoming events. <%= link_to leaderboards_path do %><b style="color: black"> Next > </b><% end %>
+</div>
+<% end %>
+
+<h3 style="color:black; font-weight: 700; margin-bottom: 40px; margin-left: 25%">🌴 Explore the wild</h3>
+
+<ul class="nav nav-tabs">
+</ul>
 
 <div id="slidebar">
   <h6 style="padding-top: 100px; margin-bottom: 20px; margin-left: 10px;">All the Web3 projects </h6>
@@ -33,90 +96,15 @@
   <% end %>
 </div>
 
-
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-      <ul class="navbar-nav me-auto">
-        <%# if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to leaderboards_path do %>
-            <h5 style="margin-top: 8px; margin-right: 20px; font-weight: 900; color: #D25C5C">🦁 Safary</h5>
-            <% end %>
-          </li>
-
-          <div style="width: 400px; margin-left: 50px;">
-            <%= form_tag onboardings_path, style: "display: flex; justify-content: center; text-align: center;", method: :get do %>
-              <%= text_field_tag :query,
-                params[:query],
-                class: "form-control",
-                placeholder: "🔍 Search use case, templates, projects..."
-              %>
-              <%= submit_tag "🔍 Search", class: "edit-button1" %>
-            <% end %>
-          </div>
-
-
-          <li class="nav-item">
-            <%= link_to "Use cases", use_cases_path, class: "nav-link"%>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Templates", templates3_path, class: "nav-link" %>
-          <li class="nav-item">
-            <%= link_to "Audiences", audiences_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Explore", guild_path(@guilds.first), class: "nav-link", style: "color: black; font-weight: 700"%>
-          </li>
-        <%# else %>
-          <!--li class="nav-item"-->
-            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <!--/li-->
-        <%# end %>
-      </ul>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <p><%= link_to "My dashboards", dashboards3_path, class: "nav-link" %></p>
-        <%= link_to profile_path do %>
-          <% if current_user.photo.attached? %>
-             <%= cl_image_tag current_user.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%" %>
-            <% else %>
-            <%= image_tag("no-photo.png", :width => 30, style: "border-radius: 100%;" ) %>
-          <% end %>
-      <% end %>
-            <%= link_to destroy_user_session_path, method: :delete do  %>
-              <i class="fas fa-sign-out" style="color: #687086; margin-left: 10px"></i>
-            <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid" id="templates-container2" style="margin-left: 25%">
+<div class="container-fluid" id="templates-container2" style="padding-left: 25%">
 
 <%if @project.nil? %>
 <% else %>
 <h4 style="font-weight: 700;"><% if @project.photo.attached? %>
   <%= cl_image_tag @project.photo.key, width: 40, height: 40, :crop=>"fill", style: "border-radius: 100%"  %>
 <% end %><%= @project.name %> dashboards</h4>
-        <div style="display: flex; justify-content: start;">
-          <div class="use-case"><p>Dashboard</p></div>
-        </div>
 <% end %>
 
-
-        <ul class="nav nav-tabs" style="margin-top: 30px; width: 900px;">
-          <li class="nav-item">
-              <p class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Full dashboard </p>
-          </li>
-          <li class="nav-item">
-              <p class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">+ New dashboard</p>
-          </li>
-        </ul>
 
 <div style="margin-top: 40px; margin-bottom: 60px;">
   <div class="users-metrics">
@@ -267,6 +255,7 @@ margin-bottom: 20px;
 #slidebar {
     position: fixed;
     padding-left: 15px;
+    padding-top: 50px;
     height: 100vh;
     top: 0;
     bottom: 0;
@@ -276,7 +265,6 @@ margin-bottom: 20px;
     margin:none;
     background-color: #FAFAFC;
     float:right;
-    z-index: 1;
 }
 
 .input-audience {
@@ -462,9 +450,6 @@ border-radius: 10px;
   display: none;
 }
 
-body {
-  background-color: white !important;
-}
 
 .navbar {
   box-shadow: none;
@@ -754,6 +739,10 @@ a {
 
 </style>
 
-<script>
 
-</script>
+
+
+
+
+
+

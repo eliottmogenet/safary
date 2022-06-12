@@ -2,11 +2,15 @@ class ExpeditionsController < ApplicationController
 
    def index
     @expeditions = Expedition.all
+    @guilds = Guild.all
+
    end
 
    def show
     @expedition = Expedition.find(params[:id])
     @expedition_user = ExpeditionUser.where(:user_id => current_user.id, :expedition_id => @expedition.id)
+    @guilds = Guild.all
+
    end
 
     def new
