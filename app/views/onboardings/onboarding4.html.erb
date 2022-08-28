@@ -4,16 +4,13 @@
 <h3 style="margin-top: 20px; font-weight: 900; color: #12877E">Safary</h3>
 <div class="container" id="sign-up-container">
 
-<p>Step 2/3 </p>
-<h3>Add Safary calendar </h3>
-<p>Don't miss any event from the batch</p>
-
-<div style="height: 200px; line-height: 100px;">
-  <a href="https://calendar.google.com/calendar/u/0?cid=Y18ydGFhY250OGRpdjk5NDZ0dGFkb2pvaHBmMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">+Add Calendar 📅 </a>
+<h3>Welcome to Safary! </h3>
+<p>You can now discover the schedule <br>
+for the next 4 weeks and join our Discord.</p>
+<div style="height: 300px; line-height: 300px;">
+  <%= image_tag("bus-safary.png", :width => 400, class: "ludov") %>
 </div>
-
-<%= link_to 'Done 👌', onboarding3_path, class: "button"%>
-
+<%= link_to 'Start the Safary 🚌', onboarded_path, method: :post, class: "button"%>
 </div>
 <%= image_tag("safary-backgound.png", class: "safary-img") %>
 </body>
@@ -30,6 +27,8 @@
 
 
   .button {
+    z-index: 1;
+    position: relative;
     background-color: black;
     color: white;
     font-weight: 600;
@@ -59,6 +58,11 @@
     width: 100%;
     object-fit: contain;
     margin-top: 0px !important;
+
+    }
+
+    .ludov {
+      width: 90%;
     }
 
     #sign-up-container {
@@ -75,4 +79,3 @@
     }
 
 }
-</style>

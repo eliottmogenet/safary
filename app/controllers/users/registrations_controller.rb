@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  attr_accessor :skip_password_validation  # virtual attribute to skip password validation while saving
+
+  protected
+
+  def password_required?
+    return false if skip_password_validation
+    super
+  end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 

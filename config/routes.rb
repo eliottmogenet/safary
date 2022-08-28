@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get '/profile', :to => 'leaderboards#profile', :as => "profile"
   get '/onboarding1', :to => 'onboardings#onboarding1', :as => "onboarding1"
   get '/onboarding2', :to => 'onboardings#onboarding2', :as => "onboarding2"
+  get '/onboarding3', :to => 'onboardings#onboarding3', :as => "onboarding3"
+  get '/onboarding4', :to => 'onboardings#onboarding4', :as => "onboarding4"
   get '/dashboards1', :to => 'dashboards#dashboards1', :as => "dashboards1"
   get '/dashboards2', :to => 'dashboards#dashboards2', :as => "dashboards2"
   get '/dashboards3', :to => 'dashboards#dashboards3', :as => "dashboards3"
@@ -39,6 +41,7 @@ Rails.application.routes.draw do
   get '/templates3', :to => 'templates#templates3', :as => "templates3"
   get '/nft/:id', :to => 'templates#nft', :as => "nft"
   resources :dashboards
+  resources :schedules
   resources :use_cases
   resources :events
   resources :projects do
@@ -50,7 +53,7 @@ Rails.application.routes.draw do
   post 'validate_section3', to: "expeditions#validate_section3"
   post 'join', to: "expeditions#join"
   post 'refresh', to: "dashboards#refresh"
-  post 'onboarded', to: "dashboards#onboarded"
+  post 'onboarded', to: "onboardings#onboarded"
   post 'founder', to: "onboardings#founder"
   post 'web2', to: "onboardings#web2"
   post 'vc', to: "onboardings#vc"

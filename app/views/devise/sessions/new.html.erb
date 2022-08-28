@@ -1,10 +1,10 @@
 <body style="text-align: center; ">
 
-<h3 style="margin-top: 20px; font-weight: 900; color: #D25C5C">Safary</h3>
+<h3 style="margin-top: 20px; font-weight: 900; color: #12877E">Safary</h3>
 <div class="container" id="sign-up-container">
 
 
-<h2>Back to the Savanna</h2>
+<h2>Back to the Safary</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs" style="margin-top: 50px">
@@ -17,12 +17,12 @@
     <%= f.input :password,
                 required: false,
                 label: false,
-                placeholder: "Password*",
+                placeholder: "Secret Code*",
                 input_html: { autocomplete: "current-password" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Log in with email", class: "button-sub" %>
+    <%= f.button :submit, "Enter the Safary 🚌", class: "button-sub" %>
   </div>
 <% end %>
 <br>
@@ -33,17 +33,18 @@
 <% end %>
 <hr>
 <p>Don't have an account yet?</p>
-<a href="https://d0hwrssohkg.typeform.com/to/sDad7xVB"><b>Apply to the next expedition</b></a>
+<a href="https://airtable.com/shriqI2uduy02Gcl1"><b>Apply to next batch</b></a>
 
 
 </div>
-<%= image_tag("safary.png", :width => 900, class: "safary-img") %>
+<%= image_tag("safary-backgound.png", class: "safary-img") %>
 </body>
 
 <style>
 
   .safary-img {
-    margin-top: -120px;
+    margin-top: -400px;
+    width: 100%;
     position:relative;
     z-index: -1;
   }
@@ -54,6 +55,10 @@
     width: 100%;
     object-fit: contain;
 
+    }
+
+    .safary-img {
+      margin-top: 0px;
     }
 
     #sign-up-container {

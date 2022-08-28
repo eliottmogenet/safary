@@ -16,21 +16,30 @@
 Analyze metrics, discuss tactics, and benchmark your progress.</p>
 <br>
 <div>
-  <button onclick="location.href='https://airtable.com/shriqI2uduy02Gcl1'">Apply for batch 4 🦁</button>
+  <button onclick="location.href='https://airtable.com/shriqI2uduy02Gcl1'">Apply for batch 5 🦁</button>
 </div>
 <br>
-  <p>Applications close on <u> Friday 19th of August</u></p>
 
 <%= image_tag("safary.png", :width => 900, class: "safary-img") %>
 <p>A community supported by top web3 growth leaders</p>
-<%= image_tag("logos.png", :width => 900, class: "safary-img") %>
+<%= image_tag("logos.png", :width => 900, class: "safary-img", id: "logo") %>
+<%= image_tag("mobile2.png", :width => 900, class: "safary-img", id: "mobile2") %>
+<%= image_tag("mobile1.png", :width => 900, class: "safary-img", id: "mobile1") %>
+
 
 </div>
 </body>
 
 <style>
 
+  #mobile1 {
+    display: none;
+  }
 
+
+  #mobile2 {
+    display: none;
+  }
 
   .header {
     display: flex;
@@ -65,6 +74,18 @@ Analyze metrics, discuss tactics, and benchmark your progress.</p>
 
     @media (max-width: 600px) {
 
+      #mobile1 {
+        display: block
+      }
+
+      #mobile2 {
+        display: block
+      }
+
+      #logo {
+        display: none;
+      }
+
       .Member_acce {
         display: none;
       }
@@ -81,14 +102,23 @@ Analyze metrics, discuss tactics, and benchmark your progress.</p>
 
     h1 {
       font-size: 50px !important;
+      width: 90%;
+      margin-left: 5%;
+      text-align: center;
     }
 
     p {
       font-size: 20px !important;
     }
 
+    span {
+    color: #D25C5C;
+    font-size: 50px !important;
+    }
+
 
     .safary-img {
+    margin: 10px;
     width: 90%;
     object-fit: contain;
 

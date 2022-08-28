@@ -3,13 +3,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-
-   if current_user.job_title.nil?
-      edit_user_registration_path(current_user)
-    elsif current_user.job_title.nil? == false && current_user.user_category.nil?
-      onboarding1_path
+    if current_user.onboarded?
+      schedules_path
     else
-       expeditions_path
+      onboarding1_path
     end
   end
 

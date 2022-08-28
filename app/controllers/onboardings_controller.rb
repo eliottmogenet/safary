@@ -39,4 +39,13 @@ class OnboardingsController < ApplicationController
 
     redirect_to onboarding2_path
   end
+
+   def onboarded
+    @user = current_user
+    @user.onboarded = true
+    @user.save!
+
+    redirect_to schedules_path
+  end
+
 end
