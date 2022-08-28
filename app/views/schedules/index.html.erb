@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
-<% if current_user.password = "CODESECRET"%>
-
 <body>
 
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" style="position: relative !important;">
@@ -130,18 +128,6 @@
 </div>
   <%= image_tag("safary-backgound", class: "safary-img") %>
 </body>
-
-<% elsif current_user.accepted? %>
-
-<p>Your batch is finished</p>
-
-<% else %>
-<h1>yo</h1>
-
-<% end %>
-
-
-
 
 
 
