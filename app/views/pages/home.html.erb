@@ -1,141 +1,111 @@
+<head>
+    <script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
+</head>
 <body>
+<div class="navbar navbar-first">
+  <div class="section0">
+      <p>🦁 Batch 5 of Safary community is closing soon. Apply now <i class="fa-solid fa-arrow-right"></i></p>
+  </div>
+</div>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      Safary
+    <% end %>
 
-<div style="text-align: center;">
-  <div class="header">
-    <h3 style="margin-top: 20px; margin-bottom: 20px; font-weight: 900; color: #D25C5C">Safary</h3>
-    <div>
-      <button class="Member_acce" style="margin-top: 10px; background-color: #FCFAED; color: black;" onclick="location.href='https://www.safary.club/users/sign_in'">Member access 🚌</button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "Community 🦁", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "About", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Action", "#", class: "dropdown-item" %>
+              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
+            </div>
+          </li>
+        <%# else %>
+          <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <!--/li-->
+        <%# end %>
+      </ul>
     </div>
   </div>
-  <br>
-
-
-<h1 style="font-weight: 900; font-size: 70px;">The first <span> Web3 growth </span> <br> community </h1>
-<br>
-<p>Join the community to learn about web3 growth.<br>
-Analyze metrics, discuss tactics, and benchmark your progress.</p>
-<br>
-<div>
-  <button onclick="location.href='https://airtable.com/shriqI2uduy02Gcl1'">Apply for batch 5 🦁</button>
 </div>
-<br>
+  <div class="container-fluid">
 
-<%= image_tag("safary.png", :width => 900, class: "safary-img") %>
-<p>A community supported by top web3 growth leaders</p>
-<%= image_tag("logos.png", :width => 900, class: "safary-img", id: "logo") %>
-<%= image_tag("mobile2.png", :width => 900, class: "safary-img", id: "mobile2") %>
-<%= image_tag("mobile1.png", :width => 900, class: "safary-img", id: "mobile1") %>
-
-
-</div>
+  <div class="section1">
+     <h1>Better understand <br> DeFi and GameFi users </h1>
+      <p>Understand your growth channels, ROI, users and customer segments. <br> Bring clarity to your data. Make better business decisions.</p>
+  </div>
+    <%= image_tag("hello22.png", width: "100%") %>
+  <div class="section2">
+    <p>Join a community of top Web3 growth leaders</p>
+  </div>
+  </div>
 </body>
 
 <style>
 
-  #mobile1 {
-    display: none;
+  h1 {
+    font-size: 55px;
+    font-weight: 800;
   }
 
-
-  #mobile2 {
-    display: none;
-  }
-
-  .header {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  button:hover {
-    background-color: #FCFAED;
-    color: black;
-    border-style: solid;
-  }
-
-  button {
-    background-color: black;
+  .section0 {
+    background-color: #456BDE;
+    height: 45px;
+    text-align: center;
     color: white;
-    height: 50px;
-    width: 300px;
-    border-radius: 40px;
-    border: none;
-    font-weight: bold;
+    width: 100%;
+    line-height: 45px;
   }
 
-  span {
-    color: #D25C5C;
-    font-size: 70px;
-  }
-
-  .safary-img {
-    margin-left: 40px;
+  .section1 {
+    text-align: center;
+    position: relative;
 
   }
 
-    @media (max-width: 600px) {
+  .section2 {
+    background-color: black;
+    height: 300px;
+  }
 
-      #mobile1 {
-        display: block
-      }
+  .section2 p {
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+  }
 
-      #mobile2 {
-        display: block
-      }
+  .container-fluid {
+    padding: 0px;
+  }
 
-      #logo {
-        display: none;
-      }
+  .navbar-first {
+    padding: 0px;
+  }
 
-      .Member_acce {
-        display: none;
-      }
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+  }
 
-      .header {
-         display: flex;
-        justify-content: center;
-      }
-
-    h3 {
-      font-size: 30px !important;
-      margin-bottom: 30px;
-    }
-
-    h1 {
-      font-size: 50px !important;
-      width: 90%;
-      margin-left: 5%;
-      text-align: center;
-    }
-
-    p {
-      font-size: 20px !important;
-    }
-
-    span {
-    color: #D25C5C;
-    font-size: 50px !important;
-    }
+  .navbar-lewagon {
+    margin-top: 40px;
+  }
 
 
-    .safary-img {
-    margin: 10px;
-    width: 90%;
-    object-fit: contain;
-
-    }
-
-    button {
-      width: 90%;
-      font-size: 20px;
-
-    }
-
-    .button-sub {
-      width: 90%;
-    }
-
-    .button-sub2 {
-      width: 90%;
-    }
-
-}
+</style>
