@@ -1,0 +1,388 @@
+<head>
+    <script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag("Logo.png", width: "100px") %>
+      <span>Safary</span>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Use cases <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "🏦 DeFi", "#", class: "dropdown-item" %>
+              <%= link_to "🎮 GameFi", "#", class: "dropdown-item" %>
+            </div>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Community", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "About", "#", class: "nav-link" %>
+          </li>
+        <%# else %>
+          <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <!--/li-->
+        <%# end %>
+      </ul>
+    </div>
+    <form class="form-inline">
+    <button class="btn btn-dark" type="button">Member access <i class="fa-solid fa-arrow-right"></i></button>
+  </form>
+  </div>
+</div>
+  <div class="container-fluid">
+
+  <div class="section1">
+     <h1>The first Web3 growth <br> community </h1>
+      <p style="margin-top: 5px;">4 weeks program & lifetime membership to learn about web3 growth. <br>
+      Analyze metrics, discuss tactics, and benchmark your progress.</p>
+      <button class="btn" style="background-color: #12877E; color: white; padding: 15px; border-radius: 10px; margin-top: 5px;" type="button">Apply for batch 5 🚌</button>
+  </div>
+    <%= image_tag("forest.png", width: "100%", style: "padding: 0px") %>
+    <div class="section2">
+      <div class="container">
+      <h4>All the top Web3 growth leaders love Safary community 🧡</h4>
+      <div>
+        <%= image_tag("uniswap.png", width: "70px", height: "70px") %>
+        <%= image_tag("Ledg.png", width: "130px") %>
+        <%= image_tag("opensea.png", width: "40px") %>
+        <%= image_tag("zerion.png", width: "150px") %>
+        <%= image_tag("aztec.png", width: "120px") %>
+        <%= image_tag("Index.png", width: "140px") %>
+        <%= image_tag("MoonPay.png", width: "120px") %>
+        <%= image_tag("Dogami.png", width: "120px") %>
+      </div>
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="d-block w-100" id="first-slide">
+            <div class="row" id="row-center">
+              <div class="testimonial" style="margin-left: 20px;">
+                  <div class="title">
+                    <%= image_tag("mattcha.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
+                    <div>
+                      <p style="color: black; margin-left: 5px;"><b>Mattcha </b><br>Smoothie</p>
+                    </div>
+                  </div>
+                <p style="color: #4C4C4C; padding-top: 30px;">"just got accepted to @Safaryclub! <br>
+                excited to meet some of the best growth people in web3."</p>
+              </div>
+              <div class="testimonial" style="margin-left: 20px;">
+                  <div class="title">
+                    <%= image_tag("tyler.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
+                    <div>
+                      <p style="color: black; margin-left: 5px;"><b>T$$$ </b><br>Dapper Labs</p>
+                    </div>
+                  </div>
+                <p style="color: #4C4C4C; padding-top: 30px;">"@Safaryclub is a great way to build consistent learning into your every week. The vibes are super laid-back & the insights are phenomenal.If you're a Web3 nerd like me: apply for Batch 3!"</p>
+              </div>
+              <div class="testimonial" style="margin-left: 20px;">
+                  <div class="title">
+                    <%= image_tag("Rohan.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
+                    <div>
+                      <p style="color: black; margin-left: 5px;"><b>Rohan </b><br>Biconomy</p>
+                    </div>
+                  </div>
+                <p style="color: #4C4C4C; padding-top: 30px;">Super excited to collab and co-learn with all the folks that got into @Safaryclub in the new batch. Thanks, @jkey_eth
+                for putting together this community. 🚀🚀</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="d-block w-100" src="..." alt="Second slide">
+            <div class="row" id="row-center">
+              <div class="testimonial" style="margin-left: 20px;">
+                  <div class="title">
+                    <%= image_tag("eric.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
+                    <div>
+                      <p style="color: black; margin-left: 5px;"><b>Eric </b><br>
+                      Livepeer</p>
+                    </div>
+                  </div>
+                <p style="color: #4C4C4C; padding-top: 30px;">"Today is the day! Excited to join
+@Safaryclub
+ batch 3 and start learning web3 growth from their excellent community and team 🦁
+
+I love how dynamic this space is, there's always something new to learn and new people to meet!"</p>
+              </div>
+              <div class="testimonial" style="margin-left: 20px;">
+                  <div class="title">
+                    <%= image_tag("Yoki.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
+                    <div>
+                      <p style="color: black; margin-left: 5px;"><b>Yoki </b><br>
+                      Omnie</p>
+                    </div>
+                  </div>
+                <p style="color: #4C4C4C; padding-top: 30px;">"Guess who is joining
+                @Safaryclub
+                 :D can’t wait to learn from some of the brightest 🦁🦁🦁
+
+                And it happens on the day that marks  my second month at @steakwallet.
+                What a fucking team!! Couldn’t be more grateful for the opportunity they gave me. The future is BRIGHT!
+
+                ❤️🥩❤️"</p>
+              </div>
+              <div class="testimonial" style="margin-left: 20px;">
+                  <div class="title">
+                    <%= image_tag("bernie.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
+                    <div>
+                      <p style="color: black; margin-left: 5px;"><b>Bernie </b><br>
+                      Biconomy</p>
+                    </div>
+                  </div>
+                <p style="color: #4C4C4C; padding-top: 30px;">"Safary - @Safaryclub. The #1 destination for web3 growth leaders to exchange tactical insights. After you join their community, you'll have access to weekly talks with experienced guest speakers and much more."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="d-block w-100" src="..." alt="Third slide">
+            <div class="row" id="row-center">
+              <div class="testimonial" style="margin-left: 20px;">
+                  <div class="title">
+                    <%= image_tag("serge.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
+                    <div>
+                      <p style="color: black; margin-left: 5px;"><b>Oak </b><br>
+                      Staoplace</p>
+                    </div>
+                  </div>
+                <p style="color: #4C4C4C; padding-top: 30px;">"Adding "@safaryclub🦁" to bio because just a couple of days in I'm already meeting cool people who are working on cool things and learning a lot."</p>
+              </div>
+              <div class="testimonial" style="margin-left: 20px;">
+                  <div class="title">
+                    <%= image_tag("ryan.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
+                    <div>
+                      <p style="color: black; margin-left: 5px;"><b>Ryan2 </b><br>
+                      Odyssey</p>
+                    </div>
+                  </div>
+                <p style="color: #4C4C4C; padding-top: 30px;">"Join us to discover and co-write #growth playbooks for #Web3, together with a community of passionate growth leaders from around the globe, across #product, #marketing and more 🦁
+                Access is gated but application is currently open 👀"</p>
+              </div>
+              <div class="testimonial" style="margin-left: 20px;">
+                  <div class="title">
+                    <%= image_tag("DeSo.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
+                    <div>
+                      <p style="color: black; margin-left: 5px;"><b>Arash Ghaemi </b><br>
+                      DeSo</p>
+                    </div>
+                  </div>
+                <p style="color: #4C4C4C; padding-top: 30px;">"Holy F#@%, I made it into SafaryDAO!
+
+WTF is SafaryDAO?
+
+It's a community of the best growth marketers in Web3.
+
+Not a flex.
+
+It's more like, wow, I'm humbled, and look how far I've come."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <section class="section3">
+  <div class="container">
+    <div class="row" id="row-center">
+      <div class="col-sm-12 col-lg-5">
+        <div class="collapse-title">
+          <h2>A unique place in Web3 <br> for growth leaders </h2>
+        </div>
+        <div id="accordion">
+          <div class="card1">
+            <div id="headingOne">
+                  <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="myFunction1()">Conferences and courses </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                <p>Source as if you were in your home market, empowered with local insights to qualify talent.</p>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <div class="card1">
+            <div id="headingTwo">
+              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onclick="myFunction2()">
+                Panels with top attendes
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <p>Leverage data to build personalized messages designed for candidates in each new market. </p>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <div class="card1">
+            <div id="headingThree">
+              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="myFunction3()">
+                  Events & networking
+              </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="card-body">
+                <p>Follow your top funnel metric in real-time as a single recruiter or a team to build a better custom strategy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-lg-4" style="margin-top: 50px;">
+        <div id="first-img" class="active">
+        </div>
+        <div id="second-img" class="inactive">
+          hello2
+        </div>
+        <div id="third-img" class="inactive">
+          hello3
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+
+<style>
+
+    #accordion {
+    width: auto;
+  }
+
+
+  .collapse-title {
+  padding-bottom: 50px;
+
+    }
+
+    .mb-0:hover {
+        cursor: pointer;
+    }
+
+    .section3 {
+      height: 500px;
+      margin-top:100px;
+      padding-bottom: 60px;
+    }
+
+
+    .inactive {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .col {
+      width: 200px;
+    }
+
+
+    .card-body {
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 0px !important;
+    padding-bottom: 0px !important;
+   }
+
+  .card-body p {
+    color: #777581;
+  }
+
+  .container-fluid {
+    padding: 0px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+
+  #first-slide {
+    display: flex;
+    justify-content: flex-start;
+
+  }
+
+  #row-center {
+  display: flex;
+  justify-content: center;
+}
+
+  .testimonial {
+    width: 350px;
+    height: 350px;
+    background-color: white;
+    margin-right: 20px;
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  .testimonial p {
+    color: #4C4C4C;
+  }
+
+  .caroussel-item {
+    transition(.6s ease-in-out left);
+  }
+
+    .section2 {
+    background-color: black;
+    height: 550px;
+    padding: 40px;
+  }
+
+  .container-fluid {
+    padding: 0px;
+  }
+
+   .section2 h4 {
+    color: white;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+
+    h1 {
+    font-size: 55px;
+    font-weight: 800;
+  }
+
+  .section1 {
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+    padding-top: 150px;
+
+  }
+
+   .navbar-nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar-lewagon {
+    overflow: visible;
+  }
+</style>

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
   resources :leaderboards
   resources :templates
+  get '/community', :to => 'pages#community', :as => "community"
   get '/audiences', :to => 'use_cases#audiences', :as => "audiences"
   get '/profile', :to => 'leaderboards#profile', :as => "profile"
   get '/onboarding1', :to => 'onboardings#onboarding1', :as => "onboarding1"
