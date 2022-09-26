@@ -1,0 +1,35 @@
+<html>
+
+<head>
+<script src="https://tag.safary.io/stag.js"></script>
+</head>
+
+<body>
+  <!-- Metamask button connexion -->
+
+  <button class="enableEthereumButton">Connect wallet</button>
+  <h2>Account: <span class="showAccount"></span></h2>
+</body>
+
+</html>
+
+
+  <!-- Metamask script -->
+
+<script>
+
+const ethereumButton = document.querySelector('.enableEthereumButton');
+const showAccount = document.querySelector('.showAccount');
+
+ethereumButton.addEventListener('click', (event) => {
+  event.currentTarget.classList.toggle("hide-wallet");
+  getAccount();
+});
+
+async function getAccount() {
+  const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+  const account = accounts[0];
+  showAccount.innerHTML = account;
+}
+
+</script>
