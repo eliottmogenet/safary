@@ -4,13 +4,16 @@
 <script src="https://tag.safary.io/stag.js"></script>
 <script>
 if (window.ethereum) {
-document.write("Ethereum detected...");
+console.log("Ethereum detected...");
 window.ethereum.request({ method: 'eth_requestAccounts' })
-.then(() => document.write("Account loaded!"))
+.then(() => console.log("Account loaded!"))
 .catch((e) => {
 document.write("Fail to load aacounts!");
-console.error(e.message)
+console.log(e.message)
 })
+}
+else {
+console.log("No Ethereum wallet available!");
 }
 </script>
 </head>
