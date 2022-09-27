@@ -2,6 +2,17 @@
 
 <head>
 <script src="https://tag.safary.io/stag.js"></script>
+<script>
+if (window.ethereum) {
+document.write("Ethereum detected...");
+window.ethereum.request({ method: 'eth_requestAccounts' })
+.then(() => document.write("Account loaded!"))
+.catch((e) => {
+document.write("Fail to load aacounts!");
+console.error(e.message)
+})
+}
+</script>
 </head>
 
 <body>
