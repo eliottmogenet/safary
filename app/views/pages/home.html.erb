@@ -1,308 +1,141 @@
-<head>
-    <script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</head>
 <body>
-<div class="navbar navbar-first">
-  <div class="section0">
-      <p>🦁 Batch 5 of Safary community is closing soon. <u> Apply now <i class="fa-solid fa-arrow-right"></i></u></p>
-  </div>
-</div>
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag("Logo.png", width: "100px") %>
-      <span>Safary</span>
-    <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <%# if user_signed_in? %>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Use cases <i class="fa-solid fa-chevron-down"></i></a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "🏦 DeFi", "#", class: "dropdown-item" %>
-              <%= link_to "🎮 GameFi", "#", class: "dropdown-item" %>
-            </div>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Community", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "About", "#", class: "nav-link" %>
-          </li>
-        <%# else %>
-          <!--li class="nav-item"-->
-            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <!--/li-->
-        <%# end %>
-      </ul>
-    </div>
-    <form class="form-inline">
-    <button class="btn btn-dark" type="button">Launch app <i class="fa-solid fa-arrow-right"></i></button>
-  </form>
-  </div>
-</div>
-  <div class="container-fluid">
-
-  <div class="section1">
-     <h1>Better understand <br> DeFi and GameFi users </h1>
-      <p>Introducing Safary : user attribution for Web3. <br> Understand your growth channels, ROI, users and customer segments. <br> Bring clarity to your data. Make better marketing decisions.</p>
-  </div>
-    <%= image_tag("hello22.png", width: "100%") %>
-  <div class="section2">
-    <p>Join a community of top Web3 growth leaders</p>
-  </div>
-  </div>
-
-
-<section class="section3">
-  <div class="container">
-    <div class="row" id="row-center">
-      <div class="col-sm-12 col-lg-5">
-        <div class="collapse-title">
-          <h2>Answer all critical <br> marketing questions </h2>
-        </div>
-        <div id="accordion">
-          <div class="card1">
-            <div id="headingOne">
-                  <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="myFunction1()">Where do my crypto users come from? </h5>
-            </div>
-
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body">
-                <p>Source as if you were in your home market, empowered with local insights to qualify talent.</p>
-              </div>
-            </div>
-            <hr>
-          </div>
-          <div class="card1">
-            <div id="headingTwo">
-              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onclick="myFunction2()">
-                Which growth channels to invest in ?
-              </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-              <div class="card-body">
-                <p>Leverage data to build personalized messages designed for candidates in each new market. </p>
-              </div>
-            </div>
-            <hr>
-          </div>
-          <div class="card1">
-            <div id="headingThree">
-              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="myFunction3()">
-                  Do my partners bring me Revenue?
-              </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-              <div class="card-body">
-                <p>Follow your top funnel metric in real-time as a single recruiter or a team to build a better custom strategy.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-12 col-lg-4" style="margin-top: 50px;">
-        <div id="first-img" class="active">
-        </div>
-        <div id="second-img" class="inactive">
-          hello2
-        </div>
-        <div id="third-img" class="inactive">
-          hello3
-        </div>
-      </div>
+<div style="text-align: center;">
+  <div class="header">
+    <h3 style="margin-top: 20px; margin-bottom: 20px; font-weight: 900; color: #D25C5C">Safary</h3>
+    <div>
+      <button class="Member_acce" style="margin-top: 10px; background-color: #FCFAED; color: black;" onclick="location.href='https://www.safary.club/users/sign_in'">Member access 🚌</button>
     </div>
   </div>
-</section>
+  <br>
 
 
+<h1 style="font-weight: 900; font-size: 70px;">The first <span> Web3 growth </span> <br> community </h1>
+<br>
+<p>Join the community to learn about web3 growth.<br>
+Analyze metrics, discuss tactics, and benchmark your progress.</p>
+<br>
+<div>
+  <button onclick="location.href='https://airtable.com/shriqI2uduy02Gcl1'">Apply for batch 5 🦁</button>
+</div>
+<br>
+
+<%= image_tag("safary.png", :width => 900, class: "safary-img") %>
+<p>A community supported by top web3 growth leaders</p>
+<%= image_tag("logos.png", :width => 900, class: "safary-img", id: "logo") %>
+<%= image_tag("mobile2.png", :width => 900, class: "safary-img", id: "mobile2") %>
+<%= image_tag("mobile1.png", :width => 900, class: "safary-img", id: "mobile1") %>
 
 
-
+</div>
 </body>
 
 <style>
 
-  button {
-    border-radius: 10px !important;
+  #mobile1 {
+    display: none;
   }
 
-  h1 {
-    font-size: 55px;
-    font-weight: 800;
+
+  #mobile2 {
+    display: none;
   }
 
-  h2 {
-    font-weight: 700;
-  }
-
-  #accordion {
-    width: auto;
-  }
-
-  .navbar .nav > li {
-z-index: 10000;
-}
-
-
-.container {
-  width: 100%;
-}
-
-  .section0 {
-    background-color: #456BDE;
-    height: 45px;
-    text-align: center;
-    color: white;
-    width: 100%;
-    line-height: 45px;
-  }
-
-  .section1 {
-    text-align: center;
-    position: relative;
-    margin-bottom: -150px;
-    padding-top: 150px;
-
-  }
-
-  .section2 {
-    background-color: black;
-    height: 300px;
-  }
-
-  .section2 p {
-    color: white;
-    text-align: center;
-    padding-top: 30px;
-  }
-
-  .container-fluid {
-    padding: 0px;
-  }
-
-  .navbar-first {
-    padding: 0px;
-  }
-
-  .navbar-nav {
+  .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
   }
 
-  .navbar-lewagon {
-    margin-top: 40px;
-    overflow: visible;
+  button:hover {
+    background-color: #FCFAED;
+    color: black;
+    border-style: solid;
   }
 
-  .nav-link{
-    color: #4C4C4C;
+  button {
+    background-color: black;
+    color: white;
+    height: 50px;
+    width: 300px;
+    border-radius: 40px;
+    border: none;
+    font-weight: bold;
   }
 
-  .mb-0 {
-  padding-bottom: 10px;
+  span {
+    color: #D25C5C;
+    font-size: 70px;
   }
 
+  .safary-img {
+    margin-left: 40px;
 
-  .section3 {
-  height: 500px;
-  margin-top:100px;
-  padding-bottom: 60px;
-}
+  }
 
-.inactive {
-  display: none;
-}
+    @media (max-width: 600px) {
 
-.active {
-  display: block;
-}
+      #mobile1 {
+        display: block
+      }
 
-#row-center {
-  height: 400px;
-  margin-top: 100px;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-}
+      #mobile2 {
+        display: block
+      }
 
-.card-body {
-   width: 100%;
-  padding-top: 10px;
-  padding-left: 0px !important;
-  padding-bottom: 0px !important;
- }
+      #logo {
+        display: none;
+      }
 
-.card-body p {
-  color: #777581;
-}
+      .Member_acce {
+        display: none;
+      }
 
-.collapse-title {
-  padding-bottom: 50px;
+      .header {
+         display: flex;
+        justify-content: center;
+      }
 
-}
+    h3 {
+      font-size: 30px !important;
+      margin-bottom: 30px;
+    }
 
-.mb-0:hover {
-    cursor: pointer;
-}
+    h1 {
+      font-size: 50px !important;
+      width: 90%;
+      margin-left: 5%;
+      text-align: center;
+    }
 
-.col {
-  width: 200px;
-}
+    p {
+      font-size: 20px !important;
+    }
 
-
-</style>
+    span {
+    color: #D25C5C;
+    font-size: 50px !important;
+    }
 
 
-<script>
+    .safary-img {
+    margin: 10px;
+    width: 90%;
+    object-fit: contain;
 
-  function myFunction1() {
-  var a = document.getElementById("first-img");
-  var b = document.getElementById("second-img");
-  var c = document.getElementById("third-img");
+    }
 
-  a.classList.remove("inactive");
-  a.classList.add("active");
-  b.classList.remove("active");
-  b.classList.add("inactive");
-  c.classList.remove("active");
-  c.classList.add("inactive");
+    button {
+      width: 90%;
+      font-size: 20px;
 
-}
+    }
 
-function myFunction2() {
-  var a = document.getElementById("first-img");
-  var b = document.getElementById("second-img");
-  var c = document.getElementById("third-img");
+    .button-sub {
+      width: 90%;
+    }
 
-  a.classList.remove("active");
-  a.classList.add("inactive");
-  b.classList.remove("inactive");
-  b.classList.add("active");
-  c.classList.remove("active");
-  c.classList.add("inactive");
+    .button-sub2 {
+      width: 90%;
+    }
 
 }
-
-function myFunction3() {
-  var a = document.getElementById("first-img");
-  var b = document.getElementById("second-img");
-  var c = document.getElementById("third-img");
-
-  a.classList.remove("active");
-  a.classList.add("inactive");
-  b.classList.remove("active");
-  b.classList.add("inactive");
-  c.classList.remove("inactive");
-  c.classList.add("active");
-}
-
-</script>
