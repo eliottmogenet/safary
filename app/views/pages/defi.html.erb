@@ -1,0 +1,317 @@
+<head>
+    <script src="https://kit.fontawesome.com/22b9c00edd.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="navbar navbar-first">
+  <div class="section0">
+      <p>🦁 Batch 5 of Safary community is closing soon. <u> <a style="color: white" href="/community">Apply now <i class="fa-solid fa-arrow-right"></i></a></u></p>
+  </div>
+</div>
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="container">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag("Logo.png", width: "100px") %>
+        <span>Safary</span>
+      <% end %>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <%# if user_signed_in? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Use cases <i class="fa-solid fa-chevron-down"></i></a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "🏦 DeFi", defi_path, class: "dropdown-item" %>
+                <%= link_to "🎮 GameFi", gamefi_path, class: "dropdown-item" %>
+              </div>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Community", community_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Vision", vision_path, class: "nav-link" %>
+            </li>
+          <%# else %>
+            <!--li class="nav-item"-->
+              <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <!--/li-->
+          <%# end %>
+        </ul>
+      </div>
+      <form class="form-inline">
+      <a class="btn btn-dark" id="acces" type="button" href="https://airtable.com/shrBT7CCSQ7xktLGW">Launch app <i class="fa-solid fa-arrow-right"></i></a>
+    </form>
+    </div>
+  </div>
+  <div class="container-fluid">
+
+    <div class="row">
+    <div class="col-sm" id="col1">
+      <h1>Grow your DeFi users  </h1>
+      <p style="margin-top: 5px;">Understand where your holders, traders or liquity providers
+come from. Better track and monitor liquidity, TVL or
+transactions volume by analysing your DeFi users.</p>
+      <a class="btn" id="request" type="button" href="https://airtable.com/shrBT7CCSQ7xktLGW" target="_blank">Request access 🚌</a>
+    </div>
+    <div class="col-sm" id="col2">
+      <%= image_tag("defi.png", width: "90%;", id: "gamefi") %>
+    </div>
+  </div>
+      <%= image_tag("forest.png", width: "100%", style: "padding: 0px; z-index: 9999;") %>
+
+  </div>
+</body>
+<footer>
+  <p>@Safary 2022</p>
+  <a href="mailto:eliott@mail-safary.club" target="_blank">Contact</a>
+  <a href="https://www.linkedin.com/company/safaryclub/" target="_blank">Linkedin</a>
+  <a href="https://twitter.com/Safaryclub" target="_blank">Twitter</a>
+</footer>
+
+<style>
+
+    span {
+    color: #12877E;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+
+  @media (max-width: 600px) {
+
+    #acces {
+    display: none;
+  }
+
+
+     .section0 p {
+      font-size: 10px;
+     }
+
+       h1 {
+      font-size: 40px !important;
+      padding-top: 15%;
+     }
+
+  }
+
+  .navbar-first {
+    padding: 0px;
+  }
+
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar-lewagon {
+    margin-top: 40px;
+    overflow: visible;
+  }
+
+
+  .navbar {
+    z-index: 3;
+  }
+
+
+  .section0 {
+    background-color: #456BDE;
+    height: 45px;
+    text-align: center;
+    color: white;
+    width: 100%;
+    line-height: 45px;
+  }
+
+  #col1 {
+    padding-left: 10%;
+    margin-top: 5%;
+    padding-bottom: 10%;
+  }
+
+  #col2 {
+    text-align: right;
+    z-index: 2;
+  }
+
+    #request {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+
+  #request {
+    background-color: #12877E; color: white; padding: 15px; border-radius: 10px; margin-top: 5px;
+  }
+
+   #request:hover {
+    color: #12877E;
+    border-style: solid;
+    border-color: #12877E;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+
+
+  footer {
+    text-align: center;
+    padding-top: 30px;
+    height: 150px;
+    background-color: black;
+    color: white
+  }
+
+  footer a {
+    color: white;
+    margin-left: 20px;
+  }
+
+  .section4 {
+    text-align: center;
+    height: 150px;
+  }
+
+   .btn {
+    border-radius: 10px !important;
+  }
+
+
+    .logos {
+    text-align: center;
+    margin-bottom: 20px;
+    }
+
+
+    #accordion {
+    width: auto;
+  }
+
+
+  .collapse-title {
+  padding-bottom: 50px;
+
+    }
+
+    .mb-0:hover {
+        cursor: pointer;
+    }
+
+    .section3 {
+      height: 500px;
+      margin-top:100px;
+      padding-bottom: 60px;
+    }
+
+
+    .inactive {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .col {
+      width: 200px;
+    }
+
+
+    .card-body {
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 0px !important;
+    padding-bottom: 0px !important;
+   }
+
+  .card-body p {
+    color: #777581;
+  }
+
+  .container-fluid {
+    padding: 0px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+
+  #first-slide {
+    display: flex;
+    justify-content: flex-start;
+
+  }
+
+  #row-center {
+  display: flex;
+  justify-content: center;
+}
+
+  .testimonial {
+    width: 350px;
+    height: 350px;
+    background-color: white;
+    margin-right: 20px;
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  .testimonial p {
+    color: #4C4C4C;
+  }
+
+  .caroussel-item {
+    transition(.6s ease-in-out left);
+  }
+
+    .section2 {
+    background-color: black;
+    height: 600px;
+    padding: 40px;
+  }
+
+  .container-fluid {
+    padding: 0px !important;
+  }
+
+   .section2 h4 {
+    color: white;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+
+    h1 {
+    font-size: 55px;
+    font-weight: 800;
+  }
+
+  .row {
+    margin-bottom: -10%;
+    padding-top: 14%;
+
+  }
+
+   .navbar-nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar-lewagon {
+    overflow: visible;
+  }
+
+
+  .navbar-first {
+    padding: 0px;
+  }
+
+</style>

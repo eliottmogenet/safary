@@ -5,11 +5,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="navbar navbar-first">
-  <div class="section0">
-      <p>🦁 Batch 5 of Safary community is closing soon. <u><a style="color: white" href="/community">Apply now <i class="fa-solid fa-arrow-right"></i></a></u></p>
+    <div class="navbar navbar-first">
+    <div class="section0">
+        <p>🦁 Batch 5 of Safary community is closing soon. <u><a style="color: white" href="/community">Apply now <i class="fa-solid fa-arrow-right"></i></a></u></p>
+    </div>
   </div>
-</div>
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
     <div class="container">
       <%= link_to root_path, class: "navbar-brand" do %>
@@ -53,16 +53,24 @@
 
     <div class="row">
     <div class="col-sm" id="col1">
-      <h1>Finally understand Web3 players. </h1>
-      <p style="margin-top: 5px;">Safary provides a powerful, customizable attribution system for Web3 games. Stop wasting money on ads and start improving your ROI for GameFi products. .</p>
-      <a class="btn" id="request" type="button" href="https://airtable.com/shrBT7CCSQ7xktLGW" target="_blank">Request access 🚌</a>
+      <h1>Building the future of marketing in Web3</h1>
+      <p style="margin-top: 5px;">
+      We started our journey in January 2022 by creating the Safary community. We gathered all the most advanced Web3 growth leaders, from Ledger, Uniswap, OpenSea, Unstopabble domains, Dappers Labs and many more, to write the first Web3 growth playbook.</p>
+      <p> Yet, many conversations later, we discovered that growth and marketing will be very different in the future of internet.</p>
+
+      <p>1. In Web3, users are anonymous or pseudonymous, sharing multiple wallet addresses. The previous user tracking system is outdated.<br>
+      2. For the first time in history, most users data (transactions history or wallet balances) are available on-chain. Yet, those data are not actionable without heavy engineering and in-house system only a few can afford to build.<br>
+      3. In consequence, Web3 teams are flying blind. They are unable to properly calculate ROI, create growth experiments and market their products. The lack of data driven strategy prevents Web3 growth teams to use classic web2 channels like advertising for example.<br>
+      <p> Today, better understanding crypto users is critical to bring Web3 to the mass. It will ultimately need a powerful attribution system. A new standard, privacy-friendly infrastructure to help every company thrive in the new internet.</p>
+
+      <p> We are on a mission to rebuild the marketing stack for Web3, starting with analytics and attribution. It’s an urging challenge for DeFi and GameFi. It's still the early days for Web3 marketing.</p>
+
+      <p> The Safary team -</p>
     </div>
     <div class="col-sm" id="col2">
-      <%= image_tag("gamefi.png", width: "90%;", id: "gamefi") %>
+      <%= image_tag("eldorado.png", width: "100%;", id: "gamefi") %>
     </div>
   </div>
-      <%= image_tag("forest.png", width: "100%", style: "padding: 0px; z-index: 9999;") %>
-
   </div>
 </body>
 <footer>
@@ -74,7 +82,6 @@
 
 <style>
 
-
     span {
     color: #12877E;
     font-weight: 700;
@@ -84,24 +91,38 @@
 
   @media (max-width: 600px) {
 
-                h1 {
-      font-size: 40px !important;
-      padding-top: 15%;
-     }
-
-
     #acces {
     display: none;
   }
 
-       .section0 p {
+
+     .section0 p {
       font-size: 10px;
      }
 
+       h1 {
+      font-size: 40px !important;
+     }
+
+     #col1 {
+      padding-top: 20%;
+     }
 
   }
 
-   .navbar-first {
+  #col1 p {
+    font-size: 14px;
+    padding-right: 8%;
+    color: #474B55;
+    text-align: justify;
+  }
+
+
+  .navbar {
+    z-index: 3;
+  }
+
+    .navbar-first {
     padding: 0px;
   }
 
@@ -116,12 +137,6 @@
   }
 
 
-
-  .navbar {
-    z-index: 3;
-  }
-
-
   .section0 {
     background-color: #456BDE;
     height: 45px;
@@ -132,7 +147,7 @@
   }
 
   #col1 {
-    padding-left: 10%;
+    padding-left: 8%;
     margin-top: 5%;
     padding-bottom: 10%;
   }
@@ -143,30 +158,13 @@
     z-index: 2;
   }
 
-  footer {
-    text-align: center;
-    padding-top: 30px;
-    height: 150px;
-    background-color: black;
-    color: white
-  }
-
-  footer a {
-    color: white;
-    margin-left: 20px;
-  }
-
-   .btn {
-    border-radius: 10px !important;
-  }
-
-  .section4 {
-    text-align: center;
-    height: 150px;
-  }
-
     #request {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+
+  #request {
+    background-color: #12877E; color: white; padding: 15px; border-radius: 10px; margin-top: 5px;
   }
 
    #request:hover {
@@ -178,9 +176,31 @@
   }
 
 
-  #request {
-    background-color: #12877E; color: white; padding: 15px; border-radius: 10px; margin-top: 5px;
+
+  footer {
+    text-align: center;
+    width: 100%;
+    padding-top: 30px;
+    padding-right: 0px;
+    height: 150px;
+    background-color: black;
+    color: white
   }
+
+  footer a {
+    color: white;
+    margin-left: 20px;
+  }
+
+  .section4 {
+    text-align: center;
+    height: 150px;
+  }
+
+   .btn {
+    border-radius: 10px !important;
+  }
+
 
     .logos {
     text-align: center;
@@ -237,6 +257,10 @@
     padding: 0px;
   }
 
+  .container {
+  width: 100% !important;
+}
+
   .title {
     display: flex;
     justify-content: flex-start;
@@ -289,13 +313,13 @@
 
 
     h1 {
-    font-size: 55px;
+    padding-top: 10%;
+    padding-bottom: 5%;
+    font-size: 45px;
     font-weight: 800;
   }
 
   .row {
-    margin-bottom: -10%;
-    padding-top: 14%;
 
   }
 

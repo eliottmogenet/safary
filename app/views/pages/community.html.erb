@@ -5,9 +5,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
+  <div class="navbar navbar-first">
+  <div class="section0">
+      <p>🦁 Batch 5 of Safary community is closing soon. <u> <a style="color: white" href="https://airtable.com/shriqI2uduy02Gcl1" target="_blank">Apply now <i class="fa-solid fa-arrow-right"></i></a></u></p>
+  </div>
+</div>
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag("Logo.png", width: "100px") %>
       <span>Safary</span>
     <% end %>
@@ -22,15 +27,15 @@
           <li class="nav-item dropdown">
             <a class="nav-link" href="" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Use cases <i class="fa-solid fa-chevron-down"></i></a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "🏦 DeFi", "#", class: "dropdown-item" %>
-              <%= link_to "🎮 GameFi", "#", class: "dropdown-item" %>
+              <%= link_to "🏦 DeFi", defi_path, class: "dropdown-item" %>
+              <%= link_to "🎮 GameFi", gamefi_path, class: "dropdown-item" %>
             </div>
           </li>
           <li class="nav-item">
-            <%= link_to "Community", "#", class: "nav-link" %>
+            <%= link_to "Community", community_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "About", "#", class: "nav-link" %>
+            <%= link_to "Vision", vision_path, class: "nav-link" %>
           </li>
         <%# else %>
           <!--li class="nav-item"-->
@@ -40,7 +45,7 @@
       </ul>
     </div>
     <form class="form-inline">
-    <button class="btn btn-dark" type="button">Member access <i class="fa-solid fa-arrow-right"></i></button>
+    <a class="btn btn-dark" id="acces" type="button" href="/users/sign_in">Member access <i class="fa-solid fa-arrow-right"></i></a>
   </form>
   </div>
 </div>
@@ -50,20 +55,20 @@
      <h1>The first Web3 growth <br> community </h1>
       <p style="margin-top: 5px;">4 weeks program & lifetime membership to learn about web3 growth. <br>
       Analyze metrics, discuss tactics, and benchmark your progress.</p>
-      <button class="btn" style="background-color: #12877E; color: white; padding: 15px; border-radius: 10px; margin-top: 5px;" type="button">Apply for batch 5 🚌</button>
+      <a class="btn" id="request" type="button" href="https://airtable.com/shriqI2uduy02Gcl1" target="_blank">Apply for batch 5 🚌</a>
   </div>
     <%= image_tag("forest.png", width: "100%", style: "padding: 0px") %>
     <div class="section2">
       <div class="container">
       <h4>All the top Web3 growth leaders love Safary community 🧡</h4>
-      <div>
+        <div class="logos">
         <%= image_tag("uniswap.png", width: "70px", height: "70px") %>
-        <%= image_tag("Ledg.png", width: "130px") %>
-        <%= image_tag("opensea.png", width: "40px") %>
-        <%= image_tag("zerion.png", width: "150px") %>
+        <%= image_tag("Ledg.png", width: "130px", style: "margin-right: 15px;") %>
+        <%= image_tag("opensea.png", width: "40px", style: "margin-right: 15px;") %>
+        <%= image_tag("zerion.png", width: "150px", style: "margin-right: 15px;", id: "zerion") %>
         <%= image_tag("aztec.png", width: "120px") %>
         <%= image_tag("Index.png", width: "140px") %>
-        <%= image_tag("MoonPay.png", width: "120px") %>
+        <%= image_tag("MoonPay.png", width: "120px", style: "margin-right: 15px;") %>
         <%= image_tag("Dogami.png", width: "120px") %>
       </div>
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
@@ -81,7 +86,7 @@
                 <p style="color: #4C4C4C; padding-top: 30px;">"just got accepted to @Safaryclub! <br>
                 excited to meet some of the best growth people in web3."</p>
               </div>
-              <div class="testimonial" style="margin-left: 20px;">
+              <div class="testimonial" id="testi2" style="margin-left: 20px;">
                   <div class="title">
                     <%= image_tag("tyler.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
                     <div>
@@ -90,7 +95,7 @@
                   </div>
                 <p style="color: #4C4C4C; padding-top: 30px;">"@Safaryclub is a great way to build consistent learning into your every week. The vibes are super laid-back & the insights are phenomenal.If you're a Web3 nerd like me: apply for Batch 3!"</p>
               </div>
-              <div class="testimonial" style="margin-left: 20px;">
+              <div class="testimonial"  id="testi3" style="margin-left: 20px;">
                   <div class="title">
                     <%= image_tag("Rohan.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
                     <div>
@@ -120,7 +125,7 @@
 
 I love how dynamic this space is, there's always something new to learn and new people to meet!"</p>
               </div>
-              <div class="testimonial" style="margin-left: 20px;">
+              <div class="testimonial" id="testi4" style="margin-left: 20px;">
                   <div class="title">
                     <%= image_tag("Yoki.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
                     <div>
@@ -137,7 +142,7 @@ I love how dynamic this space is, there's always something new to learn and new 
 
                 ❤️🥩❤️"</p>
               </div>
-              <div class="testimonial" style="margin-left: 20px;">
+              <div class="testimonial" id="testi5" style="margin-left: 20px;">
                   <div class="title">
                     <%= image_tag("bernie.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
                     <div>
@@ -163,7 +168,7 @@ I love how dynamic this space is, there's always something new to learn and new 
                   </div>
                 <p style="color: #4C4C4C; padding-top: 30px;">"Adding "@safaryclub🦁" to bio because just a couple of days in I'm already meeting cool people who are working on cool things and learning a lot."</p>
               </div>
-              <div class="testimonial" style="margin-left: 20px;">
+              <div class="testimonial" id="testi6" style="margin-left: 20px;">
                   <div class="title">
                     <%= image_tag("ryan.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
                     <div>
@@ -174,7 +179,7 @@ I love how dynamic this space is, there's always something new to learn and new 
                 <p style="color: #4C4C4C; padding-top: 30px;">"Join us to discover and co-write #growth playbooks for #Web3, together with a community of passionate growth leaders from around the globe, across #product, #marketing and more 🦁
                 Access is gated but application is currently open 👀"</p>
               </div>
-              <div class="testimonial" style="margin-left: 20px;">
+              <div class="testimonial" id="testi7" style="margin-left: 20px;">
                   <div class="title">
                     <%= image_tag("DeSo.jpeg", width: "50px", height: "50px", style: "border-radius: 100%") %>
                     <div>
@@ -215,7 +220,7 @@ It's more like, wow, I'm humbled, and look how far I've come."</p>
 
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body">
-                <p>Source as if you were in your home market, empowered with local insights to qualify talent.</p>
+                <p>Access the most advanced content, strategies and tactics in Web3 growth. </p>
               </div>
             </div>
             <hr>
@@ -223,12 +228,12 @@ It's more like, wow, I'm humbled, and look how far I've come."</p>
           <div class="card1">
             <div id="headingTwo">
               <h5 class="mb-0" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onclick="myFunction2()">
-                Panels with top attendes
+                Panels with top attendees
               </h5>
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
               <div class="card-body">
-                <p>Leverage data to build personalized messages designed for candidates in each new market. </p>
+                <p>Meet all the top growth leaders from the industry in L1/L2, DeFi, GameFi, NFTs and more. </p>
               </div>
             </div>
             <hr>
@@ -241,28 +246,161 @@ It's more like, wow, I'm humbled, and look how far I've come."</p>
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
               <div class="card-body">
-                <p>Follow your top funnel metric in real-time as a single recruiter or a team to build a better custom strategy.</p>
+                <p>Join a trusted community of like-minded pairs with online events and IRL meetups. </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-12 col-lg-4" style="margin-top: 50px;">
+      <div class="col-sm-12 col-lg-4" style="margin-top: '5%';">
         <div id="first-img" class="active">
+          <%= image_tag("conf.png", width: "95%") %>
         </div>
         <div id="second-img" class="inactive">
-          hello2
+          <%= image_tag("panels.png", width: "95%") %>
         </div>
         <div id="third-img" class="inactive">
-          hello3
+          <%= image_tag("event.png", width: "95%") %>
         </div>
       </div>
     </div>
   </div>
 </section>
+<section class="section4">
+    <a class="btn" id="request" type="button" href="https://airtable.com/shriqI2uduy02Gcl1" target="_blank">Apply for batch 5 🚌</a>
+</section>
 </body>
+<footer>
+  <p>@Safary 2022</p>
+  <a href="mailto:eliott@mail-safary.club" target="_blank">Contact</a>
+  <a href="https://www.linkedin.com/company/safaryclub/" target="_blank">Linkedin</a>
+  <a href="https://twitter.com/Safaryclub" target="_blank">Twitter</a>
+</footer>
 
 <style>
+
+    span {
+    color: #12877E;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+
+    @media (max-width: 600px) {
+
+           h1 {
+      font-size: 40px !important;
+     }
+
+
+     .section0 p {
+      font-size: 10px;
+     }
+
+      #testi2 {
+        display: none;
+      }
+
+      #testi3 {
+        display: none;
+      }
+
+
+      #testi4 {
+        display: none;
+      }
+
+      #testi5 {
+        display: none;
+      }
+
+
+      #testi6 {
+        display: none;
+      }
+
+
+      #testi7 {
+        display: none;
+      }
+
+      #zerion {
+        display: none;
+      }
+
+
+  }
+
+
+  #request {
+    background-color: #12877E; color: white; padding: 15px; border-radius: 10px; margin-top: 5px;
+  }
+
+    #request {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+   .section0 {
+    background-color: #456BDE;
+    height: 45px;
+    text-align: center;
+    color: white;
+    width: 100%;
+    line-height: 45px;
+  }
+
+
+   #request:hover {
+    color: #12877E;
+    border-style: solid;
+    border-color: #12877E;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+   .navbar-first {
+    padding: 0px;
+  }
+
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar-lewagon {
+    margin-top: 40px;
+    overflow: visible;
+  }
+
+
+  footer {
+    text-align: center;
+    padding-top: 30px;
+    height: 150px;
+    background-color: black;
+    color: white
+  }
+
+   .btn {
+    border-radius: 10px !important;
+  }
+
+  footer a {
+    color: white;
+    margin-left: 20px;
+  }
+
+  .section4 {
+    text-align: center;
+    height: 150px;
+  }
+
+
+    .logos {
+    text-align: center;
+    margin-bottom: 6%;
+    }
+
 
     #accordion {
     width: auto;
@@ -279,8 +417,8 @@ It's more like, wow, I'm humbled, and look how far I've come."</p>
     }
 
     .section3 {
-      height: 500px;
-      margin-top:100px;
+      height: 40%;
+      margin-top: 10%;
       padding-bottom: 60px;
     }
 
@@ -349,7 +487,7 @@ It's more like, wow, I'm humbled, and look how far I've come."</p>
 
     .section2 {
     background-color: black;
-    height: 550px;
+    height: 40%;
     padding: 40px;
   }
 
@@ -370,6 +508,7 @@ It's more like, wow, I'm humbled, and look how far I've come."</p>
   }
 
   .section1 {
+    width: 98%;
     text-align: center;
     position: relative;
     margin-bottom: 20px;
@@ -386,3 +525,48 @@ It's more like, wow, I'm humbled, and look how far I've come."</p>
     overflow: visible;
   }
 </style>
+
+<script>
+
+  function myFunction1() {
+  var a = document.getElementById("first-img");
+  var b = document.getElementById("second-img");
+  var c = document.getElementById("third-img");
+
+  a.classList.remove("inactive");
+  a.classList.add("active");
+  b.classList.remove("active");
+  b.classList.add("inactive");
+  c.classList.remove("active");
+  c.classList.add("inactive");
+
+}
+
+function myFunction2() {
+  var a = document.getElementById("first-img");
+  var b = document.getElementById("second-img");
+  var c = document.getElementById("third-img");
+
+  a.classList.remove("active");
+  a.classList.add("inactive");
+  b.classList.remove("inactive");
+  b.classList.add("active");
+  c.classList.remove("active");
+  c.classList.add("inactive");
+
+}
+
+function myFunction3() {
+  var a = document.getElementById("first-img");
+  var b = document.getElementById("second-img");
+  var c = document.getElementById("third-img");
+
+  a.classList.remove("active");
+  a.classList.add("inactive");
+  b.classList.remove("active");
+  b.classList.add("inactive");
+  c.classList.remove("inactive");
+  c.classList.add("active");
+}
+
+</script>

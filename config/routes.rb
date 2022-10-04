@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   resources :leaderboards
   resources :templates
   get '/community', :to => 'pages#community', :as => "community"
+  get '/gamefi', :to => 'pages#gamefi', :as => "gamefi"
+  get '/defi', :to => 'pages#defi', :as => "defi"
+  get '/vision', :to => 'pages#vision', :as => "vision"
   get '/test', :to => 'pages#test', :as => "test"
   get '/audiences', :to => 'use_cases#audiences', :as => "audiences"
   get '/profile', :to => 'leaderboards#profile', :as => "profile"
