@@ -5,10 +5,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if current_user.onboarded?
       schedules_path
-    elsif current_user.password != "INTOTHEWILD"
-      dashboards_path
     else
-      onboarding1_path
+      onboarding2_path
     end
   end
 
